@@ -23,7 +23,7 @@
 * Hamilton
 
 # Watches
-##Smartwatches
+## Smartwatches
 * Fossil Q Venture Smartwatch 
 ** Strap: Gold, Rosegold, Silver
 ** Watch: Gold, Rosegold, Silver
@@ -32,7 +32,7 @@
 ** Strap: Brown Leather
 ** Watch: Blue
 ** Sex: Male
-##Dive Watches
+## Dive Watches
 * Tissot PRC 200 Automatic Chronograph Gent
 ** Strap: Silver Metal, Black Plastic, Black Leather
 ** Watch: Silver, Black
@@ -41,7 +41,7 @@
 ** Strap: Silver Metal, White Plastic, Black Plastic
 ** Watch: Black, Silver
 ** Sex: Female
-##Aviator Watches
+## Aviator Watches
 * Breitling NAVITIMER 1 B01 CHRONOGRAPH 46 
 ** Strap: Silver Metal, Black Leather, Brown Leather
 ** Watch: Rosegold, Black, Silver
@@ -50,7 +50,7 @@
 ** Strap: Brown Leather, Silver Metal
 ** Watch: Silver, Black
 ** Sex: Male
-##Dress Watches
+## Dress Watches
 * Rolex SKY_DWELLER
 ** Strap: Silver Metal
 ** Watch: Blue, Silver, Black
@@ -59,7 +59,7 @@
 ** Strap: Silver Metal, Black Plastic
 ** Watch: Rosegold, Black, Silver
 ** Sex: Female
-##Racing Watches
+## Racing Watches
 * Certina DS Podium Chronograph
 ** Strap: Brown Leather, Silver Metal
 ** Watch: Silver, Blue, Black
@@ -68,7 +68,7 @@
 ** Strap: Silver Metal, Gold Metal, Brown Leather, White Leather
 ** Watch: Rosegold, Silver, Brown
 ** Sex: Female
-##Luxury Watches
+## Luxury Watches
 * Tissot Chemin Des Tourelles Squelette
 ** Strap: Black Leather, Silver Metal
 ** Watch: Blue, Rosegold
