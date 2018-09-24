@@ -2,7 +2,7 @@
 * Watch Color (Black, Brown, Silver, Grey, Gold, Rosegold)
 * Strap Color (Black, Brown, Silver)
 * Watch Straps (Metal, Leather, Plastic, Nato)
-* Waranty (2 years, 4 years)
+* Warranty (2 years, 4 years)
 
 # Categories
 * Men
