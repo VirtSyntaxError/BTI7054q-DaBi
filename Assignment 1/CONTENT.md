@@ -41,6 +41,14 @@
   * Strap: Silver Metal, White Plastic, Black Plastic
   * Watch: Black, Silver
   * Sex: Female
+* Rolex SUBMARINER
+  * Strap: Silver Metal
+  * Watch: Black
+  * Sex: Male
+* Rolex SUBMARINER DATE
+  * Strap: Silver Metal
+  * Watch: Blue, Green
+  * Sex: Male
 ## Aviator Watches
 * Breitling NAVITIMER 1 B01 CHRONOGRAPH 46 
   * Strap: Silver Metal, Black Leather, Brown Leather
