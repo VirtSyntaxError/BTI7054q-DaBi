@@ -32,6 +32,22 @@ section {
 	padding: 0;
 }
 
+.menuentry {
+	display: block;
+	color: white;
+	text-decoration: none;
+	padding: 9px 30px;
+}
+
+.menuentry:hover {
+	color: gold;
+	background-color: rgba(0,0,0,0.7);
+}
+
+#menuselected {
+	background-color: red;
+}
+
 #headertext {
 	color: gold;
 	font-size: 8em;
@@ -41,16 +57,4 @@ section {
 
 #headerimage {
 	display: table-cell;
-}
-
-#menu {
-	display: block;
-	color: white;
-	text-decoration: none;
-	padding: 9px 30px;
-}
-
-#menu:hover {
-	color: gold;
-	background-color: rgba(0,0,0,0.7);
 }
