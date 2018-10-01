@@ -1,0 +1,51 @@
+html {
+	font-family: Arial,sans-serif;
+}
+
+nav {
+	background-color: rgba(0,0,0,0.6);
+	float: left;
+	text-transform: uppercase;
+	min-height: 350px;
+}
+
+.header {
+	background-color: rgba(0,0,0,0.6);
+	display: table;
+	width: 100%;
+}
+
+.footer {
+	background-color: rgba(0,0,0,0.6);
+	text-align: center;
+	clear: both;
+}
+
+.menu {
+    	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#headertext {
+	color: gold;
+	font-size: 8em;
+	vertical-align: middle;
+	display: table-cell;
+}
+
+#headerimage {
+	display: table-cell;
+}
+
+#menu {
+	display: block;
+	color: white;
+	text-decoration: none;
+	padding: 9px 30px;
+}
+
+#menu:hover {
+	color: gold;
+	background-color: rgba(0,0,0,0.7);
+}
