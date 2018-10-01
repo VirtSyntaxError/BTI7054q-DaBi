@@ -9,6 +9,10 @@ nav {
 	min-height: 350px;
 }
 
+section {
+	margin-left: 200px;
+}
+
 .header {
 	background-color: rgba(0,0,0,0.6);
 	display: table;
@@ -19,6 +23,7 @@ nav {
 	background-color: rgba(0,0,0,0.6);
 	text-align: center;
 	clear: both;
+	color: gold;
 }
 
 .menu {
