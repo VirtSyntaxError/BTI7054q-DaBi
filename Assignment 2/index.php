@@ -10,7 +10,8 @@
 			<div id="headerimage"><img src="logo.png" alt="Logo"></img></div>
 			<div id="headertext">Goldene Ziffer</div>
 		</div>
-    	</header>
+
+    </header>
 	<nav>
 		<?php include("menu.php"); ?>
 	</nav>
