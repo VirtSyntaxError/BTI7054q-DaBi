@@ -5,8 +5,8 @@ html {
 nav {
 	background-color: rgba(0,0,0,0.6);
 	float: left;
+	height: 100%;
 	text-transform: uppercase;
-	min-height: 350px;
 }
 
 section {
@@ -45,7 +45,8 @@ section {
 }
 
 #menuselected {
-	background-color: red;
+	background-color: gold;
+	color: black;
 }
 
 #headertext {
