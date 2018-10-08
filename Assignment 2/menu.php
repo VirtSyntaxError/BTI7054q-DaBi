@@ -1,20 +1,21 @@
 <?php
 	$menu_array = array(
 		array("name" => "Home",
-			  "link" => "index.php",),
+			  "id" => 0,),
 		array("name" => "Marken",
-			  "link" => "brands.php",),
+			  "id" => 1,),
 		array("name" => "Kategorien",
-			  "link" => "categories.php",),
+			  "id" => 2,),
 		array("name" => "Login",
-			  "link" => "login.php",)
+			  "id" => 3,)
 		);
 	echo "<ul class='menu'>";
 	foreach ($menu_array as $menu){
-		$current = explode("/", $_SERVER["PHP_SELF"]);
-		$script_name = array_values(array_slice($current, -1))[0];
-		echo "<li><a href='".$menu["link"]."' class='menuentry' ";
-		if ($menu["link"] == $script_name){
+		$id = isset($_GET['id']) ? $_GET['id'] : 0;
+		#$current = explode("/", $_SERVER["PHP_SELF"]);
+		#$script_name = array_values(array_slice($current, -1))[0];
+		echo "<li><a href='index.php?id=".$menu['id']."' class='menuentry' ";
+		if ($menu["id"] == $id){
 			echo "id='menuselected'";
 		}
 		echo ">".$menu["name"]."</a></li>";

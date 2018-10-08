@@ -16,7 +16,10 @@
 	</nav>
 
 	<section>
-		<article><h1>Welcome to our web shop.</h1></article>
+		<?php
+			$id = isset($_GET['id']) ? $_GET['id'] : 0;
+ 			include("page_$id.php"); 
+		?>
 	</section>
      	<footer>
 		<div class="footer">
