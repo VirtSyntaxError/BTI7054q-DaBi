@@ -12,7 +12,7 @@
 		);
 	echo "<ul class='menu'>";
 	foreach ($menu_array as $menu){
-		write_menuentry($menu['name'],$menu['id']);	
+		writeMenuentry($menu['name'],$menu['id']);	
 	}
 	echo "</ul>";
 ?>
