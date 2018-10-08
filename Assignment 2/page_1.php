@@ -1,5 +1,6 @@
-<article>
-	<h1>Marken</h1>
+<?php
+echo "<article>
+	<h1>".t("BRANDS")."</h1>
 	<div>Rolex</div>
 	<div>Certina</div>
 	<div>Tissot</div>
@@ -7,6 +8,6 @@
 	<div>Fossil</div>
 	<div>Hamilton</div>
 </article>
-<article>
-	<?php include("products.php"); ?>
-</article>
+<article>";
+include("products.php");
+echo "</article>";

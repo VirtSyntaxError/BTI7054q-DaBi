@@ -1,4 +1,5 @@
 <?php
+include_once("i18n.php");
 $product_array = array(
 	array("name" => "Fossil Q Venture Smartwatch",
 		  "price" => 999,
@@ -30,10 +31,10 @@ echo "<ul>";
 foreach ($product_array as $product){
 	echo "<li>".$product["name"];
 	echo "<ul>";
-	echo "<li> Sex: ".$product["sex"]."</li>";
-	echo "<li> Price: ".$product["price"]."</li>";
-	echo "<li> Category: ".$product["cat"]."</li>";
-	echo "<li> Brand: ".$product["brand"]."</li>";
+	echo "<li> ".t("SEX").": ".$product["sex"]."</li>";
+	echo "<li> ".t("PRICE").": ".$product["price"]."</li>";
+	echo "<li> ".t("CATEGORY").": ".$product["cat"]."</li>";
+	echo "<li> ".t("BRAND").": ".$product["brand"]."</li>";
 	echo "</ul>";
 	echo "</li>";
 }

@@ -2,13 +2,13 @@
 include_once("functions.php");
 include_once("i18n.php");
 $menu_array = array(
-	array("name" => "Home",
+	array("name" => t("HOME"),
 		  "id" => 0,),
-	array("name" => "Marken",
+	array("name" => t("BRANDS"),
 		  "id" => 1,),
-	array("name" => "Kategorien",
+	array("name" => t("CATEGORIES"),
 		  "id" => 2,),
-	array("name" => "Login",
+	array("name" => t("LOGIN"),
 		  "id" => 3,)
 	);
 echo "<ul class='menu'>";

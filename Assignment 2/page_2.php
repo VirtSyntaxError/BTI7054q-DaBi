@@ -1,1 +1,2 @@
-<article><h1>Kategorien</h1></article>
+<?php
+echo "<article><h1>".t("CATEGORIES")."</h1></article>";
