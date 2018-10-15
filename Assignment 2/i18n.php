@@ -35,6 +35,78 @@ $texts = array(
 	'BRAND' => array(
 		'de' => 'Marke',
 		'en' => 'Brand'
+	),
+	'ENTER_DATA' => array(
+		'de' => 'Bitte füllen Sie ihre Daten ein',
+		'en' => 'Please enter your data'
+	),
+	'NAME' => array(
+		'de' => 'Name',
+		'en' => 'Name'
+	),
+	'EMAIL' => array(
+		'de' => 'E-Mail',
+		'en' => 'E-Mail'
+	),
+	'ADDRESS' => array(
+		'de' => 'Adresse',
+		'en' => 'Address'
+	),
+	'STREET' => array(
+		'de' => 'Strasse',
+		'en' => 'Street'
+	),
+	'NUMBER' => array(
+		'de' => 'Nummer',
+		'en' => 'Number'
+	),
+	'ZIP' => array(
+		'de' => 'PLZ',
+		'en' => 'ZIP'
+	),
+	'CITY' => array(
+		'de' => 'Ort',
+		'en' => 'City'
+	),
+	'COUNTRY' => array(
+		'de' => 'Land',
+		'en' => 'Country'
+	),
+	'DE' => array(
+		'de' => 'Deutschland',
+		'en' => 'Germany'
+	),
+	'CH' => array(
+		'de' => 'Schweiz',
+		'en' => 'Switzerland'
+	),
+	'AT' => array(
+		'de' => '&Ouml;sterreich',
+		'en' => 'Austria'
+	),
+	'SHIPPING_METHOD' => array(
+		'de' => 'Versandsmethode',
+		'en' => 'Shipping Method'
+	),
+	'STANDARD' => array(
+		'de' => 'Standard',
+		'en' => 'Standard'
+	),
+	'EXPRESS' => array(
+		'de' => 'Express',
+		'en' => 'Express'
+	),
+	'PICKUP' => array(
+		'de' => 'Abholung',
+		'en' => 'Pickup'
+	),
+	'GIFT' => array(
+		'de' => 'Geschenk',
+		'en' => 'Gift'
+	),
+	'ENTER_COMMENT' => array(
+		'de' => 'Hier Kommentare eingeben...',
+		'en' => 'Enter comments here...'
 	)
 );
 
