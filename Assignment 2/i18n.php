@@ -53,7 +53,7 @@ $texts = array(
 		'en' => 'Brand'
 	),
 	'ENTER_DATA' => array(
-		'de' => 'Bitte füllen Sie ihre Daten ein',
+		'de' => 'Bitte füllen Sie Ihre Daten ein',
 		'en' => 'Please enter your data'
 	),
 	'NAME' => array(
@@ -123,7 +123,11 @@ $texts = array(
 	'ENTER_COMMENT' => array(
 		'de' => 'Hier Kommentare eingeben...',
 		'en' => 'Enter comments here...'
-	)
+	),
+	'CONFIRMATION' => array(
+		'de' => 'Best&auml;tigung',
+		'en' => 'Confirmation'
+	),
 );
 
 function getAvailableLanguages()

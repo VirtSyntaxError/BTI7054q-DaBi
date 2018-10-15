@@ -9,7 +9,7 @@ $menu_array = array(
 	array("name" => t("CATEGORIES"),
 		  "id" => 2,),
 	array("name" => t("LOGIN"),
-		  "id" => 3,)
+		  "id" => 100,)
 	);
 echo "<ul class='menu'>";
 foreach ($menu_array as $menu){

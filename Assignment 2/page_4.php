@@ -1,4 +1,4 @@
-<form  method="post" id="payment_form" action="page_5.html">
+<form  method="post" id="payment_form" action="index.php?id=5">
 	<h3><?php echo t("ENTER_DATA")?></h3>
 	<p>
 		<label><?php echo t("NAME")?>:</label>
@@ -29,23 +29,20 @@
 	</p>
 	<p>
 		<label><?php echo t("COUNTRY")?>:</label>
-	</p>
-	<p>
 		<select name="country">
 			<option value="ch" selected><?php echo t("CH")?></option>
 			<option value="de"><?php echo t("DE")?></option>
 			<option value="at"><?php echo t("AT")?></option>
 		</select>
-	</p><br/><br/>
-	<p>
-		<label><?php echo t("SHIPPING_METHOD")?>:</label><br/>
 	</p>
+	<p>
+		<label><?php echo t("SHIPPING_METHOD")?>:</label>
 		<select name="shipping_method">
 			<option value="standard" selected><?php echo t("STANDARD")?></option>
 			<option value="express"><?php echo t("EXPRESS")?></option>
 			<option value="pickup"><?php echo t("PICKUP")?></option>
 		</select>
-	</p><br/><br/>
+	</p>
 	<p>
 		<input name="giftbox" type="checkbox" value="giftbox"/><?php echo t("GIFT")?>
 	</p>
