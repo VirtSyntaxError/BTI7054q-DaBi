@@ -24,6 +24,10 @@ $texts = array(
 		'de' => 'Geschlecht',
 		'en' => 'Sex'
 	),
+	'ARTICLENUMBER' => array(
+		'de' => 'Artikelnummer',
+		'en' => 'Articlenumber'
+	),
 	'PRICE' => array(
 		'de' => 'Preis',
 		'en' => 'Price'
@@ -31,6 +35,18 @@ $texts = array(
 	'CATEGORY' => array(
 		'de' => 'Kategorie',
 		'en' => 'Category'
+	),
+	'BUY' => array(
+		'de' => 'Jetzt kaufen',
+		'en' => 'Buy Now'
+	),
+	'CUSTOMIZEPROD' => array(
+		'de' => 'Individualisiere dein Produkt',
+		'en' => 'Customize your product'
+	),
+	'SUBMIT' => array(
+		'de' => 'Abschicken',
+		'en' => 'Submit'
 	),
 	'BRAND' => array(
 		'de' => 'Marke',
