@@ -1,4 +1,7 @@
-<form  method="post" id="payment_form" action="index.php?id=5">
+<div id="dialog-confirm" title="<?php echo t("AGBTITLE")?>">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span><?php echo t("AGB")?></p>
+</div>
+<form  method="post" id="payment_form" action="index.php?id=5&lang=<?php echo $_GET["lang"]?>">
 	<h3><?php echo t("ENTER_DATA")?></h3>
 	<p>
 		<label><?php echo t("NAME")?>:</label>
@@ -50,6 +53,6 @@
 		<textarea name="comment" form="payment_form" placeholder="<?php echo t("ENTER_COMMENT")?>"></textarea>
 	</p>
 	<p>
-		<input onClick="" value="Submit"/>
+		<input onClick="showAGB();" value="Submit" type="Button"/>
 	</p>
 </form>

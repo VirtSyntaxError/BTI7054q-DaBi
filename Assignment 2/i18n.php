@@ -128,6 +128,14 @@ $texts = array(
 		'de' => 'Best&auml;tigung',
 		'en' => 'Confirmation'
 	),
+	'AGBTITLE' => array(
+		'de' => 'Allgemeine Gesch&auml;ftsbedingungen',
+		'en' => 'Conditions'
+	),
+	'AGB' => array(
+		'de' => 'Sone chabis',
+		'en' => 'That is shit'
+	),
 );
 
 function getAvailableLanguages()

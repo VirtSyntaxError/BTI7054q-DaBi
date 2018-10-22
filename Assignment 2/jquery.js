@@ -6,8 +6,8 @@ $( function() {
       width: 400,
       modal: true,
       buttons: {
-        "Delete all items": function() {
-          $( this ).dialog( "close" );
+        "Accept": function() {
+          $( "#payment_form" ).submit();
         },
         Cancel: function() {
           $( this ).dialog( "close" );
