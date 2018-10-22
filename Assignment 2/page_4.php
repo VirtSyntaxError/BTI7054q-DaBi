@@ -50,6 +50,6 @@
 		<textarea name="comment" form="payment_form" placeholder="<?php echo t("ENTER_COMMENT")?>"></textarea>
 	</p>
 	<p>
-		<input type="submit" value="Submit"/>
+		<input onClick="" value="Submit"/>
 	</p>
 </form>
