@@ -1,11 +1,8 @@
-<div id="dialog-confirm" title="<?php echo t("AGBTITLE")?>">
-  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span><?php echo t("AGB")?></p>
-</div>
-<form  method="post" id="payment_form" action="index.php?id=5&lang=<?php echo $_GET["lang"]?>">
+<form  method="post" id="payment_form" onsubmit="return confirm('This is a binding contract of purchase. Do you want to continue?');" action="index.php?id=5&lang=<?php echo $_GET["lang"]?>">
 	<h3><?php echo t("ENTER_DATA")?></h3>
 	<p>
 		<label><?php echo t("NAME")?>:</label>
-		<input name="name" required/>
+		<input name="name" required pattern="^[A-Za-zäöü ,.'-]{3,}$"/>
 	</p>
 	<p>
 		<label><?php echo t("EMAIL")?>:</label>
@@ -16,19 +13,19 @@
 	</p>
 	<p>
 		<label><?php echo t("STREET")?>:</label>
-		<input name="street" type="text" required/>
+		<input name="street" type="text" required pattern="^[A-Za-zäöü ,.'-]{3,}$"/>
 	</p>
 	<p>
 		<label><?php echo t("NUMBER")?>:</label>
-		<input name="str_nr" type="text" required/>
+		<input name="str_nr" type="text" required pattern="^[0-9a-z]+$"/>
 	</p>
 	<p>
 		<label><?php echo t("ZIP")?>:</label>
-		<input name="zip" type="text" required/>
+		<input name="zip" type="text" required pattern="^[0-9]{1,5}$"/>
 	</p>
 	<p>
 		<label><?php echo t("CITY")?>:</label>
-		<input name="city" type="text" required/>
+		<input name="city" type="text" required pattern="^[A-Za-zäöü ,.'-]{3,}$"/>
 	</p>
 	<p>
 		<label><?php echo t("COUNTRY")?>:</label>
@@ -53,6 +50,6 @@
 		<textarea name="comment" form="payment_form" placeholder="<?php echo t("ENTER_COMMENT")?>"></textarea>
 	</p>
 	<p>
-		<input onClick="showAGB();" value="Submit" type="Button"/>
+		<button value="Submit" type="submit">Submit</button>
 	</p>
 </form>
