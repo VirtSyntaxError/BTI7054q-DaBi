@@ -2,13 +2,13 @@ use webshop;
 
 DROP TABLE IF EXISTS User;
 DROP TABLE IF EXISTS Category;
-DROP TABLE IF EXISTS Order;
+DROP TABLE IF EXISTS Purchase;
 DROP TABLE IF EXISTS Brand;
 DROP TABLE IF EXISTS Setting;
 DROP TABLE IF EXISTS Color;
 DROP TABLE IF EXISTS Strap;
 DROP TABLE IF EXISTS Product;
-DROP TABLE IF EXISTS OrderDetail;
+DROP TABLE IF EXISTS PurchaseDetail;
 DROP TABLE IF EXISTS CategoryProduct;
 DROP TABLE IF EXISTS ColorProduct;
 DROP TABLE IF EXISTS StrapProduct;
@@ -34,15 +34,15 @@ CREATE TABLE Category
   PRIMARY KEY (CategoryID)
 );
 
-CREATE TABLE Order
+CREATE TABLE Purchase
 (
-  OrderID INT NOT NULL,
-  OrderTimestamp INT NOT NULL,
+  PurchaseID INT NOT NULL,
+  PurchaseTimestamp INT NOT NULL,
   Description TEXT NOT NULL,
-  OrderStatus ENUM('open','sent') NOT NULL,
+  PurchaseStatus ENUM('open','sent') NOT NULL,
   UserID INT NOT NULL,
-  PRIMARY KEY (OrderID),
-  CONSTRAINT `FK_OrderUser` FOREIGN KEY (UserID) REFERENCES User(UserID)
+  PRIMARY KEY (PurchaseID),
+  CONSTRAINT `FK_PurchaseUser` FOREIGN KEY (UserID) REFERENCES User(UserID)
 );
 
 CREATE TABLE Brand
@@ -84,14 +84,14 @@ CREATE TABLE Product
   CONSTRAINT `FK_ProductBrand` FOREIGN KEY (BrandID) REFERENCES Brand(BrandID)
 );
 
-CREATE TABLE OrderDetail
+CREATE TABLE PurchaseDetail
 (
   Count INT NOT NULL,
   ProductID INT NOT NULL,
-  OrderID INT NOT NULL,
-  PRIMARY KEY (ProductID, OrderID),
-  CONSTRAINT `FK_OrderDetailProduct` FOREIGN KEY (ProductID) REFERENCES Product(ProductID),
-  CONSTRAINT `FK_OrderDetailOrder` FOREIGN KEY (OrderID) REFERENCES Order(OrderID)
+  PurchaseID INT NOT NULL,
+  PRIMARY KEY (ProductID, PurchaseID),
+  CONSTRAINT `FK_PurchaseDetailProduct` FOREIGN KEY (ProductID) REFERENCES Product(ProductID),
+  CONSTRAINT `FK_PurchaseDetailPurchase` FOREIGN KEY (PurchaseID) REFERENCES Purchase(PurchaseID)
 );
 
 CREATE TABLE CategoryProduct
