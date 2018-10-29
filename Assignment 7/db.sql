@@ -1,3 +1,19 @@
+use webshop;
+
+DROP TABLE IF EXISTS User
+DROP TABLE IF EXISTS Category
+DROP TABLE IF EXISTS Order
+DROP TABLE IF EXISTS Brand
+DROP TABLE IF EXISTS Setting
+DROP TABLE IF EXISTS Color
+DROP TABLE IF EXISTS Strap
+DROP TABLE IF EXISTS Product
+DROP TABLE IF EXISTS OrderDetail
+DROP TABLE IF EXISTS CategoryProduct
+DROP TABLE IF EXISTS ColorProduct
+DROP TABLE IF EXISTS StrapProduct
+
+
 CREATE TABLE User
 (
   UserID INT NOT NULL,
@@ -9,7 +25,6 @@ CREATE TABLE User
   City VARCHAR(50) NOT NULL,
   ZIP INT NOT NULL,
   PRIMARY KEY (UserID),
-  UNIQUE (Email)
 );
 
 CREATE TABLE Category
@@ -27,7 +42,7 @@ CREATE TABLE Order
   OrderStatus ENUM('open','sent') NOT NULL,
   UserID INT NOT NULL,
   PRIMARY KEY (OrderID),
-  FOREIGN KEY (UserID) REFERENCES User(UserID)
+  CONSTRAINT `FK_OrderUser` FOREIGN KEY (UserID) REFERENCES User(UserID)
 );
 
 CREATE TABLE Brand
@@ -66,7 +81,7 @@ CREATE TABLE Product
   Productdescription TEXT NOT NULL,
   BrandID INT NOT NULL,
   PRIMARY KEY (ProductID),
-  FOREIGN KEY (BrandID) REFERENCES Brand(BrandID)
+  CONSTRAINT `FK_ProductBrand` FOREIGN KEY (BrandID) REFERENCES Brand(BrandID)
 );
 
 CREATE TABLE OrderDetail
@@ -75,8 +90,8 @@ CREATE TABLE OrderDetail
   ProductID INT NOT NULL,
   OrderID INT NOT NULL,
   PRIMARY KEY (ProductID, OrderID),
-  FOREIGN KEY (ProductID) REFERENCES Product(ProductID),
-  FOREIGN KEY (OrderID) REFERENCES Order(OrderID)
+  CONSTRAINT `FK_OrderDetailProduct` FOREIGN KEY (ProductID) REFERENCES Product(ProductID),
+  CONSTRAINT `FK_OrderDetailOrder` FOREIGN KEY (OrderID) REFERENCES Order(OrderID)
 );
 
 CREATE TABLE CategoryProduct
@@ -84,8 +99,8 @@ CREATE TABLE CategoryProduct
   ProductID INT NOT NULL,
   CategoryID INT NOT NULL,
   PRIMARY KEY (ProductID, CategoryID),
-  FOREIGN KEY (ProductID) REFERENCES Product(ProductID),
-  FOREIGN KEY (CategoryID) REFERENCES Category(CategoryID)
+  CONSTRAINT `FK_CategoryProductProduct` FOREIGN KEY (ProductID) REFERENCES Product(ProductID),
+  CONSTRAINT `FK_CategoryProductCategory` FOREIGN KEY (CategoryID) REFERENCES Category(CategoryID)
 );
 
 CREATE TABLE ColorProduct
@@ -93,8 +108,8 @@ CREATE TABLE ColorProduct
   ProductID INT NOT NULL,
   ColorID INT NOT NULL,
   PRIMARY KEY (ProductID, ColorID),
-  FOREIGN KEY (ProductID) REFERENCES Product(ProductID),
-  FOREIGN KEY (ColorID) REFERENCES Color(ColorID)
+  CONSTRAINT `FK_ColorProductProduct` FOREIGN KEY (ProductID) REFERENCES Product(ProductID),
+  CONSTRAINT `FK_ColorProductColor` FOREIGN KEY (ColorID) REFERENCES Color(ColorID)
 );
 
 CREATE TABLE StrapProduct
@@ -102,6 +117,6 @@ CREATE TABLE StrapProduct
   ProductID INT NOT NULL,
   StrapID INT NOT NULL,
   PRIMARY KEY (ProductID, StrapID),
-  FOREIGN KEY (ProductID) REFERENCES Product(ProductID),
-  FOREIGN KEY (StrapID) REFERENCES Strap(StrapID)
+  CONSTRAINT `FK_StrapProductProduct` FOREIGN KEY (ProductID) REFERENCES Product(ProductID),
+  CONSTRAINT `FK_StrapProductStrap` FOREIGN KEY (StrapID) REFERENCES Strap(StrapID)
 );
