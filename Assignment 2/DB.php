@@ -1,10 +1,26 @@
 <?php
 class DB extends mysqli{
-	$db_conf = parse_ini_file("db_config.ini");
-	const HOST=$db_config["HOST"], USER=$db_config["USER"], PW=$db_config["PW"], DB_NAME=$db_config["DB_NAME"];
 	static private $instance;
 	
 	function __construct() {
-		parent::__construct(self::HOST, self::USER, self::PW, self::DB_NAME)
+		$db_conf = parse_ini_file("db_config.ini");
+		parent::__construct($db_config["HOST"], $db_config["USER"], $db_config["PW"], $db_config["DB_NAME"]);
+	}
+
+	static public function getInstance() {
+		if ( !self::$instance) {
+			@self::$instance = new DB();
+		}
+		if ($instance->connect_errno > 0){
+			die ("Unable to connect to database: ".$instance->connect_errno);
+		}
+		if (!$instance->set_charset("utf8")){
+			die ("Error loading character set utf8 ".$instance->error);
+		}
+		return self::$instance;
+	}
+
+	static public function doQuery($sql){
+		return self::getInstance()->query($sql);
 	}
 }
