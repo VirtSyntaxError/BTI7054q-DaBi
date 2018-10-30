@@ -4,7 +4,7 @@ class DB extends mysqli{
 	
 	function __construct() {
 		$db_conf = parse_ini_file("db_config.ini");
-		parent::__construct($db_config["HOST"], $db_config["USER"], $db_config["PW"], $db_config["DB_NAME"]);
+		parent::__construct($db_conf["HOST"], $db_conf["USER"], $db_conf["PW"], $db_conf["DB_NAME"]);
 	}
 
 	static public function getInstance() {
