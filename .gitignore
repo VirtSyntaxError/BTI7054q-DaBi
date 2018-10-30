@@ -1,0 +1,2 @@
+# ignore db conf with pw etc
+db_config.ini
