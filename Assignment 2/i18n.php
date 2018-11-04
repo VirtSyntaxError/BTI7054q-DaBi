@@ -133,8 +133,8 @@ $texts = array(
 		'en' => 'Conditions'
 	),
 	'AGB' => array(
-		'de' => 'Sone chabis',
-		'en' => 'That is shit'
+		'de' => 'AGB deutsch',
+		'en' => 'AGB english'
 	),
 );
 

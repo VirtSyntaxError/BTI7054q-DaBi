@@ -1,13 +1,21 @@
 <?php
 class Product {
-	private $id, $productname, $productdesc, $brandid;
+	private $ProductID, $Productname, $Productdescription, $BrandID;
 
 	public function getName(){
-		return $this.productname;
+		return $this->Productname;
+	}
+
+	public function getID(){
+		return $this->ProductID;
+	}
+
+	public function getBrand(){
+		return $this->BrandID;
 	}
 
 	public function __toString(){
-		return sprintf("%d) %s", $this->id, $this.getName());
+		return sprintf("%d) %s", $this->ProductID, $this->getName());
 	}
 
 	static public function getProducts() {
@@ -57,9 +65,9 @@ class Product {
 
 	public function set($values){
 		$db = DB::getInstance();
-		$this->productname = $db->escape_string($values['Productname']);
-		$this->productdesc = $db->escape_string($values['Productdescription']);
-		$this->brandid = $db->escape_string($values['BrandID']);
+		$this->Productname = $db->escape_string($values['Productname']);
+		$this->Productdescription = $db->escape_string($values['Productdescription']);
+		$this->BrandID = $db->escape_string($values['BrandID']);
 	}
 
 	public function save() {
@@ -67,10 +75,10 @@ class Product {
 			"UPDATE Product
 			 SET Productname='%s', Productdescription='%s', BrandID='%s'
 			 WHERE ProductID = %d;",
-			 $this->productname,
-			 $this->productdesc,
-			 $this->brandid,
-			 $this->id
+			 $this->Productname,
+			 $this->Productdescription,
+			 $this->BrandID,
+			 $this->ProductID
 		);
 		$res = DB::doQuery($sql);
 		return $res != null;

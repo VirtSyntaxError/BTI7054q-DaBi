@@ -1,13 +1,13 @@
 <?php
 class Brand {
-	private $id, $brandname;
+	private $BrandID, $Brandname;
 
 	public function getName(){
-		return $this.brandname;
+		return $this->Brandname;
 	}
 
 	public function __toString(){
-		return sprintf("%d) %s", $this->id, $this.getName());
+		return sprintf("%d) %s", $this->BrandID, $this->getName());
 	}
 
 	static public function getBrands() {
@@ -53,7 +53,7 @@ class Brand {
 
 	public function set($values){
 		$db = DB::getInstance();
-		$this->brandname = $db->escape_string($values['Brandname']);
+		$this->Brandname = $db->escape_string($values['Brandname']);
 	}
 
 	public function save() {
@@ -62,7 +62,7 @@ class Brand {
 			 SET Brandname='%s'
 			 WHERE BrandID = %d;",
 			 $this->Brandname,
-			 $this->id
+			 $this->BrandID
 		);
 		$res = DB::doQuery($sql);
 		return $res != null;

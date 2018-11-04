@@ -1,9 +1,9 @@
 <?php
 class Purchase {
-	private $id, $purchasetimestamp, $description, $purchasestatus, $userid;
+	private $PurchaseID, $PurchaseTimestamp, $Description, $PurchaseStatus, $UserID;
 
 	public function __toString(){
-		return sprintf("%d) %d - %s - %s - %d", $this->id, $this->purchasetimestamp, $this->description, $this->purchasestatus, $this->userid);
+		return sprintf("%d) %d - %s - %s - %d", $this->PurchaseID, $this->PurchaseTimestamp, $this->Description, $this->PurchaseStatus, $this->UserID);
 	}
 
 	static public function getPurchases() {
@@ -54,10 +54,10 @@ class Purchase {
 
 	public function set($values){
 		$db = DB::getInstance();
-		$this->purchasetimestamp = $db->escape_string($values['PurchaseTimestamp']);
-		$this->description = $db->escape_string($values['Description']);
-		$this->purchasestatus = $db->escape_string($values['PurchaseStatus']);
-		$this->userid = $db->escape_string($values['UserID']);
+		$this->PurchaseTimestamp = $db->escape_string($values['PurchaseTimestamp']);
+		$this->Description = $db->escape_string($values['Description']);
+		$this->PurchaseStatus = $db->escape_string($values['PurchaseStatus']);
+		$this->UserID = $db->escape_string($values['UserID']);
 	}
 
 	public function save() {
@@ -65,11 +65,11 @@ class Purchase {
 			"UPDATE Purchase
 			 SET PurchaseTimestamp='%d', Description='%s', PurchaseStatus='%s', UserID='%d'
 			 WHERE PurchaseID = %d;",
-			 $this->purchasetimestamp,
-			 $this->description,
-			 $this->purchasestatus,
-			 $this->userid,
-			 $this->id
+			 $this->PurchaseTimestamp,
+			 $this->Description,
+			 $this->PurchaseStatus,
+			 $this->UserID,
+			 $this->PurchaseID
 		);
 		$res = DB::doQuery($sql);
 		return $res != null;

@@ -11,10 +11,10 @@ class DB extends mysqli{
 		if ( !self::$instance) {
 			@self::$instance = new DB();
 		}
-		if ($instance->connect_errno > 0){
+		if (self::$instance->connect_errno > 0){
 			die ("Unable to connect to database: ".$instance->connect_errno);
 		}
-		if (!$instance->set_charset("utf8")){
+		if (!self::$instance->set_charset("utf8")){
 			die ("Error loading character set utf8 ".$instance->error);
 		}
 		return self::$instance;

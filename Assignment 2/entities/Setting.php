@@ -1,9 +1,9 @@
 <?php
 class Setting {
-	private $id, $settingname, $settingvalue;
+	private $SettingID, $SettingName, $SettingValue;
 
 	public function __toString(){
-		return sprintf("%d) %s = %s", $this->id, $this->settingname, $this->settingvalue);
+		return sprintf("%d) %s = %s", $this->SettingID, $this->SettingName, $this->SettingValue);
 	}
 
 	static public function getSettings() {
@@ -52,8 +52,8 @@ class Setting {
 
 	public function set($values){
 		$db = DB::getInstance();
-		$this->settingname = $db->escape_string($values['SettingName']);
-		$this->settingvalue = $db->escape_string($values['SettingValue']);
+		$this->SettingName = $db->escape_string($values['SettingName']);
+		$this->SettingValue = $db->escape_string($values['SettingValue']);
 	}
 
 	public function save() {
@@ -61,9 +61,9 @@ class Setting {
 			"UPDATE Setting
 			 SET SettingName='%s', SettingValue='%s'
 			 WHERE SettingID = %d;",
-			 $this->settingname,
-			 $this->settingvalue,
-			 $this->id
+			 $this->SettingName,
+			 $this->SettingValue,
+			 $this->SettingID
 		);
 		$res = DB::doQuery($sql);
 		return $res != null;

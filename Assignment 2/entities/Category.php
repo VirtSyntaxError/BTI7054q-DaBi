@@ -1,13 +1,13 @@
 <?php
 class Category {
-	private $id, $categoryname;
+	private $CategoryID, $CategoryName;
 
 	public function getName(){
-		return $this.categoryname;
+		return $this->CategoryName;
 	}
 
 	public function __toString(){
-		return sprintf("%d) %s", $this->id, $this.getName());
+		return sprintf("%d) %s", $this->CategoryID, $this->getName());
 	}
 
 	static public function getCategories() {
@@ -53,7 +53,7 @@ class Category {
 
 	public function set($values){
 		$db = DB::getInstance();
-		$this->categoryname = $db->escape_string($values['CategoryName']);
+		$this->CategoryName = $db->escape_string($values['CategoryName']);
 	}
 
 	public function save() {
@@ -62,7 +62,7 @@ class Category {
 			 SET CategoryName='%s'
 			 WHERE CategoryID = %d;",
 			 $this->CategoryName,
-			 $this->id
+			 $this->CategoryID
 		);
 		$res = DB::doQuery($sql);
 		return $res != null;

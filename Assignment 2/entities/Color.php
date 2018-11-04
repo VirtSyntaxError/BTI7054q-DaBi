@@ -1,13 +1,13 @@
 <?php
 class Color {
-	private $id, $colorname;
+	private $ColorID, $ColorName;
 
 	public function getName(){
-		return $this.colorname;
+		return $this->ColorName;
 	}
 
 	public function __toString(){
-		return sprintf("%d) %s", $this->id, $this.getName());
+		return sprintf("%d) %s", $this->ColorID, $this.getName());
 	}
 
 	static public function getColors() {
@@ -53,7 +53,7 @@ class Color {
 
 	public function set($values){
 		$db = DB::getInstance();
-		$this->colorname = $db->escape_string($values['ColorName']);
+		$this->ColorName = $db->escape_string($values['ColorName']);
 	}
 
 	public function save() {
@@ -61,8 +61,8 @@ class Color {
 			"UPDATE Color
 			 SET ColorName='%s'
 			 WHERE ColorID = %d;",
-			 $this->colorname,
-			 $this->id
+			 $this->ColorName,
+			 $this->ColorID
 		);
 		$res = DB::doQuery($sql);
 		return $res != null;

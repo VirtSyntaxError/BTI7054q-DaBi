@@ -1,13 +1,13 @@
 <?php
 class User {
-	private $id, $prename, $surname, $password, $email, $address, $city, $zip, $country;
+	private $UserID, $Prename, $Surname, $Password, $Email, $Address, $City, $ZIP, $Country;
 
 	public function getName(){
-		return $this.email;
+		return $this->Email;
 	}
 
 	public function __toString(){
-		return sprintf("%d) %s", $this->id, $this.getName());
+		return sprintf("%d) %s", $this->UserID, $this.getName());
 	}
 
 	static public function getUsers() {
@@ -62,14 +62,14 @@ class User {
 
 	public function set($values){
 		$db = DB::getInstance();
-		$this->prename = $db->escape_string($values['Prename']);
-		$this->surname = $db->escape_string($values['Surname']);
-		$this->password = $db->escape_string($values['Password']);
-		$this->email = $db->escape_string($values['Email']);
-		$this->address = $db->escape_string($values['Address']);
-		$this->city = $db->escape_string($values['City']);
-		$this->zip = $db->escape_string($values['ZIP']);
-		$this->country = $db->escape_string($values['Country']);
+		$this->Prename = $db->escape_string($values['Prename']);
+		$this->Surname = $db->escape_string($values['Surname']);
+		$this->Password = $db->escape_string($values['Password']);
+		$this->Email = $db->escape_string($values['Email']);
+		$this->Address = $db->escape_string($values['Address']);
+		$this->City = $db->escape_string($values['City']);
+		$this->ZIP = $db->escape_string($values['ZIP']);
+		$this->Country = $db->escape_string($values['Country']);
 	}
 
 	public function save() {
@@ -77,14 +77,15 @@ class User {
 			"UPDATE User
 			 SET Prename='%s', Surname='%s', Password='%s', Email='%s', Address='%s', City='%s', ZIP='%d', Country='%s'
 			 WHERE UserID = %d;",
-			 $this->prename,
-			 $this->surname,
-			 $this->password,
-			 $this->email,
-			 $this->address,
-			 $this->city,
-			 $this->zip,
-			 $this->country
+			 $this->Prename,
+			 $this->Surname,
+			 $this->Password,
+			 $this->Email,
+			 $this->Address,
+			 $this->City,
+			 $this->ZIP,
+			 $this->Country,
+			 $this->UserID
 		);
 		$res = DB::doQuery($sql);
 		return $res != null;

@@ -1,13 +1,13 @@
 <?php
 class Strap {
-	private $id, $strap;
+	private $StrapID, $Strap;
 
 	public function getName(){
-		return $this.strap;
+		return $this->Strap;
 	}
 
 	public function __toString(){
-		return sprintf("%d) %s", $this->id, $this.getName());
+		return sprintf("%d) %s", $this->StrapID, $this.getName());
 	}
 
 	static public function getStraps() {
@@ -53,7 +53,7 @@ class Strap {
 
 	public function set($values){
 		$db = DB::getInstance();
-		$this->strap = $db->escape_string($values['Strap']);
+		$this->Strap = $db->escape_string($values['Strap']);
 	}
 
 	public function save() {
@@ -62,7 +62,7 @@ class Strap {
 			 SET Strap='%s'
 			 WHERE StrapID = %d;",
 			 $this->Strap,
-			 $this->id
+			 $this->StrapID
 		);
 		$res = DB::doQuery($sql);
 		return $res != null;
