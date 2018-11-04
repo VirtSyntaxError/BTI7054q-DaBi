@@ -60,7 +60,7 @@ class Strap {
 		$sql = sprintf(
 			"UPDATE Strap
 			 SET Strap='%s'
-			 WHERE StrapID = %d;",
+			 WHERE id = %d;",
 			 $this->Strap,
 			 $this->id
 		);

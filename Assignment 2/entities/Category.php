@@ -1,31 +1,31 @@
 <?php
-class Strap {
-	private $id, $strap;
+class Category {
+	private $id, $categoryname;
 
 	public function getName(){
-		return $this.strap;
+		return $this.categoryname;
 	}
 
 	public function __toString(){
 		return sprintf("%d) %s", $this->id, $this.getName());
 	}
 
-	static public function getStraps() {
-		$straps = array();
+	static public function getCategories() {
+		$categories = array();
 		$res = DB::doQuery(
-			"SELECT * FROM Strap;"
+			"SELECT * FROM Category;"
 		);
 		if (!$res) return null;
-		while ($strap = $res->fetch_object(get_class())){
-			$straps[] = $strap;
+		while ($category = $res->fetch_object(get_class())){
+			$categories[] = $category;
 		}
-		return $straps;
+		return $categories;
 	}
 
-	static public function getStrapById($id) {
+	static public function getCategoryById($id) {
 		$id = (int) $id;
 		$res = DB::doQuery(
-			"SELECT * FROM Strap WHERE StrapID = $id"
+			"SELECT * FROM Category WHERE CategoryID = $id"
 		);
 		if (!$res) return null;
 		return $res->fetch_object(get_class());
@@ -34,34 +34,34 @@ class Strap {
 	static public function delete($id) {
 		$id = (int) $id;
 		$res = DB::doQuery(
-			"DELETE FROM Strap WHERE StrapID = $id"
+			"DELETE FROM Category WHERE CategoryID = $id"
 		);
 		return $res != null;
 	}
 
 	static public function insert($values) {
 		$stmt = DB::getInstance()->prepare(
-			"INSERT INTO Strap ".
-			"(Strap) ".
+			"INSERT INTO Category ".
+			"(CategoryName) ".
 			"VALUES (?)"
 		);
 		if (!$stmt) return false;
-		$success = $stmt->bind_param('s', $values['Strap']);
+		$success = $stmt->bind_param('s', $values['CategoryName']);
 		if (!$success) return false;
 		return $stmt->execute();
 	}
 
 	public function set($values){
 		$db = DB::getInstance();
-		$this->strap = $db->escape_string($values['Strap']);
+		$this->categoryname = $db->escape_string($values['CategoryName']);
 	}
 
 	public function save() {
 		$sql = sprintf(
-			"UPDATE Strap
-			 SET Strap='%s'
-			 WHERE StrapID = %d;",
-			 $this->Strap,
+			"UPDATE Category
+			 SET CategoryName='%s'
+			 WHERE CategoryID = %d;",
+			 $this->CategoryName,
 			 $this->id
 		);
 		$res = DB::doQuery($sql);

@@ -1,31 +1,31 @@
 <?php
-class Strap {
-	private $id, $strap;
+class Color {
+	private $id, $colorname;
 
 	public function getName(){
-		return $this.strap;
+		return $this.colorname;
 	}
 
 	public function __toString(){
 		return sprintf("%d) %s", $this->id, $this.getName());
 	}
 
-	static public function getStraps() {
-		$straps = array();
+	static public function getColors() {
+		$colors = array();
 		$res = DB::doQuery(
-			"SELECT * FROM Strap;"
+			"SELECT * FROM Color;"
 		);
 		if (!$res) return null;
-		while ($strap = $res->fetch_object(get_class())){
-			$straps[] = $strap;
+		while ($color = $res->fetch_object(get_class())){
+			$colors[] = $color;
 		}
-		return $straps;
+		return $colors;
 	}
 
-	static public function getStrapById($id) {
+	static public function getColorById($id) {
 		$id = (int) $id;
 		$res = DB::doQuery(
-			"SELECT * FROM Strap WHERE StrapID = $id"
+			"SELECT * FROM Color WHERE ColorID = $id"
 		);
 		if (!$res) return null;
 		return $res->fetch_object(get_class());
@@ -34,34 +34,34 @@ class Strap {
 	static public function delete($id) {
 		$id = (int) $id;
 		$res = DB::doQuery(
-			"DELETE FROM Strap WHERE StrapID = $id"
+			"DELETE FROM Color WHERE ColorID = $id"
 		);
 		return $res != null;
 	}
 
 	static public function insert($values) {
 		$stmt = DB::getInstance()->prepare(
-			"INSERT INTO Strap ".
-			"(Strap) ".
+			"INSERT INTO Color ".
+			"(ColorName) ".
 			"VALUES (?)"
 		);
 		if (!$stmt) return false;
-		$success = $stmt->bind_param('s', $values['Strap']);
+		$success = $stmt->bind_param('s', $values['ColorName']);
 		if (!$success) return false;
 		return $stmt->execute();
 	}
 
 	public function set($values){
 		$db = DB::getInstance();
-		$this->strap = $db->escape_string($values['Strap']);
+		$this->colorname = $db->escape_string($values['ColorName']);
 	}
 
 	public function save() {
 		$sql = sprintf(
-			"UPDATE Strap
-			 SET Strap='%s'
-			 WHERE StrapID = %d;",
-			 $this->Strap,
+			"UPDATE Color
+			 SET ColorName='%s'
+			 WHERE ColorID = %d;",
+			 $this->colorname,
 			 $this->id
 		);
 		$res = DB::doQuery($sql);
