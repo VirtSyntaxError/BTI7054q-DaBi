@@ -1,5 +1,6 @@
 <?php
 require_once("autoloader.php");
+include "authentication.inc.php";
 
 echo "<form action='admin.php' method='post'>
 	<p>ProductName: <input required name='Productname'/></p>

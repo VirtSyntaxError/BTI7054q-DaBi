@@ -136,6 +136,14 @@ $texts = array(
 		'de' => 'AGB deutsch',
 		'en' => 'AGB english'
 	),
+	'WRONGPW' => array(
+		'de' => 'Falscher Username und/oder Passwort',
+		'en' => 'Wrong Username and/or Password'
+	),
+	'PLEASE_LOG_IN' => array(
+		'de' => 'Bitte loggen Sie sich ein',
+		'en' => 'Please log in'
+	)
 );
 
 function getAvailableLanguages()

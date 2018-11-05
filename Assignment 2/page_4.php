@@ -2,30 +2,30 @@
 	<h3><?php echo t("ENTER_DATA")?></h3>
 	<p>
 		<label><?php echo t("NAME")?>:</label>
-		<input name="name" required pattern="^[A-Za-zäöü ,.'-]{3,}$"/>
+		<input name="name" required pattern="^[A-Za-zäöü ,.'-]{3,}$" value="<?php echo $_COOKIE['name'] ?? "";?>"/>
 	</p>
 	<p>
 		<label><?php echo t("EMAIL")?>:</label>
-		<input name="email" type="email" required/>
+		<input name="email" type="email" required value="<?php echo $_COOKIE['email'] ?? "";?>"/>
 	</p>
 	<p>
 		<label><?php echo t("ADDRESS")?>:</label>
 	</p>
 	<p>
 		<label><?php echo t("STREET")?>:</label>
-		<input name="street" type="text" required pattern="^[A-Za-zäöü ,.'-]{3,}$"/>
+		<input name="street" type="text" required pattern="^[A-Za-zäöü ,.'-]{3,}$" value="<?php echo $_COOKIE['street'] ?? "";?>"/>
 	</p>
 	<p>
 		<label><?php echo t("NUMBER")?>:</label>
-		<input name="str_nr" type="text" required pattern="^[0-9a-z]+$"/>
+		<input name="str_nr" type="text" required pattern="^[0-9a-z]+$" value="<?php echo $_COOKIE['streetnr'] ?? "";?>"/>
 	</p>
 	<p>
 		<label><?php echo t("ZIP")?>:</label>
-		<input name="zip" type="text" required pattern="^[0-9]{1,5}$"/>
+		<input name="zip" type="text" required pattern="^[0-9]{1,5}$" value="<?php echo $_COOKIE['zip'] ?? "";?>"/>
 	</p>
 	<p>
 		<label><?php echo t("CITY")?>:</label>
-		<input name="city" type="text" required pattern="^[A-Za-zäöü ,.'-]{3,}$"/>
+		<input name="city" type="text" required pattern="^[A-Za-zäöü ,.'-]{3,}$" value="<?php echo $_COOKIE['city'] ?? "";?>"/>
 	</p>
 	<p>
 		<label><?php echo t("COUNTRY")?>:</label>
