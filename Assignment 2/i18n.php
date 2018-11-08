@@ -143,6 +143,10 @@ $texts = array(
 	'PLEASE_LOG_IN' => array(
 		'de' => 'Bitte loggen Sie sich ein',
 		'en' => 'Please log in'
+	),
+	'ALREADY_LOGGED_IN' => array(
+		'de' => 'Sie sind schon eingeloggt',
+		'en' => 'You are already logged in'
 	)
 );
 
