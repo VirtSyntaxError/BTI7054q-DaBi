@@ -1,9 +1,10 @@
 <?php
 require_once("i18n.php");
+require_once("autoloader.php");
 function checklogin($login, $password){
 	$db = DB::getInstance();
 	$stmt = $db->prepare(
-		"SELECT * FROM User WHERE Email=?"
+		"SELECT * FROM Users WHERE Email=?"
 	);
 	$stmt->bind_param('s', $login);
 	$stmt->execute();
@@ -12,7 +13,7 @@ function checklogin($login, $password){
 		return false;
 	}
 	$row = $result->fetch_assoc();
-	return password_verify($password, $row["Password"]);
+	return [password_verify($password, $row["Password"]),$row["isAdmin"]];
 }
 
 session_start();
@@ -21,8 +22,17 @@ session_start();
 if (isset($_POST["login"]) && isset($_POST["pw"])){
 	$login = $_POST["login"];
 	$pw = $_POST["pw"];
-	if (checklogin($login, $pw)){
+	$chklogin = checklogin($login, $pw);
+	$ok = $chklogin[0];
+	$isAdmin = false;
+	if ($chklogin[1] == 1){
+		$isAdmin = true;
+	}
+	if ($ok){
 		$_SESSION["user"] = $login;
+		if ($isAdmin){
+			$_SESSION["isAdmin"] = true;	
+		}
 	} else {
 		echo "<!DOCTYPE html>\n";
 		echo '<a href="login.php">'.t("WRONGPW").'</a>.';
