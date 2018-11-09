@@ -14,8 +14,22 @@
 			<div id="headerimage"><img src="logo.png" alt="Logo"></img></div>
 			<div id="headertext">Goldene Ziffer</div>
 		</div>
-
     </header>
+    <div id="login_logout">
+		<?php
+			require_once("i18n.php");
+			if(!isset($_SESSION)){ 
+				session_start(); 
+			}
+			if (isset($_SESSION["user"])) {
+				echo $_SESSION["user"];
+				echo "|";
+				echo "<a href='logout.php'>".t("LOGOUT")."</a>";
+			} else {
+				echo "<a href='index.php?id=101&lang=".$_GET['lang']."'>".t("REGISTER")."</a>";
+			}
+		?>
+	</div>
 	<nav>
 		<?php include("menu.php"); ?>
 	</nav>

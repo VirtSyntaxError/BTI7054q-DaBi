@@ -13,7 +13,7 @@ class User {
 	static public function getUsers() {
 		$users = array();
 		$res = DB::doQuery(
-			"SELECT * FROM User;"
+			"SELECT * FROM Users;"
 		);
 		if (!$res) return null;
 		while ($user = $res->fetch_object(get_class())){
@@ -25,7 +25,7 @@ class User {
 	static public function getUserById($id) {
 		$id = (int) $id;
 		$res = DB::doQuery(
-			"SELECT * FROM User WHERE UserID = $id"
+			"SELECT * FROM Users WHERE UserID = $id"
 		);
 		if (!$res) return null;
 		return $res->fetch_object(get_class());
@@ -34,27 +34,27 @@ class User {
 	static public function delete($id) {
 		$id = (int) $id;
 		$res = DB::doQuery(
-			"DELETE FROM User WHERE UserID = $id"
+			"DELETE FROM Users WHERE UserID = $id"
 		);
 		return $res != null;
 	}
 
 	static public function insert($values) {
 		$stmt = DB::getInstance()->prepare(
-			"INSERT INTO User ".
-			"(Prename, Surname, Password, Email, Address, City, ZIP, Country) ".
-			"VALUES (?,?,?,?,?,?,?,?)"
+			"INSERT INTO Users ".
+			"(Prename, Surname, Password, Email, Address, City, ZIP, Country, isAdmin) ".
+			"VALUES (?,?,?,?,?,?,?,?,0)"
 		);
 		if (!$stmt) return false;
 		$success = $stmt->bind_param('ssssssis',
-			$values['Prename'],
-			$values['Surname'],
-			$values['Password'],
-			$values['Email'],
-			$values['Address'],
-			$values['City'],
-			$values['ZIP'],
-			$values['Country']
+			$values['prename'],
+			$values['surname'],
+			$values['pw'],
+			$values['email'],
+			$values['address'],
+			$values['city'],
+			$values['zip'],
+			$values['country']
 		);
 		if (!$success) return false;
 		return $stmt->execute();

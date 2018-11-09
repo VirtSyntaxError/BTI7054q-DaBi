@@ -16,6 +16,10 @@ $texts = array(
 		'de' => 'Login',
 		'en' => 'Login'
 	),
+	'LOGOUT' => array(
+		'de' => 'Logout',
+		'en' => 'Logout'
+	),
 	'WELCOME' => array(
 		'de' => 'Willkommen auf unserer Seite',
 		'en' => 'Welcome to our web shop.'
@@ -59,6 +63,18 @@ $texts = array(
 	'NAME' => array(
 		'de' => 'Name',
 		'en' => 'Name'
+	),
+	'SURNAME' => array(
+		'de' => 'Nachname',
+		'en' => 'Surname'
+	),
+	'PRENAME' => array(
+		'de' => 'Vorname',
+		'en' => 'Prename'
+	),
+	'PASSWORD' => array(
+		'de' => 'Passwort',
+		'en' => 'Password'
 	),
 	'EMAIL' => array(
 		'de' => 'E-Mail',
@@ -147,6 +163,18 @@ $texts = array(
 	'ALREADY_LOGGED_IN' => array(
 		'de' => 'Sie sind schon eingeloggt',
 		'en' => 'You are already logged in'
+	),
+	'REGISTER' => array(
+		'de' => 'Registrierung',
+		'en' => 'Registration'
+	),
+	'SUCCESSFUL_REGISTRATION' => array(
+		'de' => 'Registrierung war erfolgreich',
+		'en' => 'Registration successful'
+	),
+	'ERROR_REGISTRATION' => array(
+		'de' => 'Registrierung schlug fehl',
+		'en' => 'There was an error with the registration'
 	)
 );
 

@@ -16,8 +16,9 @@ function checklogin($login, $password){
 	return [password_verify($password, $row["Password"]),$row["isAdmin"]];
 }
 
-session_start();
-
+if(!isset($_SESSION)){ 
+	session_start(); 
+}
 
 if (isset($_POST["login"]) && isset($_POST["pw"])){
 	$login = $_POST["login"];
