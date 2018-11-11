@@ -172,10 +172,23 @@ $texts = array(
 		'de' => 'Registrierung war erfolgreich',
 		'en' => 'Registration successful'
 	),
+	'PRODUCTINFORMATION' => array(
+		'de' => 'Informationen zu ihrem Product',
+		'en' => 'Informations about your choosen product'
+	),
+	'WATCHCOLOR' => array(
+		'de' => 'Farbe der Uhr',
+		'en' => 'Color of the watch'
+	),
+	'STRAPCOLOR' => array(
+		'de' => 'Armband',
+		'en' => 'Strap'
+	),
 	'ERROR_REGISTRATION' => array(
 		'de' => 'Registrierung schlug fehl',
 		'en' => 'There was an error with the registration'
 	)
+	
 );
 
 function getAvailableLanguages()

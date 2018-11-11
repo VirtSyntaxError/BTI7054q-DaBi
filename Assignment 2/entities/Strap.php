@@ -7,7 +7,7 @@ class Strap {
 	}
 
 	public function __toString(){
-		return sprintf("%d) %s", $this->StrapID, $this.getName());
+		return sprintf("%d) %s", $this->StrapID, $this->getName());
 	}
 
 	static public function getStraps() {

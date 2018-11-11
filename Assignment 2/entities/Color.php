@@ -7,7 +7,7 @@ class Color {
 	}
 
 	public function __toString(){
-		return sprintf("%d) %s", $this->ColorID, $this.getName());
+		return sprintf("%d) %s", $this->ColorID, $this->getName());
 	}
 
 	static public function getColors() {

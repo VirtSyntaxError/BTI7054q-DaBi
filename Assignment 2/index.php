@@ -26,7 +26,12 @@
 				echo "|";
 				echo "<a href='logout.php'>".t("LOGOUT")."</a>";
 			} else {
-				echo "<a href='index.php?id=101&lang=".$_GET['lang']."'>".t("REGISTER")."</a>";
+				if (isset($_GET['lang'])){
+					$lang = $_GET['lang'];
+				} else {
+					$lang = 'de';
+				}
+				echo "<a href='index.php?id=101&lang=".$lang."'>".t("REGISTER")."</a>";
 			}
 		?>
 	</div>

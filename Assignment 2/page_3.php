@@ -1,14 +1,23 @@
 <?php
-$articleid = $_POST["articleid"];
+require_once("autoloader.php");
+
+$articlenumber = $_POST["articlenumber"];
+$_SESSION['articlenumber'] = $articlenumber;
+$colorproducts = ColorProduct::getColorByProductId($articlenumber);
+$strapproducts = StrapProduct::getStrapByProductId($articlenumber);
 echo "<article><h1>".t("CUSTOMIZEPROD")."</h1></article>";
 echo '<article><form method="post" action="index.php?id=4&lang='.$_GET["lang"].'">';
-echo '<h2>Strap Color</h2>';
-foreach ($product_array[$articleid]["strapcolor"] as $strapcolor){
-	echo '<input type="radio" name="strapcolor" value="'.$strapcolor.'" required>'.$strapcolor.'<br/>';
+echo '<h2>'.t("STRAPCOLOR").'</h2>';
+foreach ($strapproducts as $strapproduct){
+	$strapid = $strapproduct->getStrapId();
+	$strap = Strap::getStrapById($strapid);
+	echo '<input type="radio" name="strapcolor" value="'.$strap->getName().'" required>'.$strap->getName().'<br/>';
 }
-echo '<h2>Watch Color</h2>';
-foreach ($product_array[$articleid]["watchcolor"] as $watchcolor){
-	echo '<input type="radio" name="watchcolor" value="'.$watchcolor.'" required>'.$watchcolor.'<br/>';
+echo '<h2>'.t("WATCHCOLOR").'</h2>';
+foreach ($colorproducts as $colorproduct){
+	$colorid = $colorproduct->getColorId();
+	$color = Color::getColorById($colorid);
+	echo '<input type="radio" name="watchcolor" value="'.$color->getName().'" required>'.$color->getName().'<br/>';
 }
 echo '<br/><input type="submit" value="'.t("SUBMIT").'">';
 echo '</form></article><br/>';

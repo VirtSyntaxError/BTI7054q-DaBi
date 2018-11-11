@@ -1,4 +1,4 @@
-﻿DROP TABLE IF EXISTS PurchaseDetail;
+DROP TABLE IF EXISTS PurchaseDetail;
 DROP TABLE IF EXISTS Purchase;
 DROP TABLE IF EXISTS Setting;
 DROP TABLE IF EXISTS CategoryProduct;
@@ -66,7 +66,7 @@ CREATE TABLE Setting
 CREATE TABLE Color
 (
   ColorID INT NOT NULL AUTO_INCREMENT,
-  ColorName INT NOT NULL,
+  ColorName VARCHAR(50) NOT NULL,
   PRIMARY KEY (ColorID)
 );
 
@@ -138,7 +138,7 @@ INSERT INTO Users(Prename,Surname,Password,Email,Address,City,ZIP,Country,isAdmi
 
 INSERT INTO Users(Prename,Surname,Password,Email,Address,City,ZIP,Country,isAdmin) VALUES (
 	'Beat',
-	'Schärz',
+	'Schaerz',
 	'$2y$10$r5VoX3XbIxM5fzQJ7u8e1e/y9EgSe9X/Bfh16kw8KWCE1i9wZce8C',
 	'beat.schaerz@hemale.ch',
 	'Musterstrasse 99',
