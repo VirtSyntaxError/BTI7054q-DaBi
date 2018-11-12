@@ -1,14 +1,14 @@
 <?php
 class Cart {
 	private $items = [];
-	private $count;
+	private $count = 0;
 
 	public function addItem($item, $num) {
 		if ( ! isset($this->items[$item])) {
 			$this->items[$item] = 0;
 		}
 		$this->items[$item] += $num;
-		$count++;
+		$this->count++;
 	}
 
 
