@@ -41,9 +41,9 @@ class Table {
 			return false;
 		}
 		if ($this->tableclass != ""){
-			echo "<div class='".$this->tableclass."'>";
+			echo "<div class='".$this->tableclass."'><table>";
 		} else {
-			echo "<div>";
+			echo "<div><table>";
 		}
 		if ($this->thclass != ""){
 			echo "<tr class='".$this->thclass."'>";
@@ -51,7 +51,7 @@ class Table {
 			echo "<tr>";
 		}
 		foreach ($this->columns as $column){
-			echo "<th>".$column."</th>";
+			echo "<th>".t(strtoupper($column))."</th>";
 		}
 		echo "</tr>";
 		$numrows = count($this->rows);
@@ -74,5 +74,6 @@ class Table {
 			}
 			echo "</tr>";
 		}
+		echo "</table></div>";
 	}
 }
