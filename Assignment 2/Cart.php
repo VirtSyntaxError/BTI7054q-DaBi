@@ -32,7 +32,7 @@ class Cart {
 	}
 
 	public function render() {
-		$columns = array("Item","Count","Price");
+		$columns = array("Product","Count","Price");
 		$rows = array();
 		$total = 0;
 
