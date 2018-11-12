@@ -15,6 +15,7 @@
 			<div id="headertext">Goldene Ziffer</div>
 		<?php
 			require_once("i18n.php");
+			require_once("autoloader.php");
 			if(!isset($_SESSION)){ 
 				session_start(); 
 				$_SESSION["cart"] = new Cart();
