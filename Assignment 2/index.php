@@ -17,6 +17,7 @@
 			require_once("i18n.php");
 			if(!isset($_SESSION)){ 
 				session_start(); 
+				$_SESSION["cart"] = new Cart();
 			}
 			if (isset($_SESSION["user"])) {
 				echo $_SESSION["user"];

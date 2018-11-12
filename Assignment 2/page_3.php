@@ -2,7 +2,8 @@
 require_once("autoloader.php");
 
 $articlenumber = $_POST["articlenumber"];
-$_SESSION['articlenumber'] = $articlenumber;
+$cart = $_SESSION["cart"];
+$cart->addItem($articlenumber,1);
 $colorproducts = ColorProduct::getColorByProductId($articlenumber);
 $strapproducts = StrapProduct::getStrapByProductId($articlenumber);
 echo "<article><h1>".t("CUSTOMIZEPROD")."</h1></article>";

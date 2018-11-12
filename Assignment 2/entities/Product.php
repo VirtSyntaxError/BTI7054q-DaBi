@@ -1,6 +1,6 @@
 <?php
 class Product {
-	private $ProductID, $Productname, $Productdescription, $BrandID;
+	private $ProductID, $Productname, $Productdescription, $BrandID, $Price;
 
 	public function getName(){
 		return $this->Productname;
@@ -10,12 +10,16 @@ class Product {
 		return $this->ProductID;
 	}
 
+	public function getPrice(){
+		return $this->Price;
+	}
+
 	public function getBrand(){
 		return $this->BrandID;
 	}
 
 	public function __toString(){
-		return sprintf("%d) %s", $this->ProductID, $this->getName());
+		return sprintf("%d) %s Price: %d", $this->ProductID, $this->getName(),$this->getPrice());
 	}
 
 	static public function getProducts() {
@@ -50,14 +54,15 @@ class Product {
 	static public function insert($values) {
 		$stmt = DB::getInstance()->prepare(
 			"INSERT INTO Product ".
-			"(Productname, Productdescription, BrandID) ".
-			"VALUES (?, ?, ?)"
+			"(Productname, Productdescription, BrandID, Price) ".
+			"VALUES (?, ?, ?, ?)"
 		);
 		if (!$stmt) return false;
 		$success = $stmt->bind_param('ssi',
 			$values['Productname'],
 			$values['Productdescription'],
-			$values['BrandID']
+			$values['BrandID'],
+			$values['Price']
 		);
 		if (!$success) return false;
 		return $stmt->execute();
@@ -68,16 +73,18 @@ class Product {
 		$this->Productname = $db->escape_string($values['Productname']);
 		$this->Productdescription = $db->escape_string($values['Productdescription']);
 		$this->BrandID = $db->escape_string($values['BrandID']);
+		$this->Price = $db->escape_string($values['Price']);
 	}
 
 	public function save() {
 		$sql = sprintf(
 			"UPDATE Product
-			 SET Productname='%s', Productdescription='%s', BrandID='%s'
+			 SET Productname='%s', Productdescription='%s', BrandID=%d, Price=%d
 			 WHERE ProductID = %d;",
 			 $this->Productname,
 			 $this->Productdescription,
 			 $this->BrandID,
+			 $this->Price,
 			 $this->ProductID
 		);
 		$res = DB::doQuery($sql);

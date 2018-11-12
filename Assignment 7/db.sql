@@ -83,6 +83,7 @@ CREATE TABLE Product
   Productname VARCHAR(50) NOT NULL,
   Productdescription TEXT NOT NULL,
   BrandID INT NOT NULL,
+  Price INT NOT NULL,
   PRIMARY KEY (ProductID),
   CONSTRAINT `FK_ProductBrand` FOREIGN KEY (BrandID) REFERENCES Brand(BrandID)
 );
@@ -166,21 +167,21 @@ INSERT INTO Brand(Brandname) VALUES
 	('Fossil'),
 	('Hamilton');
 
-INSERT INTO Product(Productname, Productdescription, BrandID) VALUES
-	('Fossil Q Venture Smartwatch', '', 5),
-	('Fossil Q Grant Hybrid Smartwatch', '', 5),
-	('Tissot PRC 200 Automatic Chronograph Gent', '', 3),
-	('Certina DS Action Lady Precidrive', '', 2),
-	('Rolex SUBMARINER', '', 1),
-	('Rolex SUBMARINER DATE', '', 1),
-	('Breitling NAVITIMER 1 B01 CHRONOGRAPH 46', '', 4),
-	('Hamilton Khaki Pilot', '', 6),
-	('Rolex SKY_DWELLER', '', 1),
-	('Rolex YACHT-MASTER 37', '', 1),
-	('Certina DS Podium Chronograph', '', 2),
-	('Certina DS Podium Lady', '', 2),
-	('Tissot Chemin Des Tourelles Squelette', '', 3),
-	('Hamilton Jazzmaster Viewmatic Skeleton Lady', '', 6);
+INSERT INTO Product(Productname, Productdescription, BrandID, Price) VALUES
+	('Fossil Q Venture Smartwatch', '', 5, 10),
+	('Fossil Q Grant Hybrid Smartwatch', '', 5, 20),
+	('Tissot PRC 200 Automatic Chronograph Gent', '', 3, 30),
+	('Certina DS Action Lady Precidrive', '', 2, 40),
+	('Rolex SUBMARINER', '', 1, 50),
+	('Rolex SUBMARINER DATE', '', 1, 60),
+	('Breitling NAVITIMER 1 B01 CHRONOGRAPH 46', '', 4, 70),
+	('Hamilton Khaki Pilot', '', 6, 80),
+	('Rolex SKY_DWELLER', '', 1, 90),
+	('Rolex YACHT-MASTER 37', '', 1, 100),
+	('Certina DS Podium Chronograph', '', 2, 110),
+	('Certina DS Podium Lady', '', 2, 120),
+	('Tissot Chemin Des Tourelles Squelette', '', 3, 130),
+	('Hamilton Jazzmaster Viewmatic Skeleton Lady', '', 6, 140);
 
 INSERT INTO CategoryProduct(ProductID, CategoryID) VALUES
 	(1,3),(1,1),(1,2),

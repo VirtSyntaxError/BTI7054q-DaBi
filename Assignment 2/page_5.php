@@ -8,8 +8,9 @@ require_once("autoloader.php");
 	setcookie("zip", $_POST["zip"], $t);
 	setcookie("city", $_POST["city"], $t);
 
-	if (isset($_SESSION['articlenumber'])){
-		$product = Product::getProductById($_SESSION['articlenumber']);
+	if (isset($_SESSION['cart'])){
+		$cart = $_SESSION['cart'];
+		$cart->render();
 	}
 ?>
 <h1><?php echo t("CONFIRMATION")?></h1>

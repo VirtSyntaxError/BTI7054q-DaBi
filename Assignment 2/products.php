@@ -19,6 +19,7 @@ foreach ($products as $prod){
 	echo "<li> ".t("ARTICLENUMBER").": ".$prod->getID()."</li>";
 	echo "<li> ".t("BRAND").": ".$brand->getName()."</li>";
 	echo "<li> ".t("CATEGORY").": ".join(",",$categories)."</li>";
+	echo "<li> ".t("PRICE").": ".$prod->getPrice()."</li>";
 	echo "</ul>";
 	echo "</li>";
 	echo '<input type="hidden" name="articlenumber" value="'.$prod->getID().'">';
