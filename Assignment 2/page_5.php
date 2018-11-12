@@ -7,20 +7,14 @@ require_once("autoloader.php");
 	setcookie("streetnr", $_POST["str_nr"], $t);
 	setcookie("zip", $_POST["zip"], $t);
 	setcookie("city", $_POST["city"], $t);
-
-	if (isset($_SESSION['cart'])){
-		$cart = $_SESSION['cart'];
-		$cart->render();
-	}
 ?>
 <h1><?php echo t("CONFIRMATION")?></h1>
 <p><?php echo t("PRODUCTINFORMATION")?>:</p>
 <p>
-<?php echo $product->getName()."<br>";
-foreach( $_SESSION as $name => $value ) {
-	if(!is_array( $name ) ) {
-       		echo t(strtoupper($name)).": ".$_SESSION[$name]."<br>";
-    	}
+<?php 
+if (isset($_SESSION['cart'])){
+		$cart = $_SESSION['cart'];
+		$cart->render();
 }
 ?></p>
 <p><?php echo t("ADDRESS")?>:</p>

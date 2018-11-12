@@ -3,7 +3,7 @@ class Cart {
 	private $items = [];
 	private $count = 0;
 
-	public function addItem(Item $item, $num) {
+	public function addItem($item, $num) {
 		if ( ! isset($this->items[$item])) {
 			$this->items[$item] = 0;
 		}
@@ -12,7 +12,7 @@ class Cart {
 	}
 
 
-	public function removeItem(Item $item, $num) {
+	public function removeItem($item, $num) {
 		if( ! isset($this->items[$item]) ) {
 			return;
 		}
