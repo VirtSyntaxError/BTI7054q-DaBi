@@ -1,9 +1,9 @@
 <?php
-foreach( $_POST as $name => $value ) {
-	if(!is_array( $name ) ) {
-       		$_SESSION[$name] = $value;
-    	}
-}
+
+$newitem = new Item($_SESSION["articlenumber"],$_POST["strapcolor"],$_POST["watchcolor"],1);
+$cart = $_SESSION["cart"];
+$cart->addItem($newitem);
+
 ?>
 <form  method="post" id="payment_form" onsubmit="return confirm('This is a binding contract of purchase. Do you want to continue?');" action="index.php?id=5&lang=<?php echo $_GET["lang"]?>">
 	<h3><?php echo t("ENTER_DATA")?></h3>
