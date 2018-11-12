@@ -35,8 +35,7 @@ if (isset($_POST["login"]) && isset($_POST["pw"])){
 			$_SESSION["isAdmin"] = true;	
 		}
 	} else {
-		echo "<!DOCTYPE html>\n";
-		echo '<a href="index.php?id=100&lang='.$_GET["lang"].'">'.t("WRONGPW").'</a>.';
+		header('Location: index.php?id=103&lang='.$_GET["lang"]);
 		exit;
 	}
 }
