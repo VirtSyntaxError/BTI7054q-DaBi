@@ -57,7 +57,7 @@ $texts = array(
 		'en' => 'Brand'
 	),
 	'ENTER_DATA' => array(
-		'de' => 'Bitte füllen Sie Ihre Daten ein',
+		'de' => 'Bitte fuellen Sie Ihre Daten ein',
 		'en' => 'Please enter your data'
 	),
 	'NAME' => array(
@@ -103,6 +103,10 @@ $texts = array(
 	'COUNTRY' => array(
 		'de' => 'Land',
 		'en' => 'Country'
+	),
+	'PRODUCT' => array(
+		'de' => 'Produkt',
+		'en' => 'Product'
 	),
 	'DE' => array(
 		'de' => 'Deutschland',
@@ -173,7 +177,7 @@ $texts = array(
 		'en' => 'Registration successful'
 	),
 	'PRODUCTINFORMATION' => array(
-		'de' => 'Informationen zu ihrem Product',
+		'de' => 'Informationen zu ihrem Produkt',
 		'en' => 'Informations about your choosen product'
 	),
 	'WATCHCOLOR' => array(
