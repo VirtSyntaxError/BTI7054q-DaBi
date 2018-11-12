@@ -7,7 +7,7 @@ class User {
 	}
 
 	public function __toString(){
-		return sprintf("%d) %s", $this->UserID, $this.getName());
+		return sprintf("%d) %s", $this->UserID, $this->getName());
 	}
 
 	static public function getUsers() {
