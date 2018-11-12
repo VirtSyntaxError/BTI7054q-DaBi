@@ -32,7 +32,10 @@ if (isset($_POST["login"]) && isset($_POST["pw"])){
 	if ($ok){
 		$_SESSION["user"] = $login;
 		if ($isAdmin){
-			$_SESSION["isAdmin"] = true;	
+			$_SESSION["isAdmin"] = true;
+			header('Location: index.php?id=104&lang='.$_GET["lang"]);
+		} else {
+			header('Location: index.php?id=1&lang='.$_GET["lang"]);
 		}
 	} else {
 		header('Location: index.php?id=103&lang='.$_GET["lang"]);
