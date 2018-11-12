@@ -20,56 +20,56 @@ class Table {
 		$this->rows[] = $row;
 	}
 
-	public function tableclass($tableclass){
+	public function setTableClass($tableclass){
 		$this->tableclass = $tableclass;
 	}
 
-	public function tableclass($thclass){
+	public function setTableHeaderClass($thclass){
 		$this->thclass = $thclass;
 	}
 
-	public function tableclass($trclass){
+	public function setTableRowClass($trclass){
 		$this->trclass = $trclass;
 	}
 
-	public function tableclass($lasttrclass){
+	public function setTableLastRowClass($lasttrclass){
 		$this->lasttrclass = $lasttrclass;
 	}
 
 	public function render(){
-		if (count($this->column)==0){
+		if (count($this->columns)==0){
 			return false;
 		}
-		if ($tableclass != ""){
-			echo "<div class='".$tableclass."'>";
+		if ($this->tableclass != ""){
+			echo "<div class='".$this->tableclass."'>";
 		} else {
 			echo "<div>";
 		}
-		if ($thclass != ""){
-			echo "<tr class='".$thclass."'>";
+		if ($this->thclass != ""){
+			echo "<tr class='".$this->thclass."'>";
 		} else {
 			echo "<tr>";
 		}
-		foreach ($column in $this->columns){
+		foreach ($this->columns as $column){
 			echo "<th>".$column."</th>";
 		}
 		echo "</tr>";
 		$numrows = count($this->rows);
 		for ($i = 0; $i < $numrows; $i++){
 			if ($i == ($numrows-1)){
-				if ($lasttrcclass != ""){
-					echo "<tr class'".$lasttrcclass."'>";
+				if ($this->lasttrclass != ""){
+					echo "<tr class'".$this->lasttrcclass."'>";
 				} else {
 					echo "<tr>";
 				}				
 			} else {
-				if ($trclass != ""){
-					echo "<tr class'".$trclass."'>";
+				if ($this->trclass != ""){
+					echo "<tr class'".$this->trclass."'>";
 				} else {
 					echo "<tr>";
 				}
 			}
-			foreach ($r in $row){
+			foreach ($this->rows[$i] as $r){
 				echo "<td>".$r."</td>";
 			}
 			echo "</tr>";
