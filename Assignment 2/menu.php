@@ -7,10 +7,17 @@ $menu_array = array(
 	array("name" => t("BRANDS"),
 		  "id" => 1,),
 	array("name" => t("CATEGORIES"),
-		  "id" => 2,),
-	array("name" => t("LOGIN"),
-		  "id" => 100,)
-	);
+		  "id" => 2,)
+);
+if (isset($_SESSION["user"])) {
+	$menu_array[] = array("name" => t("LOGOUT"),
+		"id" => 102,);
+} else {
+	$menu_array[] = array("name" => t("LOGIN"),
+		"id" => 100,);
+	$menu_array[] = array("name" => t("REGISTER"),
+		"id" => 101,);
+}
 echo "<ul class='menu'>";
 foreach ($menu_array as $menu){
 	writeMenuentry($menu['name'],$menu['id']);	

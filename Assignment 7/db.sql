@@ -127,7 +127,7 @@ CREATE TABLE StrapProduct
 INSERT INTO Users(Prename,Surname,Password,Email,Address,City,ZIP,Country,isAdmin) VALUES (
 	'Dario',
 	'Furigo',
-	'$2y$10$r5VoX3XbIxM5fzQJ7u8e1e/y9EgSe9X/Bfh16kw8KWCE1i9wZce8C',
+	'$2y$10$Lkx4m3PAGxs5uUi1qEMA0.cRl7PHatrzaKM6YkauEv3qLvynM5A4G',
 	'dario.furigo@shemale.ch',
 	'Wiehnachtstrasse 99',
 	'Murg',
@@ -139,7 +139,7 @@ INSERT INTO Users(Prename,Surname,Password,Email,Address,City,ZIP,Country,isAdmi
 INSERT INTO Users(Prename,Surname,Password,Email,Address,City,ZIP,Country,isAdmin) VALUES (
 	'Beat',
 	'Schaerz',
-	'$2y$10$r5VoX3XbIxM5fzQJ7u8e1e/y9EgSe9X/Bfh16kw8KWCE1i9wZce8C',
+	'$2y$10$Lkx4m3PAGxs5uUi1qEMA0.cRl7PHatrzaKM6YkauEv3qLvynM5A4G',
 	'beat.schaerz@hemale.ch',
 	'Musterstrasse 99',
 	'Wien',
