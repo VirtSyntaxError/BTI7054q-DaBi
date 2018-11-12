@@ -6,6 +6,10 @@ class Color {
 		return $this->ColorName;
 	}
 
+	public function getId(){
+		return $this->ColorID;
+	}
+
 	public function __toString(){
 		return sprintf("%d) %s", $this->ColorID, $this->getName());
 	}

@@ -6,6 +6,10 @@ class Strap {
 		return $this->Strap;
 	}
 
+	public function getId(){
+		return $this->StrapID;
+	}
+
 	public function __toString(){
 		return sprintf("%d) %s", $this->StrapID, $this->getName());
 	}

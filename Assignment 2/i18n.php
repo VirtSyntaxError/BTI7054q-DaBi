@@ -108,6 +108,10 @@ $texts = array(
 		'de' => 'Produkt',
 		'en' => 'Product'
 	),
+	'COUNT' => array(
+		'de' => 'Anzahl',
+		'en' => 'Count'
+	),
 	'DE' => array(
 		'de' => 'Deutschland',
 		'en' => 'Germany'

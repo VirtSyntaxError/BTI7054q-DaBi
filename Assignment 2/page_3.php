@@ -11,13 +11,13 @@ echo '<h2>'.t("STRAPCOLOR").'</h2>';
 foreach ($strapproducts as $strapproduct){
 	$strapid = $strapproduct->getStrapId();
 	$strap = Strap::getStrapById($strapid);
-	echo '<input type="radio" name="strapcolor" value="'.$strap->getName().'" required>'.$strap->getName().'<br/>';
+	echo '<input type="radio" name="strapcolor" value="'.$strap->getId().'" required>'.$strap->getName().'<br/>';
 }
 echo '<h2>'.t("WATCHCOLOR").'</h2>';
 foreach ($colorproducts as $colorproduct){
 	$colorid = $colorproduct->getColorId();
 	$color = Color::getColorById($colorid);
-	echo '<input type="radio" name="watchcolor" value="'.$color->getName().'" required>'.$color->getName().'<br/>';
+	echo '<input type="radio" name="watchcolor" value="'.$color->getId().'" required>'.$color->getName().'<br/>';
 }
 echo '<br/><input type="submit" value="'.t("SUBMIT").'">';
 echo '</form></article><br/>';

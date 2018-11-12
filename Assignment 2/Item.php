@@ -17,11 +17,11 @@ class Item {
 	}
 
 	public function getStrapId() {
-		return $this->colorid;
+		return $this->strapid;
 	}
 	
 	public function getProductId() {
-		return $this->colorid;
+		return $this->productid;
 	}
 
 	public function getCount() {

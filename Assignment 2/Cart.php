@@ -1,19 +1,16 @@
 <?php
 class Cart {
 	private $items = [];
-	private $count = 0;
 
 	public function addItem(Item $item) {
 		$this->items[] = $item;
 	}
 
 
-	public function removeItem(Item $item, $num) {
+	public function removeItem(Item $item) {
 		if( ! isset($this->items[$item]) ) {
 			return;
 		}
-		$this->items[$item] -= $num;
-		$count--;
 		if($this->items[$item] <= 0) {
 			unset($this->items[$item]);
 		}
@@ -31,12 +28,15 @@ class Cart {
 		$columns = array("Product","Count","Price");
 		$rows = array();
 		$total = 0;
-
+	
 		foreach ($this->items as $item) {
 			$product = Product::getProductById($item->getProductId());
-			$prize = $item->getCount()*$product->getPrize();
-			$rows[] = array($product->getName(),$item->getCount(),$prize);
-			$total += $prize;
+			$color = Color::getColorById($item->getColorId());
+			$strap = Strap::getStrapById($item->getStrapId());
+			$price = $item->getCount()*$product->getPrice();
+			$productdesc = $product->getName()." (".$strap->getName().", ".$color->getName().")";
+			$rows[] = array($productdesc,$item->getCount(),$price);
+			$total += $price;
 		}	
 		$rows[] = array("Total","",$total);
 

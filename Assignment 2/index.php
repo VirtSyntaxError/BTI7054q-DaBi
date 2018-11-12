@@ -18,7 +18,9 @@
 			require_once("autoloader.php");
 			if(!isset($_SESSION)){ 
 				session_start(); 
-				$_SESSION["cart"] = new Cart();
+				if(!isset($_SESSION["cart"])) {
+					$_SESSION["cart"] = new Cart();
+				}
 			}
 			if (isset($_SESSION["user"])) {
 				echo $_SESSION["user"];
