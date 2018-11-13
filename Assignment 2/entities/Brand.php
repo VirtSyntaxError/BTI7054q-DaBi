@@ -6,6 +6,10 @@ class Brand {
 		return $this->Brandname;
 	}
 
+	public function getId(){
+		return $this->BrandID;
+	}
+
 	public function __toString(){
 		return sprintf("%d) %s", $this->BrandID, $this->getName());
 	}

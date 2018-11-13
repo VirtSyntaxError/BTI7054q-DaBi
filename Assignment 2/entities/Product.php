@@ -58,7 +58,7 @@ class Product {
 			"VALUES (?, ?, ?, ?)"
 		);
 		if (!$stmt) return false;
-		$success = $stmt->bind_param('ssi',
+		$success = $stmt->bind_param('ssii',
 			$values['Productname'],
 			$values['Productdescription'],
 			$values['BrandID'],
