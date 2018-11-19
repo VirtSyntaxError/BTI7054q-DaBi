@@ -23,7 +23,7 @@ foreach ($products as $prod){
 	echo "</ul>";
 	echo "</li>";
 	echo '<input type="hidden" name="articlenumber" value="'.$prod->getID().'">';
-	echo '<input type="submit" value="'.t("BUY").'">';
+	echo '<input type="submit" value="'.t("DETAILS").'">';
 	echo '</form>';
 }
 echo "</ul>";

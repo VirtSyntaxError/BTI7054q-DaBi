@@ -192,6 +192,18 @@ $texts = array(
 		'de' => 'Armband',
 		'en' => 'Strap'
 	),
+	'TOCART' => array(
+		'de' => 'In den Warenkorb',
+		'en' => 'Add to cart'
+	),
+	'CART' => array(
+		'de' => 'Warenkorb',
+		'en' => 'Shopping cart'
+	),
+	'DETAILS' => array(
+		'de' => 'Details',
+		'en' => 'Details'
+	),
 	'ERROR_REGISTRATION' => array(
 		'de' => 'Registrierung schlug fehl',
 		'en' => 'There was an error with the registration'
