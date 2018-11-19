@@ -3,16 +3,27 @@ class Cart {
 	private $items = [];
 
 	public function addItem(Item $item) {
+		foreach ($this->items as $itemold) {
+			if($item->equals($itemold)){
+				$itemold->setCount($itemold->getCount()+1);	
+				unset($item);
+				return;	
+			}	
+		}
 		$this->items[] = $item;
 	}
 
 
 	public function removeItem(Item $item) {
-		if( ! isset($this->items[$item]) ) {
-			return;
-		}
-		if($this->items[$item] <= 0) {
-			unset($this->items[$item]);
+		foreach ($this->items as $itemold) {
+			if($item->equals($itemold)){
+				if ($itemold->getCount() <= 0) {
+					unset($this->items[$itemold]);
+				} else {
+					$itemold->setCount($itemold->getCount()+1);	
+				}
+				return;
+			}	
 		}
 	}
 
@@ -25,7 +36,7 @@ class Cart {
 	}
 
 	public function render() {
-		$columns = array("Product","Count","Price");
+		$columns = array("","Product","Count","Price");
 		$rows = array();
 		$total = 0;
 	
@@ -35,10 +46,10 @@ class Cart {
 			$strap = Strap::getStrapById($item->getStrapId());
 			$price = $item->getCount()*$product->getPrice();
 			$productdesc = $product->getName()." (".$strap->getName().", ".$color->getName().")";
-			$rows[] = array($productdesc,$item->getCount(),$price);
+			$rows[] = array($item->getInstanceId(),$productdesc,$item->getCount(),$price);
 			$total += $price;
 		}	
-		$rows[] = array("Total","",$total);
+		$rows[] = array("Total","","",$total);
 
 		$table = new Table($rows,$columns);
 		$table->render();
