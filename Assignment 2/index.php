@@ -22,10 +22,13 @@
 					$_SESSION["cart"] = new Cart();
 				}
 			}
+			$cart = $_SESSION["cart"];
 			if (isset($_SESSION["user"])) {
 				echo $_SESSION["user"];
 			}
 		?>
+		<a href="index.php?id=7&lang=<?php echo $_GET["lang"] ?>"><img src="cart.png" width="50" alt="Cart"></img>
+		<span class="cart-badge" id="cartcount"><?php echo $cart->getQuantity()?></span></a>
 		</div>
     </header>
 	<nav>

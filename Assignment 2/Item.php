@@ -4,7 +4,7 @@ class Item {
 	private $strapid;
 	private $colorid;
 	private $count;
-	protected static $instances = 0;
+	public static $instances = 0;
 	private $instanceid  = null;
 
 	public function __construct($productid, $strapid, $colorid, $count){

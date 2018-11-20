@@ -1,16 +1,19 @@
 <?php
 class Cart {
 	private $items = [];
+	private $quantity = 0;
 
 	public function addItem(Item $item) {
 		foreach ($this->items as $itemold) {
 			if($item->equals($itemold)){
 				$itemold->setCount($itemold->getCount()+1);	
 				unset($item);
+				$this->quantity += 1;
 				return;	
 			}	
 		}
 		$this->items[] = $item;
+		$this->quantity += 1;
 	}
 
 
@@ -29,6 +32,10 @@ class Cart {
 
 	public function getItems() {
 		return $this->items;
+	}
+	
+	public function getQuantity() {
+		return $this->quantity;
 	}
 	
 	public function isEmpty() {
