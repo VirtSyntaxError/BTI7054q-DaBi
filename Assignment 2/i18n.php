@@ -204,6 +204,10 @@ $texts = array(
 		'de' => 'Details',
 		'en' => 'Details'
 	),
+	'ALLBRANDS' => array(
+		'de' => 'Alle Marken',
+		'en' => 'All brands'
+	),
 	'ERROR_REGISTRATION' => array(
 		'de' => 'Registrierung schlug fehl',
 		'en' => 'There was an error with the registration'

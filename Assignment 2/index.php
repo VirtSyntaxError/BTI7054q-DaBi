@@ -11,7 +11,7 @@
 <body>
 	<header>
 		<div class="header">
-			<div id="headerimage"><img src="logo.png" alt="Logo"></img></div>
+			<div id="headerimage"><img src="pics/logo.png" alt="Logo"></img></div>
 			<div id="headertext">Goldene Ziffer</div>
 		<?php
 			require_once("i18n.php");
@@ -27,7 +27,7 @@
 				echo $_SESSION["user"];
 			}
 		?>
-		<a href="index.php?id=7&lang=<?php echo $_GET["lang"] ?>"><img src="cart.png" width="50" alt="Cart"></img>
+		<a href="index.php?id=7&lang=<?php echo $_GET["lang"] ?>"><img src="pics/cart.png" width="50" alt="Cart"></img>
 		<span class="cart-badge" id="cartcount"><?php echo $cart->getQuantity()?></span></a>
 		</div>
     </header>

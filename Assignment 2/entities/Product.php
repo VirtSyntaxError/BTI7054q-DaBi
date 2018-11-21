@@ -34,6 +34,19 @@ class Product {
 		return $products;
 	}
 
+	static public function getProductsByBrandId($id) {
+		$id = (int) $id;
+		$products = array();
+		$res = DB::doQuery(
+			"SELECT * FROM Product WHERE BrandID = $id;"
+		);
+		if (!$res) return null;
+		while ($product = $res->fetch_object(get_class())){
+			$products[] = $product;
+		}
+		return $products;
+	}
+
 	static public function getProductById($id) {
 		$id = (int) $id;
 		$res = DB::doQuery(

@@ -2,6 +2,12 @@
 include_once("i18n.php");
 include_once("functions.php");
 $products = Product::getProducts();
+if(isset($_GET["brand"])) {
+	$brandid = $_GET["brand"];
+	if ($brandid != "all") {
+		$products = Product::getProductsByBrandId($brandid);
+	}
+}
 
 echo "<ul>";
 foreach ($products as $prod){

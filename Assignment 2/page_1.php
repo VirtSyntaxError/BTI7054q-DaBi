@@ -5,10 +5,8 @@ echo "<article>
 	<h1>".t("BRANDS")."</h1>";
 
 	foreach ($brands as $brand){
-		echo $brand."<br>";
+		echo '<a href=index.php?id=8&lang='.$_GET['lang'].'&brand='.$brand->getId().'>'.$brand.'</a><br>';
 	}
-echo "
-</article>
-<article>";
-include("products.php");
-echo "</article>";
+	echo '<a href=index.php?id=8&lang='.$_GET['lang'].'&brand=all>'.t("ALLBRANDS").'</a><br>';
+
+echo '</article>';

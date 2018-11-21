@@ -2,6 +2,7 @@
 spl_autoload_register(function ($class_name){
 	$directories = array(
 		'./',
+		'objects/',
 		'entities/'
 	);
 	foreach($directories as $dir){
