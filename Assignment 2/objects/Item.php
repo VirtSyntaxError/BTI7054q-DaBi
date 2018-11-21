@@ -14,7 +14,7 @@ class Item {
 		$this->instanceid = "id#".$productid."#".$strapid."#".$colorid;
 	}
 
-	public function getInstanceId()
+	public function getId()
     	{
         	return $this->instanceid;
     	}
