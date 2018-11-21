@@ -6,6 +6,10 @@ class Category {
 		return $this->CategoryName;
 	}
 
+	public function getId(){
+		return $this->CategoryID;
+	}
+
 	public function __toString(){
 		return sprintf("%d) %s", $this->CategoryID, $this->getName());
 	}

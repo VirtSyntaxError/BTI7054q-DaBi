@@ -1,12 +1,28 @@
 <?php
 include_once("i18n.php");
 include_once("functions.php");
-$products = Product::getProducts();
-if(isset($_GET["brand"])) {
+$products = array();
+if (isset($_GET["brand"])) {
 	$brandid = $_GET["brand"];
+	$brandname = Brand::getBrandById($brandid)->getName();	
 	if ($brandid != "all") {
 		$products = Product::getProductsByBrandId($brandid);
 	}
+	echo '<article><h1>'.t("PRODUCTOFBRAND").' '.$brandname.'</h1>';
+}
+elseif (isset($_GET["cat"])) {
+	$catid = $_GET["cat"];
+	$catname = Category::getCategoryById($catid)->getName();	
+	if ($catid != "all") {
+		$productids = CategoryProduct::getProductByCategoryId($catid);
+		foreach ($productids as $productid) {
+			$products[] = Product::getProductById($productid->getProductId());
+		}
+	}
+	echo '<article><h1>'.t("PRODUCTOFCAT").' '.$catname.'</h1>';
+}
+if (count($products) <= 0) {
+	$products = Product::getProducts();
 }
 
 echo "<ul>";
@@ -32,4 +48,4 @@ foreach ($products as $prod){
 	echo '<input type="submit" value="'.t("DETAILS").'">';
 	echo '</form>';
 }
-echo "</ul>";
+echo "</ul></article>";

@@ -43,7 +43,7 @@ class Cart {
 	}
 
 	public function render() {
-		$columns = array("","Product","Count","Price");
+		$columns = array("Product","Count","Price");
 		$rows = array();
 		$total = 0;
 	
@@ -53,10 +53,10 @@ class Cart {
 			$strap = Strap::getStrapById($item->getStrapId());
 			$price = $item->getCount()*$product->getPrice();
 			$productdesc = $product->getName()." (".$strap->getName().", ".$color->getName().")";
-			$rows[] = array($item->getInstanceId(),$productdesc,$item->getCount(),$price);
+			$rows[] = array($productdesc,$item->getCount(),$price);
 			$total += $price;
 		}	
-		$rows[] = array("Total","","",$total);
+		$rows[] = array("Total","",$total);
 
 		$table = new Table($rows,$columns);
 		$table->render();

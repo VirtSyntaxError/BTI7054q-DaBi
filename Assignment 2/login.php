@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php require_once("i18n.php");?>
-<h1><?php echo t("PLEASE_LOG_IN")?></h1>
+<p><?php echo t("PLEASE_LOG_IN")?></p>
 <form method="post" action="authentication.inc.php">
 	<p>
 		<label><?php echo t("LOGIN"); ?></label>

@@ -208,6 +208,18 @@ $texts = array(
 		'de' => 'Alle Marken',
 		'en' => 'All brands'
 	),
+	'ALLCATS' => array(
+		'de' => 'Alle Kategorien',
+		'en' => 'All categories'
+	),
+	'PRODUCTOFCAT' => array(
+		'de' => 'Alle Produkte der Kategorie',
+		'en' => 'All products in category'
+	),
+	'PRODUCTOFBRAND' => array(
+		'de' => 'Alle Produkte der Marke',
+		'en' => 'All products of'
+	),
 	'ERROR_REGISTRATION' => array(
 		'de' => 'Registrierung schlug fehl',
 		'en' => 'There was an error with the registration'

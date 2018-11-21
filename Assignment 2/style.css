@@ -28,6 +28,23 @@ nav select {
 	-moz-appearance: none;
 }
 
+h1 {
+	padding: 9px 30px;
+}
+
+.link {
+	display: block;
+	text-transform: uppercase;
+	padding: 9px 30px;
+	text-decoration: none;
+	color: black;
+}
+
+.link:hover {
+	color: gold;
+	background-color: rgba(0,0,0,0.7);
+}
+
 .header {
 	background-color: rgba(0,0,0,0.6);
 	display: table;

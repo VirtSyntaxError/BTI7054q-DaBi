@@ -4,15 +4,14 @@ class Item {
 	private $strapid;
 	private $colorid;
 	private $count;
-	public static $instances = 0;
-	private $instanceid  = null;
+	private $instanceid;
 
 	public function __construct($productid, $strapid, $colorid, $count){
 		$this->productid = $productid;
 		$this->strapid = $strapid;
 		$this->colorid = $colorid;
 		$this->count = $count;
-		$this->instanceid = ++self::$instances;
+		$this->instanceid = "id#".$productid."#".$strapid."#".$colorid;
 	}
 
 	public function getInstanceId()
@@ -41,7 +40,8 @@ class Item {
 	}
 
 	public function equals(Item $otheritem) {
-		return ($this->getProductId() == $otheritem->getProductId() && $this->getColorId() == $otheritem->getColorId() && $this->getStrapId() == $otheritem->getStrapId()) ? true : false;	
+		#return ($this->getProductId() == $otheritem->getProductId() && $this->getColorId() == $otheritem->getColorId() && $this->getStrapId() == $otheritem->getStrapId()) ? true : false;	
+		return ($this->getInstanceId() == $otheritem->getInstanceId()) ? true : false;	
 	}
 
 }

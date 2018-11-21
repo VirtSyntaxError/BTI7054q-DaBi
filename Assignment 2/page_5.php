@@ -12,10 +12,7 @@ require_once("autoloader.php");
 <p><?php echo t("PRODUCTINFORMATION")?>:</p>
 <p>
 <?php 
-if (isset($_SESSION['cart'])){
-		$cart = $_SESSION['cart'];
-		$cart->render();
-}
+	$cart->render();
 ?></p>
 <p><?php echo t("ADDRESS")?>:</p>
 <p><?php echo $_POST["name"]?></p>
