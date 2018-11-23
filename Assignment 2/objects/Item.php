@@ -41,7 +41,7 @@ class Item {
 
 	public function equals(Item $otheritem) {
 		#return ($this->getProductId() == $otheritem->getProductId() && $this->getColorId() == $otheritem->getColorId() && $this->getStrapId() == $otheritem->getStrapId()) ? true : false;	
-		return ($this->getInstanceId() == $otheritem->getInstanceId()) ? true : false;	
+		return ($this->getId() == $otheritem->getId()) ? true : false;	
 	}
 
 }
