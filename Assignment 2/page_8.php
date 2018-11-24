@@ -1,5 +1,5 @@
 <?php
 require_once("autoloader.php");
-echo "<article>";
+echo '<article>';
 include("products.php");
-echo "</article>";
+echo '</article>';

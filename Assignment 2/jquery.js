@@ -16,3 +16,9 @@ $( function() {
     });
   } );
 }
+
+function applyFilter() {
+	$( function() {
+		$.get("products.php"+window.location.search+"&filter="+$("#filter").val(),function(data){$("#productoutput").html(data);});
+	} );
+}

@@ -18,6 +18,10 @@ class Product {
 		return $this->BrandID;
 	}
 
+	public function getDescription(){
+		return $this->Productdescription;
+	}
+
 	public function __toString(){
 		return sprintf("%d) %s Price: %d", $this->ProductID, $this->getName(),$this->getPrice());
 	}
@@ -26,6 +30,18 @@ class Product {
 		$products = array();
 		$res = DB::doQuery(
 			"SELECT * FROM Product;"
+		);
+		if (!$res) return null;
+		while ($product = $res->fetch_object(get_class())){
+			$products[] = $product;
+		}
+		return $products;
+	}
+
+	static public function getProductsFiltered($filter) {
+		$products = array();
+		$res = DB::doQuery(
+			'SELECT * FROM Product WHERE Productname LIKE "%'.$filter.'%" OR Productdescription LIKE "%'.$filter.'%";'
 		);
 		if (!$res) return null;
 		while ($product = $res->fetch_object(get_class())){
