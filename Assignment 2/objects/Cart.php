@@ -46,6 +46,7 @@ class Cart {
 		$columns = array("Product","Count","Price");
 		$rows = array();
 		$total = 0;
+		$ids = array();
 	
 		foreach ($this->items as $item) {
 			$product = Product::getProductById($item->getProductId());
@@ -55,10 +56,11 @@ class Cart {
 			$productdesc = $product->getName()." (".$strap->getName().", ".$color->getName().")";
 			$rows[] = array($productdesc,$item->getCount(),$price);
 			$total += $price;
+			$ids[] = $item->getId();
 		}	
 		$rows[] = array("Total","",$total);
 
 		$table = new Table($rows,$columns);
-		$table->render();
+		$table->renderCart($ids);
 	}
 }

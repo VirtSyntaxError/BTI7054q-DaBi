@@ -76,4 +76,49 @@ class Table {
 		}
 		echo "</table></div>";
 	}
+
+	public function renderCart($ids){
+		if (count($this->columns)==0){
+			return false;
+		}
+		if ($this->tableclass != ""){
+			echo "<div class='".$this->tableclass."'><table>";
+		} else {
+			echo "<div><table>";
+		}
+		if ($this->thclass != ""){
+			echo "<tr class='".$this->thclass."'>";
+		} else {
+			echo "<tr>";
+		}
+		foreach ($this->columns as $column){
+			echo "<th>".t(strtoupper($column))."</th>";
+		}
+		echo "</tr>";
+		$numrows = count($this->rows);
+		for ($i = 0; $i < $numrows; $i++){
+			if ($i == ($numrows-1)){
+				if ($this->lasttrclass != ""){
+					echo "<tr class'".$this->lasttrcclass."'>";
+				} else {
+					echo "<tr>";
+				}				
+			} else {
+				if ($this->trclass != ""){
+					echo "<tr class'".$this->trclass."'>";
+				} else {
+					echo "<tr>";
+				}
+			}
+			for ($j = 0; $j < count($this->rows[$i]); $j++){
+				if ($j == 1 && $i != ($numrows-1)){
+					echo "<td><form id='addsubtract'><input onclick='add(".$ids[$i].");' type='button' value='+'/>".$this->rows[$i][$j]."<input onclick='sub(".$ids[$i].");' type='button' value='-'/></form></td>";
+				} else {
+					echo "<td>".$this->rows[$i][$j]."</td>";
+				}				
+			}
+			echo "</tr>";
+		}
+		echo "</table></div>";
+	}
 }
