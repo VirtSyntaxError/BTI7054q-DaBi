@@ -22,3 +22,17 @@ function applyFilter() {
 		$.get("products.php"+window.location.search+"&filter="+$("#filter").val(),function(data){$("#productoutput").html(data);});
 	} );
 }
+
+function add(id){
+	$( function() {
+		$.post("additemtocart.php", {id: id }, function(data){
+			alert(data);
+		});
+	});
+}
+function sub(id){
+	$( function() {
+		$.post("removeitemfromcart.php", {id: id });
+	});
+}
+
