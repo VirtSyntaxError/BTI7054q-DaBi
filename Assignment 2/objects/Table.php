@@ -112,7 +112,7 @@ class Table {
 			}
 			for ($j = 0; $j < count($this->rows[$i]); $j++){
 				if ($j == 1 && $i != ($numrows-1)){
-					echo "<td><form id='addsubtract'><input onclick='add(".$ids[$i].");' type='button' value='+'/>".$this->rows[$i][$j]."<input onclick='sub(".$ids[$i].");' type='button' value='-'/></form></td>";
+					echo "<td><form id='addsubtract'><input onclick='add(\"".$ids[$i]."\");' type='button' value='+'/><div id=\"".$ids[$i]."\">".$this->rows[$i][$j]."</div><input onclick='sub(\"".$ids[$i]."\");' type='button' value='-'/></form></td>";
 				} else {
 					echo "<td>".$this->rows[$i][$j]."</td>";
 				}				

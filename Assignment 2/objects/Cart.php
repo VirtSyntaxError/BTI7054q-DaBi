@@ -9,7 +9,7 @@ class Cart {
 				$itemold->setCount($itemold->getCount()+1);	
 				unset($item);
 				$this->quantity += 1;
-				return;	
+				return $itemold->getCount();
 			}	
 		}
 		$this->items[] = $item;
@@ -20,13 +20,24 @@ class Cart {
 	public function removeItem(Item $item) {
 		foreach ($this->items as $itemold) {
 			if($item->equals($itemold)){
-				if ($itemold->getCount() <= 0) {
-					unset($this->items[$itemold]);
+				if ($itemold->getCount() == 1) {
+					$this->deleteItem($itemold->getId());
+					$this->quantity += 1;
+					return 0;
 				} else {
-					$itemold->setCount($itemold->getCount()+1);	
+					$itemold->setCount($itemold->getCount()-1);
+					$this->quantity += 1;
 				}
-				return;
-			}	
+				return $itemold->getCount();
+			}
+		}
+	}
+
+	public function deleteItem($id){
+		foreach ($this->items as $key => $it){
+			if ($it->getId() == $id){
+				unset($this->items[$key]);
+			}
 		}
 	}
 

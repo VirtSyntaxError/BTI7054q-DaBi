@@ -14,6 +14,12 @@ class Item {
 		$this->instanceid = "id#".$productid."#".$strapid."#".$colorid;
 	}
 
+	public static function withID($id){
+		$ids = explode("#",$id);
+		$instance = new self($ids[1],$ids[2],$ids[3]);
+		return $instance;
+	}
+
 	public function getId()
     	{
         	return $this->instanceid;
