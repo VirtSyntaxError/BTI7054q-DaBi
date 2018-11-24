@@ -22,11 +22,11 @@ class Cart {
 			if($item->equals($itemold)){
 				if ($itemold->getCount() == 1) {
 					$this->deleteItem($itemold->getId());
-					$this->quantity += 1;
+					$this->quantity -= 1;
 					return 0;
 				} else {
 					$itemold->setCount($itemold->getCount()-1);
-					$this->quantity += 1;
+					$this->quantity -= 1;
 				}
 				return $itemold->getCount();
 			}
