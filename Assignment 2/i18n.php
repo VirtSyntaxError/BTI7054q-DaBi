@@ -36,6 +36,10 @@ $texts = array(
 		'de' => 'Preis',
 		'en' => 'Price'
 	),
+	'SINGLEPRICE' => array(
+		'de' => 'Einzelpreis',
+		'en' => 'Price of one item'
+	),
 	'CATEGORY' => array(
 		'de' => 'Kategorie',
 		'en' => 'Category'

@@ -1,11 +1,10 @@
 <?php
-echo "<h1>".t("CART")."</h1>";
-
-echo '<article id="cart">';
+require_once("autoloader.php");
+require_once("../functions.php");
+session_start();
 
 if (isset($_SESSION['cart'])){
 		$cart = $_SESSION['cart'];
 		$cart->render();
 }
 
-echo '</article><br>';

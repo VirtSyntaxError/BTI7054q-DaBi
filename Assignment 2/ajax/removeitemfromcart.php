@@ -4,6 +4,6 @@ session_start();
 $cart = $_SESSION['cart'];
 foreach($cart->getItems() as $it){
 	if ($it->getId() == $_POST['id']){
-		$cart->addItem($it);
+		$cart->removeItem($it);
 	}
 }
