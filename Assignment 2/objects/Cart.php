@@ -54,24 +54,28 @@ class Cart {
 	}
 
 	public function render() {
-		$columns = array(t("PRODUCT"),t("SINGLEPRICE"),t("COUNT"),t("PRICE"));
-		$rows = array();
-		$total = 0;
-		$ids = array();
-	
-		foreach ($this->items as $item) {
-			$product = Product::getProductById($item->getProductId());
-			$color = Color::getColorById($item->getColorId());
-			$strap = Strap::getStrapById($item->getStrapId());
-			$price = $item->getCount()*$product->getPrice();
-			$productdesc = $product->getName()." (".$strap->getName().", ".$color->getName().")";
-			$rows[] = array($productdesc,$product->getPrice(),$item->getCount(),$price);
-			$total += $price;
-			$ids[] = $item->getId();
-		}	
-		$rows[] = array(t("TOTAL"),"","",$total);
+		if ($this->isEmpty()) {
+			echo t("NOTHINGINCART");
+		} else {
+			$columns = array("product","singleprice","count","price");
+			$rows = array();
+			$total = 0;
+			$ids = array();
+		
+			foreach ($this->items as $item) {
+				$product = Product::getProductById($item->getProductId());
+				$color = Color::getColorById($item->getColorId());
+				$strap = Strap::getStrapById($item->getStrapId());
+				$price = $item->getCount()*$product->getPrice();
+				$productdesc = $product->getName()." (".$strap->getName().", ".$color->getName().")";
+				$rows[] = array($productdesc,$product->getPrice(),$item->getCount(),$price);
+				$total += $price;
+				$ids[] = $item->getId();
+			}	
+			$rows[] = array(t("TOTAL"),"","",$total);
 
-		$table = new Table($rows,$columns);
-		$table->renderCart($ids);
+			$table = new Table($rows,$columns);
+			$table->renderCart($ids);
+		}
 	}
 }

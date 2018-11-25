@@ -224,6 +224,14 @@ $texts = array(
 		'de' => 'Alle Produkte der Marke',
 		'en' => 'All products of'
 	),
+	'TOTAL' => array(
+		'de' => 'Gesamtbetrag',
+		'en' => 'Total'
+	),
+	'NOTHINGINCART' => array(
+		'de' => 'Es ist nichts in Ihrem Warenkorb',
+		'en' => 'There is no item in the shopping cart'
+	),
 	'ERROR_REGISTRATION' => array(
 		'de' => 'Registrierung schlug fehl',
 		'en' => 'There was an error with the registration'
