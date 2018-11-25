@@ -8,4 +8,5 @@ if (isset($_SESSION['cart'])){
 		$cart->render();
 }
 
+echo '<input type="button" value="delete all" onclick="emptyCart()">';
 echo '</article><br>';
