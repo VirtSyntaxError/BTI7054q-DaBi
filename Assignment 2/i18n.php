@@ -232,6 +232,10 @@ $texts = array(
 		'de' => 'Es ist nichts in Ihrem Warenkorb',
 		'en' => 'There is no item in the shopping cart'
 	),
+	'EMPTYCART' => array(
+		'de' => 'Warenkorb leeren',
+		'en' => 'Empty my shopping cart'
+	),
 	'ERROR_REGISTRATION' => array(
 		'de' => 'Registrierung schlug fehl',
 		'en' => 'There was an error with the registration'

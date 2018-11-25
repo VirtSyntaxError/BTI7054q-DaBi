@@ -23,4 +23,5 @@ class DB extends mysqli{
 	static public function doQuery($sql){
 		return self::getInstance()->query($sql);
 	}
+
 }
