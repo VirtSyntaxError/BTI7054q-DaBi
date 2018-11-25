@@ -7,7 +7,7 @@ if (!$adm) {
 	echo '<p>You need to be admin to view this page</p>';
 } else {
 	$brands = Brand::getBrands();
-	echo '<article><h1>Admin</h1></article>';
+	echo '<article><h1>Admin</h1></article><h2>Product</h2>';
 	echo '<form action="" method="post">
 		<p>ProductName: <input required name="Productname"/></p>
 		<p>Productdesc: <input required name="Productdescription"/></p>
@@ -19,7 +19,30 @@ if (!$adm) {
 		<p>Price: <input type="text" pattern="^[0-9]{1,9}$" required name="Price"/></p>
 		<input type="submit"/>
 		</form>';
+
+	$colors = Color::getColors();
+	echo '<form action="" method="post">
+		<h2>Color</h2>
+		<p>ColorName: <input required name="ColorName"/></p>';
+	echo '<input type="submit"/>
+		</form>';
+
+	$straps = Strap::getStraps();
+	echo '<form action="" method="post">
+		<h2>Strap</h2>
+		<p>StrapName: <input required name="Strap"/></p>';
+	echo '<input type="submit"/>
+		</form>';
+
 	if (isset($_POST['Productname'])){
 		Product::insert($_POST);
+	}
+
+	if (isset($_POST['ColorName'])){
+		Color::insert($_POST);
+	}
+
+	if (isset($_POST['Strap'])){
+		Color::insert($_POST);
 	}
 }
