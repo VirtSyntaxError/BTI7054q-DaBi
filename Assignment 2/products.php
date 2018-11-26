@@ -12,7 +12,7 @@ if (isset($_GET["brand"])) {
 		if (!isset($_GET["filter"])) {
 			echo '<h1>'.t("PRODUCTOFBRAND").' '.$brandname.'</h1>';
 		}
-	} else {
+	} elseif (!isset($_GET["filter"])) {
 		echo '<h1>'.t("ALLBRANDS").'</h1>';
 	}
 }
@@ -27,7 +27,7 @@ elseif (isset($_GET["cat"])) {
 		if (!isset($_GET["filter"])) {
 			echo '<h1>'.t("PRODUCTOFCAT").' '.$catname.'</h1>';
 		}
-	} else {
+	} elseif (!isset($_GET["filter"])) {
 		echo '<h1>'.t("ALLCATS").'</h1>';
 	}
 }
