@@ -48,13 +48,19 @@ if (!$adm) {
 		</form>';
 
 	if (isset($_POST['Productname'])){
-		Product::insert($_POST);
-		
+		$id = Product::insert($_POST);
+
 		if (isset($_POST['colors'])){
-			echo "jo";
+			foreach ($_POST['colors'] as $color){
+				$insarray = array('ColorID'=>$color, 'ProductID'=>$id);
+				ColorProduct::insert($insarray);
+			}
 		}
 		if (isset($_POST['straps'])){
-			echo "jo";
+			foreach ($_POST['straps'] as $strap){
+				$insarray = array('StrapID'=>$strap, 'ProductID'=>$id);
+				StrapProduct::insert($insarray);
+			}
 		}
 	}
 

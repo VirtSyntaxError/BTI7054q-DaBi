@@ -44,6 +44,6 @@ if (isset($_POST["login"]) && isset($_POST["pw"])){
 }
 if (!isset($_SESSION["user"])){
 	echo "<!DOCTYPE html>\n";
-	echo '<a href="login.php">'.t("PLEASE_LOG_IN").'</a>.';
+	echo '<a href="index.php?id=100&lang="'.$_GET["lang"].'>'.t("PLEASE_LOG_IN").'</a>.';
 	exit;
 }
