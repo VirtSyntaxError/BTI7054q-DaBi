@@ -4,6 +4,6 @@ session_start();
 $cart = $_SESSION['cart'];
 foreach($cart->getItems() as $it){
 	if ($it->getId() == $_POST['id']){
-		$id->setCount($id->getCount()+1);
+		$it->setCount($it->getCount()+1);
 	}
 }
