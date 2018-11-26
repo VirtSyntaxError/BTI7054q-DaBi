@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME}  !-fi
+RewriteRule ^(\w+)/?(.*)$ index.php?controller=$1Controller&action=$2
