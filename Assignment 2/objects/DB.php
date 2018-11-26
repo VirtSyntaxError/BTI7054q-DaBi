@@ -10,6 +10,9 @@ class DB extends mysqli{
 	static public function getInstance() {
 		if ( !self::$instance) {
 			@self::$instance = new DB();
+			if (!self::$instance){
+				die ("Error connecting to the database");
+			}
 			if (!self::$instance->set_charset("utf8")){
 				die ("Error loading character set utf8 ".$instance->error);
 			}
@@ -17,7 +20,6 @@ class DB extends mysqli{
 				die ("Unable to connect to database: ".$instance->connect_errno);
 			}
 		}
-		
 		return self::$instance;
 	}
 
