@@ -42,7 +42,7 @@ if (isset($_GET["filter"])) {
 		$newproducts = array();
 
 		foreach ($products as $prod) {
-			if(stripos($prod->getName(),$filter) || stripos($prod->getDescription(),$filter) ) {
+			if(stripos($prod->getName(),$filter) !== false || stripos($prod->getDescription(),$filter) !== false ) {
 				$newproducts[] = $prod;
 			}
 		}
