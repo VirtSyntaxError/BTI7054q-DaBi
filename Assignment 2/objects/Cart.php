@@ -41,6 +41,13 @@ class Cart {
 		}
 	}
 
+	public function deleteAll(){
+		foreach ($this->items as $key => $it){
+				unset($this->items[$key]);
+		}
+		$this->quantity = 0;
+	}
+
 	public function getItems() {
 		return $this->items;
 	}

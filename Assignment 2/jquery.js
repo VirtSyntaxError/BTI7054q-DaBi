@@ -50,3 +50,10 @@ function refreshCart(){
 	});
 }
 
+function emptyCart(){
+	$( function() {
+		$.post("ajax/emptycart.php");
+	});
+	refreshCart();
+
+}

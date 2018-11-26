@@ -94,7 +94,8 @@ class Product {
 			$values['Price']
 		);
 		if (!$success) return false;
-		return $stmt->execute();
+		$stmt->execute();
+		return $stmt->insert_id;
 	}
 
 	public function set($values){
