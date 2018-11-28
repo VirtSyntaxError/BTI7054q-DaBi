@@ -49,7 +49,7 @@ if (isset($_GET["filter"])) {
 		$products = $newproducts;
 	}
 } else {
-	echo '<input id="filter" onkeyup="applyFilter()" name="filter" placeholder="Filter.."><br>';	
+	echo '<article><input id="filter" onkeyup="applyFilter()" name="filter" placeholder="Filter.."></article><br>';	
 	echo '<ul><article id="productoutput">';
 }
 
@@ -64,7 +64,6 @@ foreach ($products as $prod){
 	}
 
 	echo '<form method="post" action="index.php?id=3&lang='.$_GET['lang'].'">';
-	echo '<article>';
 	echo '<li>'.$prod->getName();
 	echo "<ul>";
 	echo "<li> ".t("ARTICLENUMBER").": ".$prod->getID()."</li>";
@@ -75,7 +74,7 @@ foreach ($products as $prod){
 	echo "</li>";
 	echo '<input type="hidden" name="articlenumber" value="'.$prod->getID().'">';
 	echo '<input type="submit" value="'.t("DETAILS").'">';
-	echo '</form></article>';
+	echo '</form>';
 }
 
 if (!isset($_GET["filter"])) {

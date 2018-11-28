@@ -49,7 +49,7 @@ $texts = array(
 		'en' => 'Buy Now'
 	),
 	'CUSTOMIZEPROD' => array(
-		'de' => 'Individualisiere dein Produkt',
+		'de' => 'Individualisieren Sie ihr Produkt',
 		'en' => 'Customize your product'
 	),
 	'SUBMIT' => array(
@@ -61,7 +61,7 @@ $texts = array(
 		'en' => 'Brand'
 	),
 	'ENTER_DATA' => array(
-		'de' => 'Bitte fuellen Sie Ihre Daten ein',
+		'de' => 'Bitte f&uuml;llen Sie Ihre Daten ein',
 		'en' => 'Please enter your data'
 	),
 	'NAME' => array(
@@ -185,7 +185,7 @@ $texts = array(
 		'en' => 'Registration successful'
 	),
 	'PRODUCTINFORMATION' => array(
-		'de' => 'Informationen zu ihrem Produkt',
+		'de' => 'Informationen zu Ihrem Produkt',
 		'en' => 'Informations about your choosen product'
 	),
 	'WATCHCOLOR' => array(
@@ -235,6 +235,14 @@ $texts = array(
 	'EMPTYCART' => array(
 		'de' => 'Warenkorb leeren',
 		'en' => 'Empty my shopping cart'
+	),
+	'BINDINGCONTRACT' => array(
+		'de' => 'Dies ist ein bindender Vertrag. M&ouml;chten Sie fortfahren?',
+		'en' => 'This is a binding contract of purchase. Do you want to continue?'
+	),
+	'CHECKOUT' => array(
+		'de' => 'Zur Kasse',
+		'en' => 'Checkout'
 	),
 	'ERROR_REGISTRATION' => array(
 		'de' => 'Registrierung schlug fehl',

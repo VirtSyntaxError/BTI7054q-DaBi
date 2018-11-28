@@ -6,6 +6,8 @@ $logged_in = $_SESSION["user"] ?? false;
 if ($logged_in){
 	echo "<p>".t("ALREADY_LOGGED_IN")."</p>";
 } else {
-	echo "<article><h1>".t("LOGIN")."</h1></article>";
+	echo "<h1>".t("LOGIN")."</h1>";
+	echo '<article>';
 	include("login.php");
+	echo '</article>';
 }

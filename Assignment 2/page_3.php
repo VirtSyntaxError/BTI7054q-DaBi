@@ -14,8 +14,8 @@ $categories = array();
 		$categories[] = $category->getName();
 	}
 
-echo "<article><h1>".t("CUSTOMIZEPROD")."</h1></article>";
-	echo $prod->getName();
+echo "<h1>".t("CUSTOMIZEPROD")."</h1>";
+	echo "<article>".$prod->getName()."</article>";
 	echo "<ul>";
 	echo "<li> ".t("ARTICLENUMBER").": ".$prod->getID()."</li>";
 	echo "<li> ".t("BRAND").": ".$brand->getName()."</li>";

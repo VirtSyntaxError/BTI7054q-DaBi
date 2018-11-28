@@ -32,6 +32,10 @@ h1 {
 	padding: 9px 30px;
 }
 
+article {
+	padding: 9px 30px;
+}
+
 .link {
 	display: block;
 	text-transform: uppercase;

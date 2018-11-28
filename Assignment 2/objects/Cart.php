@@ -60,7 +60,8 @@ class Cart {
 		return count($this->items) == 0;
 	}
 
-	public function render() {
+	public function render($readonly) {
+		$readonly = (bool) $readonly;
 		if ($this->isEmpty()) {
 			echo t("NOTHINGINCART");
 		} else {
@@ -82,7 +83,11 @@ class Cart {
 			$rows[] = array(t("TOTAL"),"","",$total);
 
 			$table = new Table($rows,$columns);
-			$table->renderCart($ids);
+			if($readonly) {
+				$table->render($ids);
+			} else {
+				$table->renderCart($ids);
+			}
 		}
 	}
 }

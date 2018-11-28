@@ -2,8 +2,36 @@
 class User {
 	private $UserID, $Prename, $Surname, $Password, $Email, $Address, $City, $ZIP, $Country;
 
-	public function getName(){
+	public function getLogin(){
 		return $this->Email;
+	}
+
+	public function getPrename(){
+		return $this->Prename;
+	}
+
+	public function getSurname(){
+		return $this->Surname;
+	}
+
+	public function getEmail(){
+		return $this->Email;
+	}
+
+	public function getAddress(){
+		return $this->Address;
+	}
+
+	public function getCity(){
+		return $this->City;
+	}
+
+	public function getZip(){
+		return $this->ZIP;
+	}
+
+	public function getCountry(){
+		return $this->Country;
 	}
 
 	public function __toString(){
@@ -26,6 +54,14 @@ class User {
 		$id = (int) $id;
 		$res = DB::doQuery(
 			"SELECT * FROM Users WHERE UserID = $id"
+		);
+		if (!$res) return null;
+		return $res->fetch_object(get_class());
+	}
+
+	static public function getUserByEmail($email) {
+		$res = DB::doQuery(
+			'SELECT * FROM Users WHERE Email = "'.$email.'"'
 		);
 		if (!$res) return null;
 		return $res->fetch_object(get_class());

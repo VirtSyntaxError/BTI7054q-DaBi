@@ -1,31 +1,48 @@
-<form  method="post" id="payment_form" onsubmit="return confirm('This is a binding contract of purchase. Do you want to continue?');" action="index.php?id=5&lang=<?php echo $_GET["lang"]?>">
+<?php
+
+require_once("autoloader.php");
+
+if(isset($_SESSION['user'])){
+	$user = User::getUserByEmail($_SESSION['user']);
+	$name = $user->getPrename()." ".$user->getSurname();
+	$email = $user->getEmail();
+	$address = $user->getAddress();
+	$zip = $user->getZip();
+	$city = $user->getCity();
+	$country = $user->getCountry();
+
+} else {
+	$name = $_COOKIE['name'] ?? "";
+	$email = $_COOKIE['email'] ?? "";
+	$address = $_COOKIE['address'] ?? "";
+	$zip = $_COOKIE['zip'] ?? "";
+	$city = $_COOKIE['city'] ?? "";
+	$country = $_COOKIE['country'] ?? "";
+}
+
+?>
+<article>
+<form  method="post" id="payment_form" onsubmit="return confirm('<?php echo t("BINDINGCONTRACT")?>');" action="index.php?id=5&lang=<?php echo $_GET["lang"]?>">
 	<h3><?php echo t("ENTER_DATA")?></h3>
 	<p>
 		<label><?php echo t("NAME")?>:</label>
-		<input name="name" required pattern="^[A-Za-zäöü ,.'-]{3,}$" value="<?php echo $_COOKIE['name'] ?? "";?>"/>
+		<input name="name" required pattern="^[A-Za-zäöü ,.'-]{3,}$" value="<?php echo $name ?>"/>
 	</p>
 	<p>
 		<label><?php echo t("EMAIL")?>:</label>
-		<input name="email" type="email" required value="<?php echo $_COOKIE['email'] ?? "";?>"/>
+		<input name="email" type="email" required value="<?php echo $email ?>"/>
 	</p>
 	<p>
 		<label><?php echo t("ADDRESS")?>:</label>
-	</p>
-	<p>
-		<label><?php echo t("STREET")?>:</label>
-		<input name="street" type="text" required pattern="^[A-Za-zäöü ,.'-]{3,}$" value="<?php echo $_COOKIE['street'] ?? "";?>"/>
-	</p>
-	<p>
-		<label><?php echo t("NUMBER")?>:</label>
-		<input name="str_nr" type="text" required pattern="^[0-9a-z]+$" value="<?php echo $_COOKIE['streetnr'] ?? "";?>"/>
+		<input name="address" type="text" required pattern="^[A-Za-zäöü ,.'-]{3,} [0-9a-z]+$" value="<?php echo $address ?>"/>
 	</p>
 	<p>
 		<label><?php echo t("ZIP")?>:</label>
-		<input name="zip" type="text" required pattern="^[0-9]{1,5}$" value="<?php echo $_COOKIE['zip'] ?? "";?>"/>
+		<input name="zip" type="text" required pattern="^[0-9]{1,5}$" value="<?php echo $zip ?>"/>
 	</p>
 	<p>
 		<label><?php echo t("CITY")?>:</label>
-		<input name="city" type="text" required pattern="^[A-Za-zäöü ,.'-]{3,}$" value="<?php echo $_COOKIE['city'] ?? "";?>"/>
+		<input name="city" type="text" required pattern="^[A-Za-zäöü ,.'-]{3,}$" value="<?php echo $city ?>"/>
 	</p>
 	<p>
 		<label><?php echo t("COUNTRY")?>:</label>
@@ -53,3 +70,4 @@
 		<button value="Submit" type="submit">Submit</button>
 	</p>
 </form>
+</article>
