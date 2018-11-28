@@ -47,6 +47,12 @@ if (!$adm) {
 	echo '<input type="submit"/>
 		</form>';
 
+	echo '<form action="" method="post">
+			<h2>Brand</h2>
+			<p>BrandName: <input required name="Brandname"/></p>
+			<input type="submit"/>
+			</form>';
+
 	if (isset($_POST['Productname'])){
 		$id = Product::insert($_POST);
 
@@ -69,6 +75,10 @@ if (!$adm) {
 	}
 
 	if (isset($_POST['Strap'])){
-		Color::insert($_POST);
+		Strap::insert($_POST);
+	}
+
+	if (isset($_POST['Brandname'])){
+		Brand::insert($_POST);
 	}
 }
