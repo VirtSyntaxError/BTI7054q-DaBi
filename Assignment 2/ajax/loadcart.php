@@ -5,6 +5,6 @@ session_start();
 
 if (isset($_SESSION['cart'])){
 		$cart = $_SESSION['cart'];
-		$cart->render();
+		$cart->render(true);
 }
 

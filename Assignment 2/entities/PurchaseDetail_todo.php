@@ -3,7 +3,7 @@ class Product {
 	private $id, $productname, $productdesc, $brandid;
 
 	public function getName(){
-		return $this.productname;
+		return $this->productname;
 	}
 
 	public function __toString(){

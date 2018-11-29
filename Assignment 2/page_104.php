@@ -9,6 +9,8 @@ if (!$adm) {
 	$brands = Brand::getBrands();
 	$colors = Color::getColors();
 	$straps = Strap::getStraps();
+	$purchases = DB::doQuery("SELECT p.PurchaseTimestamp, p.Description, p.PurchaseStatus, u.Prename, u.Surname, u.Email FROM Purchase AS p
+				JOIN Users as u ON u.UserID = p.UserID ORDER BY p.PurchaseTimestamp DESC;");
 	echo '<article><h1>Admin</h1></article><h2>Product</h2>';
 	echo '<form action="" method="post">
 		<p>ProductName: <input required name="Productname"/></p>
@@ -52,6 +54,20 @@ if (!$adm) {
 			<p>BrandName: <input required name="Brandname"/></p>
 			<input type="submit"/>
 			</form>';
+
+	echo "<h2>Last 10 Orders</h2>";
+	echo "<table>";
+	echo "<tr><th>Timestamp</th><th>Description</th><th>PurchaseStatus</th><th>Prename</th><th>Surname</th><th>Email</th></tr>";
+	foreach ($purchases as $purch){
+		echo "<tr>";
+		echo "<td>".gmdate("Y-m-d H:i:s", $purch['PurchaseTimestamp'])."</td>";
+		echo "<td>".$purch['Description']."</td>";
+		echo "<td>".$purch['PurchaseStatus']."</td>";
+		echo "<td>".$purch['Prename']."</td>";
+		echo "<td>".$purch['Surname']."</td>";
+		echo "<td>".$purch['Email']."</td>";
+	}
+	echo "</table>";
 
 	if (isset($_POST['Productname'])){
 		$id = Product::insert($_POST);
