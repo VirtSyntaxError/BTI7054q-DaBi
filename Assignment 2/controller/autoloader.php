@@ -1,12 +1,10 @@
 <?php
 spl_autoload_register(function ($class_name){
 	$directories = array(
-		'./',
-		'objects/',
-		'controller/',
-		'view/',
-		'model/',
-		'entities/'
+		'../objects/',
+		'../view/',
+		'../model/',
+		'../entities/'
 	);
 	foreach($directories as $dir){
 		if (file_exists($dir.$class_name.'.php')){
