@@ -14,10 +14,11 @@ class Strap {
 		return sprintf("%d) %s", $this->StrapID, $this->getName());
 	}
 
-	static public function getStraps() {
+	static public function getStraps($lang) {
 		$straps = array();
 		$res = DB::doQuery(
-			"SELECT * FROM Strap;"
+			"SELECT s.StrapID, i.text_$lang AS Strap FROM Strap AS s
+			JOIN i18n AS i ON s.Strap = i.i18nID"
 		);
 		if (!$res) return null;
 		while ($strap = $res->fetch_object(get_class())){
@@ -26,10 +27,11 @@ class Strap {
 		return $straps;
 	}
 
-	static public function getStrapById($id) {
+	static public function getStrapById($id, $lang) {
 		$id = (int) $id;
 		$res = DB::doQuery(
-			"SELECT * FROM Strap WHERE StrapID = $id"
+			"SELECT s.StrapID, i.text_$lang AS Strap FROM Strap AS s
+			JOIN i18n AS i ON s.Strap = i.i18nID WHERE StrapID = $id"
 		);
 		if (!$res) return null;
 		return $res->fetch_object(get_class());

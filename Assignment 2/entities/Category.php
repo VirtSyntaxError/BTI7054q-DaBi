@@ -14,10 +14,11 @@ class Category {
 		return sprintf("%d) %s", $this->CategoryID, $this->getName());
 	}
 
-	static public function getCategories() {
+	static public function getCategories($lang) {
 		$categories = array();
 		$res = DB::doQuery(
-			"SELECT * FROM Category;"
+			"SELECT c.CategoryID, i.text_$lang AS CategoryName FROM Category AS c
+			JOIN i18n AS i ON c.CategoryName = i.i18nID"
 		);
 		if (!$res) return null;
 		while ($category = $res->fetch_object(get_class())){
@@ -26,10 +27,11 @@ class Category {
 		return $categories;
 	}
 
-	static public function getCategoryById($id) {
+	static public function getCategoryById($id, $lang) {
 		$id = (int) $id;
 		$res = DB::doQuery(
-			"SELECT * FROM Category WHERE CategoryID = $id"
+			"SELECT c.CategoryID, i.text_$lang AS CategoryName FROM Category AS c
+			JOIN i18n AS i ON c.CategoryName = i.i18nID WHERE CategoryID = $id"
 		);
 		if (!$res) return null;
 		return $res->fetch_object(get_class());

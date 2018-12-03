@@ -8,7 +8,7 @@ if (isset($_GET["brand"])) {
 	if ($brandid != "all") {
 		$brandname = Brand::getBrandById($brandid)->getName();	
 
-		$products = Product::getProductsByBrandId($brandid);
+		$products = Product::getProductsByBrandId($brandid,$_GET["lang"]);
 		if (!isset($_GET["filter"])) {
 			echo '<h1>'.t("PRODUCTOFBRAND").' '.$brandname.'</h1>';
 		}
@@ -19,10 +19,10 @@ if (isset($_GET["brand"])) {
 elseif (isset($_GET["cat"])) {
 	$catid = $_GET["cat"];
 	if ($catid != "all") {
-		$catname = Category::getCategoryById($catid)->getName();	
+		$catname = Category::getCategoryById($catid,$_GET["lang"])->getName();	
 		$productids = CategoryProduct::getProductByCategoryId($catid);
 		foreach ($productids as $productid) {
-			$products[] = Product::getProductById($productid->getProductId());
+			$products[] = Product::getProductById($productid->getProductId(),$_GET["lang"]);
 		}
 		if (!isset($_GET["filter"])) {
 			echo '<h1>'.t("PRODUCTOFCAT").' '.$catname.'</h1>';
@@ -33,7 +33,7 @@ elseif (isset($_GET["cat"])) {
 }
 
 if (count($products) <= 0) {
-	$products = Product::getProducts();
+	$products = Product::getProducts($_GET["lang"]);
 }
 
 if (isset($_GET["filter"])) {
@@ -59,7 +59,7 @@ foreach ($products as $prod){
 	$brand = Brand::getBrandById($prod->getBrand());
 	$categoryproducts = CategoryProduct::getCategoryByProductId($prod->getID());
 	foreach ($categoryproducts as $categoryproduct){
-		$category = Category::getCategoryById($categoryproduct->getCategoryId());
+		$category = Category::getCategoryById($categoryproduct->getCategoryId(),$_GET["lang"]);
 		$categories[] = $category->getName();
 	}
 

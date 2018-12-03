@@ -14,10 +14,11 @@ class Color {
 		return sprintf("%d) %s", $this->ColorID, $this->getName());
 	}
 
-	static public function getColors() {
+	static public function getColors($lang) {
 		$colors = array();
 		$res = DB::doQuery(
-			"SELECT * FROM Color;"
+			"SELECT c.ColorID, i.text_$lang AS ColorName FROM Color AS c
+			JOIN i18n AS i ON c.ColorName = i.i18nID"
 		);
 		if (!$res) return null;
 		while ($color = $res->fetch_object(get_class())){
@@ -26,10 +27,11 @@ class Color {
 		return $colors;
 	}
 
-	static public function getColorById($id) {
+	static public function getColorById($id, $lang) {
 		$id = (int) $id;
 		$res = DB::doQuery(
-			"SELECT * FROM Color WHERE ColorID = $id"
+			"SELECT c.ColorID, i.text_$lang AS ColorName FROM Color AS c
+			JOIN i18n AS i ON c.ColorName = i.i18nID WHERE ColorID = $id"
 		);
 		if (!$res) return null;
 		return $res->fetch_object(get_class());

@@ -71,9 +71,9 @@ class Cart {
 			$ids = array();
 		
 			foreach ($this->items as $item) {
-				$product = Product::getProductById($item->getProductId());
-				$color = Color::getColorById($item->getColorId());
-				$strap = Strap::getStrapById($item->getStrapId());
+				$product = Product::getProductById($item->getProductId(),$_GET["lang"]);
+				$color = Color::getColorById($item->getColorId(),$_GET["lang"]);
+				$strap = Strap::getStrapById($item->getStrapId(),$_GET["lang"]);
 				$price = $item->getCount()*$product->getPrice();
 				$productdesc = $product->getName()." (".$strap->getName().", ".$color->getName().")";
 				$rows[] = array($productdesc,$product->getPrice(),$item->getCount(),$price);

@@ -5,12 +5,12 @@ $articlenumber = $_POST["articlenumber"];
 $_SESSION["articlenumber"] = $articlenumber;
 $colorproducts = ColorProduct::getColorByProductId($articlenumber);
 $strapproducts = StrapProduct::getStrapByProductId($articlenumber);
-$prod = Product::getProductById($articlenumber);
+$prod = Product::getProductById($articlenumber, $_GET["lang"]);
 $categories = array();
 	$brand = Brand::getBrandById($prod->getBrand());
 	$categoryproducts = CategoryProduct::getCategoryByProductId($prod->getID());
 	foreach ($categoryproducts as $categoryproduct){
-		$category = Category::getCategoryById($categoryproduct->getCategoryId());
+		$category = Category::getCategoryById($categoryproduct->getCategoryId(),$_GET["lang"]);
 		$categories[] = $category->getName();
 	}
 
@@ -27,13 +27,13 @@ echo '<article><form method="post" action="index.php?id=6&lang='.$_GET["lang"].'
 echo '<h2>'.t("STRAPCOLOR").'</h2>';
 foreach ($strapproducts as $strapproduct){
 	$strapid = $strapproduct->getStrapId();
-	$strap = Strap::getStrapById($strapid);
+	$strap = Strap::getStrapById($strapid, $_GET["lang"]);
 	echo '<input type="radio" name="strapcolor" value="'.$strap->getId().'" required>'.$strap->getName().'<br/>';
 }
 echo '<h2>'.t("WATCHCOLOR").'</h2>';
 foreach ($colorproducts as $colorproduct){
 	$colorid = $colorproduct->getColorId();
-	$color = Color::getColorById($colorid);
+	$color = Color::getColorById($colorid, $_GET["lang"]);
 	echo '<input type="radio" name="watchcolor" value="'.$color->getId().'" required>'.$color->getName().'<br/>';
 }
 echo '<br/><input type="submit" value="'.t("TOCART").'">';

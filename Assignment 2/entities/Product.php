@@ -26,10 +26,11 @@ class Product {
 		return sprintf("%d) %s Price: %d", $this->ProductID, $this->getName(),$this->getPrice());
 	}
 
-	static public function getProducts() {
+	static public function getProducts($lang) {
 		$products = array();
 		$res = DB::doQuery(
-			"SELECT * FROM Product;"
+			"SELECT p.ProductID, p.Productname, i.text_$lang AS Productdescription, p.BrandID, p.Price FROM Product AS p
+			JOIN i18n AS i ON p.Productdescription = i.i18nID"
 		);
 		if (!$res) return null;
 		while ($product = $res->fetch_object(get_class())){
@@ -38,10 +39,11 @@ class Product {
 		return $products;
 	}
 
-	static public function getProductsFiltered($filter) {
+	static public function getProductsFiltered($filter, $lang) {
 		$products = array();
 		$res = DB::doQuery(
-			'SELECT * FROM Product WHERE Productname LIKE "%'.$filter.'%" OR Productdescription LIKE "%'.$filter.'%";'
+			'SELECT p.ProductID, p.Productname, i.text_$lang AS Productdescription, p.BrandID, p.Price FROM Product AS p
+			JOIN i18n AS i ON p.Productdescription = i.i18nID WHERE Productname LIKE "%'.$filter.'%" OR Productdescription LIKE "%'.$filter.'%";'
 		);
 		if (!$res) return null;
 		while ($product = $res->fetch_object(get_class())){
@@ -50,11 +52,12 @@ class Product {
 		return $products;
 	}
 
-	static public function getProductsByBrandId($id) {
+	static public function getProductsByBrandId($id, $lang) {
 		$id = (int) $id;
 		$products = array();
 		$res = DB::doQuery(
-			"SELECT * FROM Product WHERE BrandID = $id;"
+			"SELECT p.ProductID, p.Productname, i.text_$lang AS Productdescription, p.BrandID, p.Price FROM Product AS p
+			JOIN i18n AS i ON p.Productdescription = i.i18nID WHERE BrandID = $id;"
 		);
 		if (!$res) return null;
 		while ($product = $res->fetch_object(get_class())){
@@ -63,10 +66,11 @@ class Product {
 		return $products;
 	}
 
-	static public function getProductById($id) {
+	static public function getProductById($id, $lang) {
 		$id = (int) $id;
 		$res = DB::doQuery(
-			"SELECT * FROM Product WHERE ProductID = $id"
+			"SELECT p.ProductID, p.Productname, i.text_$lang AS Productdescription, p.BrandID, p.Price FROM Product AS p
+			JOIN i18n AS i ON p.Productdescription = i.i18nID WHERE ProductID = $id"
 		);
 		if (!$res) return null;
 		return $res->fetch_object(get_class());
