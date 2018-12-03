@@ -22,7 +22,8 @@ class adminModel {
 	}
 
 	public function insertProduct($parts) { 
-		Product::insert($parts);
+		$id = Product::insert($parts);
+		return $id;
 	}
 
 	public function insertProductColor($pid, $cid) {
