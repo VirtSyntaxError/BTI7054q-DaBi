@@ -12,11 +12,15 @@ class adminController {
 	}
 
 	public function showOrders() {
+		$this->adminView->renderHeader();
 		$this->adminView->renderOrders();
+		$this->adminView->renderFooter();
 	}
 
 	public function newProduct() {
+		$this->adminView->renderHeader();
 		$this->adminView->renderNewProduct();
+		$this->adminView->renderFooter();
 	}
 
 	public function insertProduct() {

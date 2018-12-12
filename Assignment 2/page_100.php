@@ -8,6 +8,23 @@ if ($logged_in){
 } else {
 	echo "<h1>".t("LOGIN")."</h1>";
 	echo '<article>';
-	include("login.php");
-	echo '</article>';
+
+
+	echo t("PLEASE_LOG_IN");
+
+	$columns = array("","");	
+	$rows = array();
+
+	$rows[] = array(t("LOGIN"),'<input name="login">');
+	$rows[] = array(t("PASSWORD"),'<input type="password" name="pw">');
+	$rows[] = array("",'<input type="submit" value="'.t("LOGIN").'">');
+
+	$table = new Table($rows,$columns);
+	
+	echo '<form method="post" action="authentication.inc.php">';
+
+	$table->render();
+
+	echo '</form></article>';
+
 }

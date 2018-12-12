@@ -33,7 +33,7 @@ if (isset($_POST["login"]) && isset($_POST["pw"])){
 		$_SESSION["user"] = $login;
 		if ($isAdmin){
 			$_SESSION["isAdmin"] = true;
-			header('Location: index.php?id=104&lang='.$_GET["lang"]);
+			header('Location: admin/showOrders/?lang='.$_GET["lang"]);
 		} else {
 			header('Location: index.php?id=1&lang='.$_GET["lang"]);
 		}

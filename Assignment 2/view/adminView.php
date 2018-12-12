@@ -1,5 +1,6 @@
 <?php
 require_once("autoloader.php");
+define("ROOT", "../../");
 
 class adminView {
 
@@ -8,6 +9,15 @@ class adminView {
 	public function __construct($adminModel) {
 		$this->adminModel = $adminModel;
 	}
+
+	public function renderHeader() {
+		require_once("../header.php");
+	}
+	
+	public function renderFooter() {
+		require_once("../footer.php");
+	}
+
 
 	public function renderOrders() {
 		echo '<article><h1>Admin</h1>';
@@ -21,6 +31,7 @@ class adminView {
 	
 		$table = new Table($rows,$columns);
 		$table->render();
+		echo '</article>';
 
 	}
 
@@ -28,6 +39,7 @@ class adminView {
 		echo '<article><h1>Admin</h1>';
 		echo '<h2>New product</h2>';
 
+		$lang = isset($_GET['lang']) ? $_GET['lang'] : getDefaultLanguage();
 
 		echo '<form action="../insertProduct/" method="post">
 		<p>ProductName: <input required name="Productname"/></p>
@@ -38,13 +50,13 @@ class adminView {
 		}
 		echo '</select></p>
 		<h3>Colors</h3>';
-		foreach ($this->adminModel->getColors() as $color){
+		foreach ($this->adminModel->getColors($lang) as $color){
 			$colorname = $color->getName();
 			$colorID = $color->getId();
 			echo '<input type="checkbox" name="colors[]" value='.$colorID.'>'.$colorname.'<br>';
 		}
 		echo '<h3>Straps</h3>';
-		foreach ($this->adminModel->getStraps() as $strap){
+		foreach ($this->adminModel->getStraps($lang) as $strap){
 			$strapname = $strap->getName();
 			$strapID = $strap->getId();
 			echo '<input type="checkbox" name="straps[]" value='.$strapID.'>'.$strapname.'<br>';

@@ -13,12 +13,12 @@ class adminModel {
 		return Brand::getBrands();
 	}	
 
-	public function getStraps() {
-		return Strap::getStraps();
+	public function getStraps($lang) {
+		return Strap::getStraps($lang);
 	}
 
-	public function getColors() {
-		return Color::getColors();
+	public function getColors($lang) {
+		return Color::getColors($lang);
 	}
 
 	public function insertProduct($parts) { 

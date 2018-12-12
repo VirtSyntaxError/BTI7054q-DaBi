@@ -12,7 +12,7 @@ function redirect($path) {
 function writeMenuentry($menuname,$menuid){
 	$id = isset($_GET['id']) ? $_GET['id'] : 0;
 	$lang = isset($_GET['lang']) ? $_GET['lang'] : getDefaultLanguage();
-	$url = "index.php";
+	$url = ROOT."index.php";
 	$url = addParam($url, "id", $menuid);
 	$url = addParam($url, "lang", $lang);
 	echo "<li><a href='".$url."' class='menuentry' ";
