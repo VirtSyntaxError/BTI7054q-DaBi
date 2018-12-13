@@ -10,10 +10,10 @@ if (isset($_GET["brand"])) {
 
 		$products = Product::getProductsByBrandId($brandid,$_GET["lang"]);
 		if (!isset($_GET["filter"])) {
-			echo '<h1>'.t("PRODUCTOFBRAND").' '.$brandname.'</h1>';
+			echo '<article><h1>'.t("PRODUCTOFBRAND").' '.$brandname.'</h1>';
 		}
 	} elseif (!isset($_GET["filter"])) {
-		echo '<h1>'.t("ALLBRANDS").'</h1>';
+		echo '<article><h1>'.t("ALLBRANDS").'</h1>';
 	}
 }
 elseif (isset($_GET["cat"])) {
@@ -25,10 +25,10 @@ elseif (isset($_GET["cat"])) {
 			$products[] = Product::getProductById($productid->getProductId(),$_GET["lang"]);
 		}
 		if (!isset($_GET["filter"])) {
-			echo '<h1>'.t("PRODUCTOFCAT").' '.$catname.'</h1>';
+			echo '<article><h1>'.t("PRODUCTOFCAT").' '.$catname.'</h1>';
 		}
 	} elseif (!isset($_GET["filter"])) {
-		echo '<h1>'.t("ALLCATS").'</h1>';
+		echo '<article><h1>'.t("ALLCATS").'</h1>';
 	}
 }
 
@@ -49,7 +49,7 @@ if (isset($_GET["filter"])) {
 		$products = $newproducts;
 	}
 } else {
-	echo '<article><input id="filter" onkeyup="applyFilter()" name="filter" placeholder="Filter.."></article><br>';	
+	echo '<article><article><input id="filter" onkeyup="applyFilter()" name="filter" placeholder="Filter.."></article><br>';	
 	echo '<ul><article id="productoutput">';
 }
 
@@ -79,5 +79,5 @@ foreach ($products as $prod){
 }
 
 if (!isset($_GET["filter"])) {
-	echo '</ul></article>';
+	echo '</ul></article></article>';
 }
