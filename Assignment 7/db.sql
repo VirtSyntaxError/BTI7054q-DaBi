@@ -96,6 +96,7 @@ CREATE TABLE Product
   Productdescription INT NOT NULL,
   BrandID INT NOT NULL,
   Price INT NOT NULL,
+  Image VARCHAR(255) NOT NULL,
   PRIMARY KEY (ProductID),
   CONSTRAINT `FK_ProductBrand` FOREIGN KEY (BrandID) REFERENCES Brand(BrandID),
   CONSTRAINT `FK_i18nProductdescription` FOREIGN KEY (Productdescription) REFERENCES i18n(i18nID)
@@ -213,21 +214,21 @@ INSERT INTO Brand(Brandname) VALUES
 	('Fossil'),
 	('Hamilton');
 
-INSERT INTO Product(Productname, Productdescription, BrandID, Price) VALUES
-	('Fossil Q Venture Smartwatch', 9, 5, 10),
-	('Fossil Q Grant Hybrid Smartwatch', 10, 5, 20),
-	('Tissot PRC 200 Automatic Chronograph Gent', 11, 3, 30),
-	('Certina DS Action Lady Precidrive', 12, 2, 40),
-	('Rolex SUBMARINER', 13, 1, 50),
-	('Rolex SUBMARINER DATE', 14, 1, 60),
-	('Breitling NAVITIMER 1 B01 CHRONOGRAPH 46', 15, 4, 70),
-	('Hamilton Khaki Pilot', 16, 6, 80),
-	('Rolex SKY_DWELLER', 17, 1, 90),
-	('Rolex YACHT-MASTER 37', 18, 1, 100),
-	('Certina DS Podium Chronograph', 19, 2, 110),
-	('Certina DS Podium Lady', 20, 2, 120),
-	('Tissot Chemin Des Tourelles Squelette', 21, 3, 130),
-	('Hamilton Jazzmaster Viewmatic Skeleton Lady', 22, 6, 140);
+INSERT INTO Product(Productname, Productdescription, BrandID, Price, Image) VALUES
+	('Fossil Q Venture Smartwatch', 9, 5, 10, 'fossil_q_venture.jpg'),
+	('Fossil Q Grant Hybrid Smartwatch', 10, 5, 20, 'fossil_q_grant_hybrid.jpeg'),
+	('Tissot PRC 200 Automatic Chronograph Gent', 11, 3, 30, 'tissot_prc_200.jpg'),
+	('Certina DS Action Lady Precidrive', 12, 2, 40, 'certina_ds_action.jpg'),
+	('Rolex SUBMARINER', 13, 1, 50, 'rolex_submariner.jpg'),
+	('Rolex SUBMARINER DATE', 14, 1, 60, 'rolex_submariner_date.jpg'),
+	('Breitling NAVITIMER 1 B01 CHRONOGRAPH 46', 15, 4, 70, 'breitling_navitimer.jpg'),
+	('Hamilton Khaki Pilot', 16, 6, 80, 'hamilton_khaki.jpg'),
+	('Rolex SKY_DWELLER', 17, 1, 90, 'rolex_sky_dweller.jpg'),
+	('Rolex YACHT-MASTER 37', 18, 1, 100, 'rolex_yachtmaster_37.jpg'),
+	('Certina DS Podium Chronograph', 19, 2, 110, 'certina_ds_podium_chronograph.jpg'),
+	('Certina DS Podium Lady', 20, 2, 120, 'certina_ds_podium_lady.jpg'),
+	('Tissot Chemin Des Tourelles Squelette', 21, 3, 130, 'tissot_chemin.jpg'),
+	('Hamilton Jazzmaster Viewmatic Skeleton Lady', 22, 6, 140, 'hamilton_jazzmaster.jpg');
 
 INSERT INTO CategoryProduct(ProductID, CategoryID) VALUES
 	(1,3),(1,1),(1,2),
