@@ -10,7 +10,6 @@ html {
 
 section {
 	background: rgba(0,0,0, 0.2);
-	border-radius: 2em;
 }
 
 .nav select {
@@ -29,7 +28,7 @@ header {
 	display: table;
 	width: 100%;
 	color: gold;
-	border-radius: 1em;
+	border-radius: 1em 1em 0 0;
 }
 
 footer {
@@ -37,7 +36,7 @@ footer {
 	text-align: center;
 	clear: both;
 	color: gold;
-	border-radius: 1em;
+	border-radius: 0 0 1em 1em;
 }
 
 h1 {
