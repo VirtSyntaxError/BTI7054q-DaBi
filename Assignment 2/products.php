@@ -70,6 +70,7 @@ foreach ($products as $prod){
 	echo "<li> ".t("BRAND").": ".$brand->getName()."</li>";
 	echo "<li> ".t("CATEGORY").": ".join(",",$categories)."</li>";
 	echo "<li> ".t("PRICE").": ".$prod->getPrice()."</li>";
+	echo "<li><img src='img/".$prod->getImage()."' height='100'></li>";
 	echo "</ul>";
 	echo "</li>";
 	echo '<input type="hidden" name="articlenumber" value="'.$prod->getID().'">';
