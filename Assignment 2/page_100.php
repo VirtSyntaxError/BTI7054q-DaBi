@@ -6,9 +6,8 @@ $logged_in = $_SESSION["user"] ?? false;
 if ($logged_in){
 	echo "<p>".t("ALREADY_LOGGED_IN")."</p>";
 } else {
-	echo "<h1>".t("LOGIN")."</h1>";
 	echo '<article>';
-
+	echo "<h1>".t("LOGIN")."</h1>";
 
 	echo t("PLEASE_LOG_IN");
 
