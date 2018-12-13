@@ -69,11 +69,13 @@ class Cart {
 			$rows = array();
 			$total = 0;
 			$ids = array();
+
+			$lang = isset($_GET['lang']) ? $_GET['lang'] : getDefaultLanguage();
 		
 			foreach ($this->items as $item) {
-				$product = Product::getProductById($item->getProductId(),$_GET["lang"]);
-				$color = Color::getColorById($item->getColorId(),$_GET["lang"]);
-				$strap = Strap::getStrapById($item->getStrapId(),$_GET["lang"]);
+				$product = Product::getProductById($item->getProductId(),$lang);
+				$color = Color::getColorById($item->getColorId(),$lang);
+				$strap = Strap::getStrapById($item->getStrapId(),$lang);
 				$price = $item->getCount()*$product->getPrice();
 				$productdesc = $product->getName()." (".$strap->getName().", ".$color->getName().")";
 				$rows[] = array($productdesc,$product->getPrice(),$item->getCount(),$price);

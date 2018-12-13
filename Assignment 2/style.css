@@ -2,23 +2,19 @@ html {
 	font-family: Arial,sans-serif;
 }
 
-nav {
-	background-color: rgba(0,0,0,0.6);
-	float: left;
+.nav {
 	height: 100%;
 	text-transform: uppercase;
 	font-size: 1em;
 }
 
 section {
-	margin-left: 200px;
+	background: rgba(0,0,0, 0.2);
+	border-radius: 2em;
 }
 
-nav select {
-	padding: 9px 30px;
-	background-color: rgba(0,0,0,0);
-	float: left;
-	height: 100%;
+.nav select {
+	background-color: transparent;
 	border: none;
 	color: white;
 	font-size: 1em;
@@ -28,12 +24,39 @@ nav select {
 	-moz-appearance: none;
 }
 
+header {
+	background-color: rgba(0,0,0,0.7);
+	display: table;
+	width: 100%;
+	color: gold;
+	border-radius: 1em;
+}
+
+footer {
+	background-color: rgba(0,0,0,0.7);
+	text-align: center;
+	clear: both;
+	color: gold;
+	border-radius: 1em;
+}
+
 h1 {
 	padding: 9px 30px;
 }
 
 article {
 	padding: 9px 30px;
+}
+
+.header-row {
+	display: table-row;
+}
+
+.header-cell {
+	text-align: center;
+	vertical-align: middle;
+	display: table-cell;
+	width: 100%;
 }
 
 .link {
@@ -49,36 +72,15 @@ article {
 	background-color: rgba(0,0,0,0.7);
 }
 
-.header {
-	background-color: rgba(0,0,0,0.6);
-	display: table;
-	width: 100%;
-	color: gold;
-}
-
-.footer {
-	background-color: rgba(0,0,0,0.6);
-	text-align: center;
-	clear: both;
-	color: gold;
-}
-
-.menu {
-    	list-style-type: none;
-	margin: 0;
-	padding: 0;
-}
-
 .menuentry {
-	display: block;
 	color: white;
 	text-decoration: none;
 	padding: 9px 30px;
+	font-size: 1em;
 }
 
 .menuentry:hover {
 	color: gold;
-	background-color: rgba(0,0,0,0.7);
 }
 
 .cart-badge {
@@ -91,6 +93,16 @@ article {
 	position: absolute;
 }
 
+.cart {
+	float: right;
+	margin-right: 2em;
+	display: table-cell;
+}
+
+.menuform {
+	display: inline-block;
+}
+
 #menuselected {
 	background-color: gold;
 	color: black;
@@ -98,12 +110,11 @@ article {
 
 #headertext {
 	color: gold;
-	font-size: 8em;
-	vertical-align: middle;
-	display: table-cell;
+	font-size: 3em;
 }
 
 #headerimage {
 	display: table-cell;
+	float: left;
 }
 

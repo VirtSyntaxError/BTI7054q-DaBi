@@ -15,11 +15,11 @@ function writeMenuentry($menuname,$menuid){
 	$url = ROOT."index.php";
 	$url = addParam($url, "id", $menuid);
 	$url = addParam($url, "lang", $lang);
-	echo "<li><a href='".$url."' class='menuentry' ";
+	echo "<a href='".$url."' class='menuentry' ";
 	if ($menuid == $id){
 		echo "id='menuselected'";
 	}
-	echo ">$menuname</a></li>";
+	echo ">$menuname</a>";
 }
 
 function addParam($url,$name,$value){

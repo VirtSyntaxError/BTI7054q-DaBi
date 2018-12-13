@@ -18,13 +18,12 @@ if (isset($_SESSION["user"])) {
 	$menu_array[] = array("name" => t("REGISTER"),
 		"id" => 101,);
 }
-echo "<ul class='menu'>";
 foreach ($menu_array as $menu){
 	writeMenuentry($menu['name'],$menu['id']);	
 }
-echo "<form method='GET'>";
+echo '<form method="GET" class="menuform" >';
 $langs = getAvailableLanguages();
-echo "<select name='lang' onchange='this.form.submit()'>";
+echo '<select class="menuentry" name="lang" onchange="this.form.submit()">';
 foreach ($langs as $lang){
 	if ($lang === $_GET['lang']){
 		echo "<option selected value=".$lang.">".$lang."</option>";
