@@ -1,6 +1,7 @@
 <?php
 require_once("i18n.php");
 require_once("autoloader.php");
+require_once("functions.php");
 function checklogin($login, $password){
 	$db = DB::getInstance();
 	$stmt = $db->prepare(
@@ -20,6 +21,9 @@ if(!isset($_SESSION)){
 	session_start(); 
 }
 
+$lang = isset($_GET['lang']) ? $_GET['lang'] : getDefaultLanguage();
+
+
 if (isset($_POST["login"]) && isset($_POST["pw"])){
 	$login = $_POST["login"];
 	$pw = $_POST["pw"];
@@ -33,17 +37,17 @@ if (isset($_POST["login"]) && isset($_POST["pw"])){
 		$_SESSION["user"] = $login;
 		if ($isAdmin){
 			$_SESSION["isAdmin"] = true;
-			header('Location: admin/showOrders/?lang='.$_GET["lang"]);
+			header('Location: admin/showOrders/?lang='.$lang);
 		} else {
-			header('Location: index.php?id=1&lang='.$_GET["lang"]);
+			header('Location: index.php?id=1&lang='.$lang);
 		}
 	} else {
-		header('Location: index.php?id=103&lang='.$_GET["lang"]);
+		header('Location: index.php?id=103&lang='.$lang);
 		exit;
 	}
 }
 if (!isset($_SESSION["user"])){
 	echo "<!DOCTYPE html>\n";
-	echo '<a href="index.php?id=100&lang="'.$_GET["lang"].'>'.t("PLEASE_LOG_IN").'</a>.';
+	echo '<a href="index.php?id=100&lang="'.$lang.'>'.t("PLEASE_LOG_IN").'</a>.';
 	exit;
 }

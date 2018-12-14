@@ -3,10 +3,8 @@ function sticky_relocate() {
       var div_top = $('#beforenav').offset().top;
       if (window_top > div_top) {
         $('#nav').addClass('stick');
-        $('#cart').addClass('stick');
       } else {
         $('#nav').removeClass('stick');
-        $('#cart').removeClass('stick');
       }
 }
 

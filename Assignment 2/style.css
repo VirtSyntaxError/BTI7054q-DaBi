@@ -78,15 +78,10 @@ article {
 	display: inline-block;
 }
 
-#cart {
+#headercart {
 	float: right;
 	margin-right: 2em;
 	display: table-cell;
-}
-
-#cart.stick {
-	position: fixed;
-	top: 0;
 }
 
 #menuselected {
@@ -123,6 +118,15 @@ article {
 	top: 0;
 	background-color: rgba(0,0,0,0.7);
 	display: table;
+}
+
+#nav.stick img {
+	width: 30px;
+	margin-top: 0.5em;
+}
+
+#nav.stick span {
+	margin-top: 0.3em;
 }
 
 .nav select {

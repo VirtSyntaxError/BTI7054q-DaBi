@@ -9,6 +9,7 @@ $menu_array = array(
 	array("name" => t("CATEGORIES"),
 		  "id" => 2,)
 );
+
 if (isset($_SESSION["user"])) {
 	$menu_array[] = array("name" => t("LOGOUT"),
 		"id" => 102,);
