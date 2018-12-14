@@ -10,7 +10,7 @@ if (isset($_SESSION['cart'])){
 
 if (!$cart->isEmpty()) {
 	echo '<input type="button" value="'.t("EMPTYCART").'" onclick="emptyCart()">';
-	echo '<form method="post" action="index.php?id=4&lang='.$_GET["lang"].'">';
+	echo '<form method="post" action="index.php?id=4>';
 	echo '<input type="submit" value="'.t("CHECKOUT").'">';
 	echo '</form>';
 

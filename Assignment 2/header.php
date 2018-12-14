@@ -33,12 +33,16 @@
 					if (isset($_SESSION["user"])) {
 						echo $_SESSION["user"];
 					}
-					$lang = isset($_GET['lang']) ? $_GET['lang'] : getDefaultLanguage();
+					
+					if(!isset($_SESSION["lang"])){
+						$_SESSION["lang"] = getDefaultLanguage();
+					}
+					
 				?>
 				</div>
 			</div>
 			<div id="headercart">
-				<a href="<?php echo ROOT ?>index.php?id=7&lang=<?php echo $lang ?>">
+				<a href="<?php echo ROOT ?>index.php?id=7">
 					<img src="<?php echo ROOT ?>pics/cart.png" width="50" alt="Cart"></img>
 					<span class="cart-badge" id="cartcount"><?php echo $cart->getQuantity() ?></span>
 				</a>

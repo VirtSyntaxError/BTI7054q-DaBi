@@ -39,7 +39,7 @@ class adminView {
 		echo '<article><h1>Admin</h1>';
 		echo '<h2>New product</h2>';
 
-		$lang = isset($_GET['lang']) ? $_GET['lang'] : getDefaultLanguage();
+		$lang = $_SESSION["lang"];
 
 		echo '<form action="../insertProduct/" method="post">
 		<p>ProductName: <input required name="Productname"/></p>

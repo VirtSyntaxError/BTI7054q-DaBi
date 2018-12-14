@@ -22,7 +22,7 @@ if(isset($_SESSION['user'])){
 
 ?>
 <article>
-<form  method="post" id="payment_form" onsubmit="return confirm('<?php echo t("BINDINGCONTRACT")?>');" action="index.php?id=5&lang=<?php echo $_GET["lang"]?>">
+<form  method="post" id="payment_form" onsubmit="return confirm('<?php echo t("BINDINGCONTRACT")?>');" action="index.php?id=5">
 	<h3><?php echo t("ENTER_DATA")?></h3>
 	<p>
 		<label><?php echo t("NAME")?>:</label>

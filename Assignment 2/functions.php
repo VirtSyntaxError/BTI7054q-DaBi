@@ -10,11 +10,13 @@ function redirect($path) {
 }
 
 function writeMenuentry($menuname,$menuid){
+	if(!isset($_SESSION)){ 
+		session_start(); 
+	}
+	
 	$id = isset($_GET['id']) ? $_GET['id'] : 0;
-	$lang = isset($_GET['lang']) ? $_GET['lang'] : getDefaultLanguage();
 	$url = ROOT."index.php";
 	$url = addParam($url, "id", $menuid);
-	$url = addParam($url, "lang", $lang);
 	echo "<a href='".$url."' class='menuentry' ";
 	if ($menuid == $id){
 		echo "id='menuselected'";

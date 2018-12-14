@@ -8,7 +8,7 @@ function sticky_relocate() {
       }
 }
 
-jQuery(document).ready(function($) {
+$(document).ready(function() {
       	$(window).scroll(sticky_relocate);
       	sticky_relocate();
 });
@@ -75,4 +75,18 @@ function emptyCart(){
 	refreshCart();
 
 }
+
+function refreshSite() {
+	$( function() {
+		location.reload();
+	});
+}
+
+function changeLang(lang) {
+	$( function() {
+		$.post("ajax/changelang.php", {lang: lang });
+	});
+	refreshSite();
+}
+
 

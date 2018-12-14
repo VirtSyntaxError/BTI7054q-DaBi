@@ -266,8 +266,8 @@ function t($id)
 	global $texts;
 	if (array_key_exists($id, $texts)) {
 		$values = $texts[$id];
-		if (isset($_GET['lang']) && array_key_exists($_GET['lang'], $values)) {
-			return $values[$_GET['lang']];
+		if (isset($_SESSION['lang']) && array_key_exists($_SESSION['lang'], $values)) {
+			return $values[$_SESSION['lang']];
 		} else {
 			return $values[getDefaultLanguage()];
 		}

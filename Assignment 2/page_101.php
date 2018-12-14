@@ -38,7 +38,7 @@ $rows[] = array("",'<input type="submit" value="'.t("REGISTER").'">');
 
 $table = new Table($rows,$columns);
 
-echo '<form method="post" action="index.php?id=101&lang="'.$_GET['lang'].'>';
+echo '<form method="post" action="index.php?id=101">';
 
 $table->render();
 

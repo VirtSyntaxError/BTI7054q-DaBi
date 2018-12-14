@@ -22,11 +22,11 @@ if (isset($_SESSION["user"])) {
 foreach ($menu_array as $menu){
 	writeMenuentry($menu['name'],$menu['id']);	
 }
-echo '<form method="GET" class="menuform" >';
+echo '<form method="post" class="menuform">';
 $langs = getAvailableLanguages();
-echo '<select class="menuentry" name="lang" onchange="this.form.submit()">';
+echo '<select class="menuentry" id="lang" onchange="changeLang(document.getElementById(\'lang\').value)">';
 foreach ($langs as $lang){
-	if ($lang === $_GET['lang']){
+	if ($lang === $_SESSION['lang']){
 		echo "<option selected value=".$lang.">".$lang."</option>";
 	} else {
 		echo "<option value=".$lang.">".$lang."</option>";

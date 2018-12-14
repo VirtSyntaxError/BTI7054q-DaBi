@@ -2,6 +2,12 @@
 include_once("i18n.php");
 include_once("functions.php");
 include_once("autoloader.php");
+
+if(!isset($_SESSION)){ 
+	session_start(); 
+}
+$lang = $_SESSION["lang"];
+
 $products = array();
 if (isset($_GET["brand"])) {
 	$brandid = $_GET["brand"];
@@ -63,7 +69,7 @@ foreach ($products as $prod){
 		$categories[] = $category->getName();
 	}
 
-	echo '<form method="post" action="index.php?id=3&lang='.$lang.'">';
+	echo '<form method="post" action="index.php?id=3">';
 	echo '<li>'.$prod->getName();
 	echo "<ul>";
 	echo "<li> ".t("ARTICLENUMBER").": ".$prod->getID()."</li>";

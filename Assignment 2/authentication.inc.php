@@ -21,9 +21,6 @@ if(!isset($_SESSION)){
 	session_start(); 
 }
 
-$lang = isset($_GET['lang']) ? $_GET['lang'] : getDefaultLanguage();
-
-
 if (isset($_POST["login"]) && isset($_POST["pw"])){
 	$login = $_POST["login"];
 	$pw = $_POST["pw"];
@@ -37,17 +34,17 @@ if (isset($_POST["login"]) && isset($_POST["pw"])){
 		$_SESSION["user"] = $login;
 		if ($isAdmin){
 			$_SESSION["isAdmin"] = true;
-			header('Location: admin/showOrders/?lang='.$lang);
+			header('Location: admin/showOrders/');
 		} else {
-			header('Location: index.php?id=1&lang='.$lang);
+			header('Location: index.php?id=1');
 		}
 	} else {
-		header('Location: index.php?id=103&lang='.$lang);
+		header('Location: index.php?id=103');
 		exit;
 	}
 }
 if (!isset($_SESSION["user"])){
 	echo "<!DOCTYPE html>\n";
-	echo '<a href="index.php?id=100&lang="'.$lang.'>'.t("PLEASE_LOG_IN").'</a>.';
+	echo '<a href="index.php?id=100>'.t("PLEASE_LOG_IN").'</a>.';
 	exit;
 }
