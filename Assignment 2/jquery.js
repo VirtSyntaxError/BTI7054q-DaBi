@@ -1,3 +1,23 @@
+function sticky_relocate() {
+      var window_top = $(window).scrollTop();
+      var div_top = $('#beforenav').offset().top;
+      if (window_top > div_top) {
+        $('#nav').addClass('stick');
+        $('#cart').addClass('stick');
+      } else {
+        $('#nav').removeClass('stick');
+        $('#cart').removeClass('stick');
+      }
+}
+
+jQuery(document).ready(function($) {
+      	$(window).scroll(sticky_relocate);
+      	sticky_relocate();
+});
+
+
+
+
 function showAGB() {
 $( function() {
     $( "#dialog-confirm" ).dialog({
@@ -57,3 +77,4 @@ function emptyCart(){
 	refreshCart();
 
 }
+

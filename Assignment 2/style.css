@@ -2,25 +2,8 @@ html {
 	font-family: Arial,sans-serif;
 }
 
-.nav {
-	height: 100%;
-	text-transform: uppercase;
-	font-size: 1em;
-}
-
 section {
 	background: rgba(0,0,0, 0.2);
-}
-
-.nav select {
-	background-color: transparent;
-	border: none;
-	color: white;
-	font-size: 1em;
-	text-transform: lowercase;
-	appearance: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
 }
 
 header {
@@ -55,7 +38,6 @@ article {
 	text-align: center;
 	vertical-align: middle;
 	display: table-cell;
-	width: 100%;
 }
 
 .link {
@@ -92,14 +74,19 @@ article {
 	position: absolute;
 }
 
-.cart {
+.menuform {
+	display: inline-block;
+}
+
+#cart {
 	float: right;
 	margin-right: 2em;
 	display: table-cell;
 }
 
-.menuform {
-	display: inline-block;
+#cart.stick {
+	position: fixed;
+	top: 0;
 }
 
 #menuselected {
@@ -110,10 +97,43 @@ article {
 #headertext {
 	color: gold;
 	font-size: 3em;
+	display: table-cell;
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
 }
 
 #headerimage {
 	display: table-cell;
 	float: left;
 }
+
+#headerimage img {
+	width: 150px;
+}
+
+.nav {
+	text-transform: uppercase;
+	font-size: 1em;
+}
+
+#nav.stick {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	background-color: rgba(0,0,0,0.7);
+	display: table;
+}
+
+.nav select {
+	background-color: transparent;
+	border: none;
+	color: white;
+	font-size: 1em;
+	text-transform: lowercase;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
 
