@@ -67,7 +67,13 @@ if(isset($_SESSION['user'])){
 		<textarea name="comment" form="payment_form" placeholder="<?php echo t("ENTER_COMMENT")?>"></textarea>
 	</p>
 	<p>
-		<button value="Submit" type="submit">Submit</button>
+		<?php
+			if (!isset($_SESSION['user'])){
+				echo "<a href='index.php?id=100'>".t("PLEASE_LOG_IN")."</a>";
+			}
+			else {
+				echo "<button value='Submit' type='submit'>Submit</button>";
+			}?>
 	</p>
 </form>
 </article>

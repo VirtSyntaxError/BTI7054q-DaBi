@@ -6,6 +6,10 @@ require_once("autoloader.php");
 	setcookie("address", $_POST["address"], $t);
 	setcookie("zip", $_POST["zip"], $t);
 	setcookie("city", $_POST["city"], $t);
+	if (!isset($_SESSION['user']){
+		echo t("PLEASE_LOG_IN");
+		exit;
+	})
 ?>
 <h1><?php echo t("CONFIRMATION")?></h1>
 <article>
