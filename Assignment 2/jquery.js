@@ -13,9 +13,6 @@ $(document).ready(function() {
       	sticky_relocate();
 });
 
-
-
-
 function showAGB() {
 $( function() {
     $( "#dialog-confirm" ).dialog({
@@ -43,14 +40,14 @@ function applyFilter() {
 	});
 }
 
-function add(id){
+function addItem(id){
 	$( function() {
 		$.post("ajax/additemtocart.php", {id: id });
 	});
 	refreshCart();
 }
 
-function sub(id){
+function subItem(id){
 	$( function() {
 		$.post("ajax/removeitemfromcart.php", {id: id });
 	});
@@ -88,5 +85,4 @@ function changeLang(lang) {
 	});
 	refreshSite();
 }
-
 
