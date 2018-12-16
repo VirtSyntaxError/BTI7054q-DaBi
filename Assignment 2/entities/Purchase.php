@@ -49,7 +49,7 @@ class Purchase {
 			$values['UserID']
 		);
 		if (!$success) return false;
-		return $stmt->execute();
+		return [$stmt->execute(),DB::getInstance()->insert_id];
 	}
 
 	public function set($values){

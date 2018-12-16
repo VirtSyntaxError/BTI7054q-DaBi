@@ -10,13 +10,23 @@ require_once("autoloader.php");
 		echo t("PLEASE_LOG_IN");
 		exit;
 	};
-	$items = $_SESSION['cart']->getItems();
-	foreach ($items as $it){
-		Purchase::insert(array(
+	$purch = Purchase::insert(array(
 							"PurchaseTimestamp" => time(),
 							"Description" => $_POST["comment"],
 							"PurchaseStatus" => 'open',
 							"UserID" => $_SESSION["userID"]));
+	if (!$purch){
+		echo "ERROR inserting purchase to DB<br>";
+		exit;
+	}
+	$items = $_SESSION['cart']->getItems();
+	foreach ($items as $it){
+		PurchaseDetail::insert(array(
+							"Count" => $it->getCount(),
+							"ProductID" => $it->getProductId(),
+							"ColorID" => $it->getColorId(),
+							"StrapID" => $it->getStrapId(),
+							"PurchaseID" => $purch[1]));
 	}
 ?>
 <h1><?php echo t("CONFIRMATION")?></h1>
@@ -25,6 +35,7 @@ require_once("autoloader.php");
 <p>
 <?php 
 	$cart->render(true);
+	$_SESSION['cart']->deleteAll();
 ?></p>
 <p><?php echo t("ADDRESS")?>:</p>
 <p><?php echo $_POST["name"]?></p>
