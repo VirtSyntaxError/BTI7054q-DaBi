@@ -11,7 +11,7 @@ if ($logged_in){
 
 	echo t("PLEASE_LOG_IN");
 
-	$columns = array("","");	
+	$columns = array("","");
 	$rows = array();
 
 	$rows[] = array(t("LOGIN"),'<input name="login">');
