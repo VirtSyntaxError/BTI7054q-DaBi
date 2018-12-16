@@ -22,7 +22,6 @@
 				<?php 
 					require_once("i18n.php");
 					require_once("autoloader.php");
-					include("menu.php"); 
 					if(!isset($_SESSION)){ 
 						session_start(); 
 					}
@@ -30,14 +29,15 @@
 						$_SESSION["cart"] = new Cart();
 					}
 					$cart = $_SESSION["cart"];
-					if (isset($_SESSION["user"])) {
-						echo $_SESSION["user"];
-					}
 					
 					if(!isset($_SESSION["lang"])){
 						$_SESSION["lang"] = getDefaultLanguage();
 					}
-					
+					include("menu.php"); 
+	
+					if (isset($_SESSION["user"])) {
+						echo $_SESSION["user"];
+					}
 				?>
 				</div>
 			</div>

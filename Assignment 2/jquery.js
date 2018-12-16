@@ -84,9 +84,16 @@ function refreshSite() {
 
 function changeLang(lang) {
 	$( function() {
-		$.post("ajax/changelang.php", {lang: lang });
+		$.ajax({
+        		type: "POST",
+        		url: "ajax/changelang.php",
+        		async: false,
+			data: { lang: lang },
+        		success : function(data) {
+            			refreshSite();
+        		}
+		});
 	});
-	refreshSite();
 }
 
 

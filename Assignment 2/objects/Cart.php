@@ -70,8 +70,6 @@ class Cart {
 			$total = 0;
 			$ids = array();
 
-			$lang = isset($_GET['lang']) ? $_GET['lang'] : getDefaultLanguage();
-		
 			foreach ($this->items as $item) {
 				$product = Product::getProductById($item->getProductId(),$lang);
 				$color = Color::getColorById($item->getColorId(),$lang);
