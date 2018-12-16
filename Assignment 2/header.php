@@ -1,3 +1,21 @@
+<?php
+require_once("i18n.php");
+require_once("autoloader.php");
+require_once("functions.php");
+
+if(!isset($_SESSION)){ 
+	session_start(); 
+}
+
+if(!isset($_SESSION["cart"])) {
+	$_SESSION["cart"] = new Cart();
+}
+$cart = $_SESSION["cart"];
+					
+if(!isset($_SESSION["lang"])){
+	$_SESSION["lang"] = getDefaultLanguage();
+}
+?>
 <!doctype html>
 <html>
 <head>
@@ -9,7 +27,9 @@
 </head>
 
 <body>
-	<header><div class="header-row">
+	<header>
+		<noscript><div id="nojs"><b><?php echo t("ACTIVATEJS") ?></b></div></noscript>
+		<div class="header-row">
 			<div id="headerimage"><img src="<?php echo ROOT ?>pics/logo.png" alt="Logo"></img></div>
 			<div id="headertext">Goldene Ziffer</div>
 			<div class="header-cell"></div>
@@ -20,19 +40,6 @@
 			<div class="header-cell">
 				<div class="nav">
 				<?php 
-					require_once("i18n.php");
-					require_once("autoloader.php");
-					if(!isset($_SESSION)){ 
-						session_start(); 
-					}
-					if(!isset($_SESSION["cart"])) {
-						$_SESSION["cart"] = new Cart();
-					}
-					$cart = $_SESSION["cart"];
-					
-					if(!isset($_SESSION["lang"])){
-						$_SESSION["lang"] = getDefaultLanguage();
-					}
 					include("menu.php"); 
 	
 					if (isset($_SESSION["user"])) {

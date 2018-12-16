@@ -62,6 +62,12 @@ class Cart {
 
 	public function render($readonly) {
 		$readonly = (bool) $readonly;
+
+		if(!isset($_SESSION)){ 
+			session_start(); 
+		}
+		$lang = $_SESSION['lang'];
+
 		if ($this->isEmpty()) {
 			echo t("NOTHINGINCART");
 		} else {
