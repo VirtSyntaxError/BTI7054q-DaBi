@@ -106,9 +106,13 @@ CREATE TABLE PurchaseDetail
 (
   Count INT NOT NULL,
   ProductID INT NOT NULL,
+  StrapID INT NOT NULL,
+  ColorID INT NOT NULL,
   PurchaseID INT NOT NULL,
   PRIMARY KEY (ProductID, PurchaseID),
   CONSTRAINT `FK_PurchaseDetailProduct` FOREIGN KEY (ProductID) REFERENCES Product(ProductID),
+  CONSTRAINT `FK_PurchaseDetailStrap` FOREIGN KEY (StrapID) REFERENCES Strap(StrapID),
+  CONSTRAINT `FK_PurchaseDetailColor` FOREIGN KEY (ColorID) REFERENCES Color(ColorID),
   CONSTRAINT `FK_PurchaseDetailPurchase` FOREIGN KEY (PurchaseID) REFERENCES Purchase(PurchaseID)
 );
 

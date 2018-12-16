@@ -14,7 +14,7 @@ function checklogin($login, $password){
 		return false;
 	}
 	$row = $result->fetch_assoc();
-	return [password_verify($password, $row["Password"]),$row["isAdmin"]];
+	return [password_verify($password, $row["Password"]),$row["isAdmin"],$row["UserID"]];
 }
 
 if(!isset($_SESSION)){ 
@@ -32,6 +32,7 @@ if (isset($_POST["login"]) && isset($_POST["pw"])){
 	}
 	if ($ok){
 		$_SESSION["user"] = $login;
+		$_SESSION["userID"] = $chklogin[2];
 		if ($isAdmin){
 			$_SESSION["isAdmin"] = true;
 			header('Location: admin/showOrders/');

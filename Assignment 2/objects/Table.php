@@ -63,7 +63,7 @@ class Table {
 					echo "<tr>";
 				}				
 			} else {
-				if ($this2->trclass != ""){
+				if ($this->trclass != ""){
 					echo "<tr class'".$this->trclass."'>";
 				} else {
 					echo "<tr>";
