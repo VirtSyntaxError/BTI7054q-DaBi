@@ -113,13 +113,14 @@ class Table {
 			echo "<form name='addorremove' action='ajax/addorremove.php' method='post'>";
 			echo "<input type='hidden' name='prev' value=".$_SERVER['REQUEST_URI'].">";
 			for ($j = 0; $j < count($this->rows[$i]); $j++){
-				if ($j == 1 && $i != ($numrows-1)){
-					echo "<td><input type='hidden' name='id' value=".$ids[$i]."><input type='Submit' name='add' value='+' onclick='addItem(\"".$ids[$i]."\");return false;'></td>";
-					echo "<td><input type='hidden' name='id' value=".$ids[$i]."><input type='Submit' name='rem' value='-' onclick='subItem(\"".$ids[$i]."\");return false;'></td>";
-					//echo "<td><form id='addsubtract'><input onclick='add(\"".$ids[$i]."\");' type='button' value='+'/><div id=\"".$ids[$i]."\">".$this->rows[$i][$j]."</div><input onclick='sub(\"".$ids[$i]."\");' type='button' value='-'/></form></td>";
+				if ($j == 2 && $i != ($numrows-1)){
+					echo "<td><input type='hidden' name='id' value=".$ids[$i]."><input type='Submit' name='add' value='+' onclick='addItem(\"".$ids[$i]."\");return false;'><br>";
+					echo $this->rows[$i][$j]."<br>";
+					echo "<input type='hidden' name='id' value=".$ids[$i]."><input type='Submit' name='rem' value='-' onclick='subItem(\"".$ids[$i]."\");return false;'></td>";
 				} else {
-					echo "<td>".$this->rows[$i][$j]."</td>";
-				}				
+					echo "<td>".$this->rows[$i][$j]."</td>";					
+				}
+								
 			}
 			echo "</tr>";
 			echo "</form>";
