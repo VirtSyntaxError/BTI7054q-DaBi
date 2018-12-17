@@ -10,10 +10,7 @@ $menu_array = array(
 		  "id" => 2,)
 );
 
-if (isset($_SESSION["user"])) {
-	$menu_array[] = array("name" => t("LOGOUT"),
-		"id" => 102,);
-} else {
+if (!isset($_SESSION["user"])) {
 	$menu_array[] = array("name" => t("LOGIN"),
 		"id" => 100,);
 	$menu_array[] = array("name" => t("REGISTER"),
@@ -22,6 +19,15 @@ if (isset($_SESSION["user"])) {
 foreach ($menu_array as $menu){
 	writeMenuentry($menu['name'],$menu['id']);	
 }
+
+if (isset($_SESSION["user"])) {
+	echo '<span class="dropdown"><button class="dropdown-button">'.$_SESSION['user'].'</button>';
+    	echo '<span class="dropdown-content">';
+      	writeMenuentry(t("MYORDERS"),104);
+	writeMenuentry(t("LOGOUT"),102);
+    	echo '</span></span>';
+}
+
 echo '<form method="post" class="menuform">';
 $langs = getAvailableLanguages();
 echo '<select class="menuentry" id="lang" onchange="changeLang(document.getElementById(\'lang\').value)">';

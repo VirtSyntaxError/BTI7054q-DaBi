@@ -248,6 +248,10 @@ $texts = array(
 		'de' => 'JavaScript aktivieren, damit die Webseite voll funktionsf&auml;hig ist.',
 		'en' => 'You need JavaScript to properly use this site.'
 	),
+	'MYORDERS' => array(
+		'de' => 'Meine Bestellungen',
+		'en' => 'My orders'
+	),
 	'ERROR_REGISTRATION' => array(
 		'de' => 'Registrierung schlug fehl',
 		'en' => 'There was an error with the registration'

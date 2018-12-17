@@ -41,11 +41,7 @@ if(!isset($_SESSION["lang"])){
 				<div class="nav">
 				<?php 
 					include("menu.php"); 
-	
-					if (isset($_SESSION["user"])) {
-						echo $_SESSION["user"];
-					}
-				?>
+				?>	
 				</div>
 			</div>
 			<div id="headercart">
