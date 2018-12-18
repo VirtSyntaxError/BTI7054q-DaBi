@@ -22,12 +22,12 @@ footer {
 	border-radius: 0 0 1em 1em;
 }
 
-h1 {
+article {
 	padding: 9px 30px;
 }
 
-article {
-	padding: 9px 30px;
+table {
+	text-align: left;
 }
 
 .header-row {
@@ -129,6 +129,7 @@ article {
 .dropdown-content {
   	display: none;
   	position: absolute;
+	text-align: left;
 }
 
 .dropdown:hover .dropdown-content {

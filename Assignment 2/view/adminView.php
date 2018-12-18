@@ -21,12 +21,12 @@ class adminView {
 
 	public function renderOrders() {
 		echo '<article><h1>Admin</h1>';
-		echo '<h2>Last 10 Orders</h2>';
-		$columns = array("timestamp","description","purchasestatus","prename","surname","email");
+		echo '<h2>Last Orders</h2>';
+		$columns = array("date","description","status","prename","surname","email");
 		$rows = array();
 		
 		foreach ($this->adminModel->getOrders() as $purch) {
-			$rows[] = array(gmdate("Y-m-d H:i:s", $purch['PurchaseTimestamp']),$purch['Description'],$purch['PurchaseStatus'],$purch['Prename'],$purch['Surname'],$purch['Email']);
+			$rows[] = array(date("H:i d.m.Y", $purch['PurchaseTimestamp']),$purch['Description'],$purch['PurchaseStatus'],$purch['Prename'],$purch['Surname'],$purch['Email']);
 		}
 	
 		$table = new Table($rows,$columns);
