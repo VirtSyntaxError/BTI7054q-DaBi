@@ -272,6 +272,14 @@ $texts = array(
 		'de' => 'Status',
 		'en' => 'Status'
 	),
+	'ORDERS' => array(
+		'de' => 'Bestellungen',
+		'en' => 'Orders'
+	),
+	'NEWPROD' => array(
+		'de' => 'Neues Produkt',
+		'en' => 'New Product'
+	),
 	'ERROR_REGISTRATION' => array(
 		'de' => 'Registrierung schlug fehl',
 		'en' => 'There was an error with the registration'

@@ -24,6 +24,19 @@ function writeMenuentry($menuname,$menuid){
 	echo ">$menuname</a>";
 }
 
+function writeAdminMenuentry($menuname,$url){
+	if(!isset($_SESSION)){ 
+		session_start(); 
+	}
+	
+	$url = ROOT.$url;
+	echo "<a href='".$url."' class='menuentry' ";
+	//if ($menuid == $id){
+		//echo "id='menuselected'";
+	//}
+	echo ">$menuname</a>";
+}
+
 function addParam($url,$name,$value){
 	if(strpos($url,'?')!==false){
 		$sep='&';

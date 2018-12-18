@@ -28,6 +28,14 @@ if (isset($_SESSION["user"])) {
     	echo '</span></span>';
 }
 
+if (isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == true) {
+	echo '<span class="dropdown"><button class="dropdown-button">Admin</button>';
+    	echo '<span class="dropdown-content">';
+	writeAdminMenuentry(t("ORDERS"),"admin/showOrders/");
+	writeAdminMenuentry(t("NEWPROD"),"admin/newProduct/");
+    	echo '</span></span>';
+}
+
 echo '<form method="post" class="menuform">';
 $langs = getAvailableLanguages();
 echo '<select class="menuentry" id="lang" onchange="changeLang(document.getElementById(\'lang\').value)">';
