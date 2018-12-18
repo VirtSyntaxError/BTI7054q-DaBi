@@ -6,6 +6,10 @@ class User {
 		return $this->Email;
 	}
 
+	public function getUserId(){
+		return $this->UserID;
+	}
+
 	public function getPrename(){
 		return $this->Prename;
 	}

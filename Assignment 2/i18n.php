@@ -252,6 +252,26 @@ $texts = array(
 		'de' => 'Meine Bestellungen',
 		'en' => 'My orders'
 	),
+	'NOORDERS' => array(
+		'de' => 'Es sind keine Bestellungen vorhanden',
+		'en' => 'There are no orders'
+	),
+	'ORDERNR' => array(
+		'de' => 'Bestellungsnummer',
+		'en' => 'Order number'
+	),
+	'DATE' => array(
+		'de' => 'Datum',
+		'en' => 'Date'
+	),
+	'DESCRIPTION' => array(
+		'de' => 'Beschreibung',
+		'en' => 'Description'
+	),
+	'STATUS' => array(
+		'de' => 'Status',
+		'en' => 'Status'
+	),
 	'ERROR_REGISTRATION' => array(
 		'de' => 'Registrierung schlug fehl',
 		'en' => 'There was an error with the registration'

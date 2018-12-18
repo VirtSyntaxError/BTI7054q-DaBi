@@ -29,8 +29,8 @@ require_once("autoloader.php");
 							"PurchaseID" => $purch[1]));
 	}
 ?>
-<h1><?php echo t("CONFIRMATION")?></h1>
 <article>
+<h1><?php echo t("CONFIRMATION")?></h1>
 <p><?php echo t("PRODUCTINFORMATION")?>:</p>
 <p>
 <?php 

@@ -6,6 +6,22 @@ class Purchase {
 		return sprintf("%d) %d - %s - %s - %d", $this->PurchaseID, $this->PurchaseTimestamp, $this->Description, $this->PurchaseStatus, $this->UserID);
 	}
 
+	public function getId() {
+		return $this->PurchaseID;
+	}
+
+	public function getTimestamp() {
+		return $this->PurchaseTimestamp;
+	}
+
+	public function getDescription() {
+		return $this->Description;
+	}
+
+	public function getStatus() {
+		return $this->PurchaseStatus;
+	}
+
 	static public function getPurchases() {
 		$purchases = array();
 		$res = DB::doQuery(
@@ -25,6 +41,19 @@ class Purchase {
 		);
 		if (!$res) return null;
 		return $res->fetch_object(get_class());
+	}
+
+	static public function getPurchaseByUserId($id) {
+		$purchases = array();
+		$id = (int) $id;
+		$res = DB::doQuery(
+			"SELECT * FROM Purchase WHERE UserID = $id"
+		);
+		if (!$res) return null;
+		while ($purchase = $res->fetch_object(get_class())){
+			$purchases[] = $purchase;
+		}
+		return $purchases;
 	}
 
 	static public function delete($id) {
