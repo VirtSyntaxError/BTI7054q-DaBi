@@ -33,6 +33,7 @@ if (isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == true) {
     	echo '<span class="dropdown-content">';
 	writeAdminMenuentry(t("ORDERS"),"admin/showOrders/");
 	writeAdminMenuentry(t("NEWPROD"),"admin/newProduct/");
+	writeAdminMenuentry(t("USERS"),"admin/showUsers/");
     	echo '</span></span>';
 }
 

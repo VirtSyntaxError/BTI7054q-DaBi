@@ -23,6 +23,12 @@ class adminController {
 		$this->adminView->renderFooter();
 	}
 
+	public function showUsers() {
+		$this->adminView->renderHeader();
+		$this->adminView->renderUsers();
+		$this->adminView->renderFooter();
+	}
+
 	public function insertProduct() {
 		if (isset($_POST['Productname'])){
 			$id = $this->adminModel->insertProduct($_POST);

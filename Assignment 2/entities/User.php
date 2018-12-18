@@ -1,9 +1,13 @@
 <?php
 class User {
-	private $UserID, $Prename, $Surname, $Password, $Email, $Address, $City, $ZIP, $Country;
+	private $UserID, $Prename, $Surname, $Password, $Email, $Address, $City, $ZIP, $Country, $isAdmin;
 
 	public function getLogin(){
 		return $this->Email;
+	}
+
+	public function getIsAdmin(){
+		return $this->isAdmin;
 	}
 
 	public function getUserId(){
@@ -83,7 +87,7 @@ class User {
 		$stmt = DB::getInstance()->prepare(
 			"INSERT INTO Users ".
 			"(Prename, Surname, Password, Email, Address, City, ZIP, Country, isAdmin) ".
-			"VALUES (?,?,?,?,?,?,?,?,0)"
+			"VALUES (?,?,?,?,?,?,?,?,?)"
 		);
 		if (!$stmt) return false;
 		$success = $stmt->bind_param('ssssssis',
@@ -94,7 +98,8 @@ class User {
 			$values['address'],
 			$values['city'],
 			$values['zip'],
-			$values['country']
+			$values['country'],
+			$values['isadmin']
 		);
 		if (!$success) return false;
 		return $stmt->execute();
@@ -110,12 +115,13 @@ class User {
 		$this->City = $db->escape_string($values['City']);
 		$this->ZIP = $db->escape_string($values['ZIP']);
 		$this->Country = $db->escape_string($values['Country']);
+		$this->isAdmin = $db->escape_string($values['isAdmin']);
 	}
 
 	public function save() {
 		$sql = sprintf(
 			"UPDATE User
-			 SET Prename='%s', Surname='%s', Password='%s', Email='%s', Address='%s', City='%s', ZIP='%d', Country='%s'
+			 SET Prename='%s', Surname='%s', Password='%s', Email='%s', Address='%s', City='%s', ZIP='%d', Country='%s', isAdmin='%d'
 			 WHERE UserID = %d;",
 			 $this->Prename,
 			 $this->Surname,
@@ -125,6 +131,7 @@ class User {
 			 $this->City,
 			 $this->ZIP,
 			 $this->Country,
+			 $this->isAdmin,
 			 $this->UserID
 		);
 		$res = DB::doQuery($sql);

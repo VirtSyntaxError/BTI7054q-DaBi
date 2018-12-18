@@ -22,11 +22,16 @@ class adminView {
 	public function renderOrders() {
 		echo '<article><h1>Admin</h1>';
 		echo '<h2>Last Orders</h2>';
-		$columns = array("date","description","status","prename","surname","email");
+		$columns = array("date","description","status","prename","surname","email","changestatus");
 		$rows = array();
 		
 		foreach ($this->adminModel->getOrders() as $purch) {
-			$rows[] = array(date("H:i d.m.Y", $purch['PurchaseTimestamp']),$purch['Description'],$purch['PurchaseStatus'],$purch['Prename'],$purch['Surname'],$purch['Email']);
+			$changestatus = '<select id="status-'.$purch['PurchaseID'].'" onChange="changeStatus(document.getElementById(\'status-'.$purch['PurchaseID'].'\').value,'.$purch['PurchaseID'].')">
+						<option value="" selected disabled hidden>Choose here</option>
+            					<option value="open">open</option>
+            					<option value="sent">sent</option>
+        				</select>';	
+			$rows[] = array(date("H:i d.m.Y", $purch['PurchaseTimestamp']),$purch['Description'],'<span id="state-'.$purch['PurchaseID'].'">'.$purch['PurchaseStatus'].'</span>',$purch['Prename'],$purch['Surname'],$purch['Email'],$changestatus);
 		}
 	
 		$table = new Table($rows,$columns);
@@ -34,6 +39,23 @@ class adminView {
 		echo '</article>';
 
 	}
+
+	public function renderUsers() {
+		echo '<article><h1>Admin</h1>';
+		echo '<h2>Users</h2>';
+		$columns = array("prename","surname","email","admin");
+		$rows = array();
+		
+		foreach ($this->adminModel->getUsers() as $user) {
+			$rows[] = array($user->getPrename(),$user->getSurname(),$user->getEmail(),$user->getIsAdmin());
+		}
+	
+		$table = new Table($rows,$columns);
+		$table->render();
+		echo '</article>';
+
+	}
+
 
 	public function renderNewProduct() {
 		echo '<article><h1>Admin</h1>';

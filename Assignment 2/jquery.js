@@ -93,3 +93,11 @@ function changeLang(lang) {
 	});
 }
 
+function changeStatus(state, id) {
+	$( function() {
+		$.post("ajax/changestatus.php", {id: id, state: state}, function(data) {
+			$("#state-"+id).html(data);
+		});
+	});
+}
+

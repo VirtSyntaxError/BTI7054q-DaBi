@@ -272,6 +272,10 @@ $texts = array(
 		'de' => 'Status',
 		'en' => 'Status'
 	),
+	'CHANGESTATUS' => array(
+		'de' => 'Status &auml;ndern',
+		'en' => 'Change status'
+	),
 	'ORDERS' => array(
 		'de' => 'Bestellungen',
 		'en' => 'Orders'
@@ -279,6 +283,14 @@ $texts = array(
 	'NEWPROD' => array(
 		'de' => 'Neues Produkt',
 		'en' => 'New Product'
+	),
+	'USERS' => array(
+		'de' => 'Benutzer',
+		'en' => 'Users'
+	),
+	'ADMIN' => array(
+		'de' => 'Administrator',
+		'en' => 'Administrator'
 	),
 	'ERROR_REGISTRATION' => array(
 		'de' => 'Registrierung schlug fehl',

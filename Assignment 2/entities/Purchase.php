@@ -22,6 +22,10 @@ class Purchase {
 		return $this->PurchaseStatus;
 	}
 
+	public function setStatus($status) {
+		$this->PurchaseStatus = $status;
+	}
+
 	static public function getPurchases() {
 		$purchases = array();
 		$res = DB::doQuery(
