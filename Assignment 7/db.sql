@@ -142,6 +142,17 @@ CREATE TABLE StrapProduct
   CONSTRAINT `FK_StrapProductProduct` FOREIGN KEY (ProductID) REFERENCES Product(ProductID),
   CONSTRAINT `FK_StrapProductStrap` FOREIGN KEY (StrapID) REFERENCES Strap(StrapID)
 );
+INSERT INTO Users(Prename,Surname,Password,Email,Address,City,ZIP,Country,isAdmin) VALUES (
+	'guestprename',
+	'guestsurname',
+	'$2y$10$Lkx4m3PAGxs5uUi1qEMA0.cRl7PHatrzaKM6YkauEv3qLvynM5A4G',
+	'guestmail',
+	'gueststreet',
+	'guestcity',
+	'guestzip',
+	'guestCountry',
+	0
+);
 
 INSERT INTO Users(Prename,Surname,Password,Email,Address,City,ZIP,Country,isAdmin) VALUES (
 	'Dario',
