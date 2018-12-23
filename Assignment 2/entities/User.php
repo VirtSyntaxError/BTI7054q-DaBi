@@ -90,7 +90,8 @@ class User {
 			"VALUES (?,?,?,?,?,?,?,?,?)"
 		);
 		if (!$stmt) return false;
-		$success = $stmt->bind_param('ssssssis',
+		$isAdmin = 0;
+		$success = $stmt->bind_param('ssssssisi',
 			$values['prename'],
 			$values['surname'],
 			$values['pw'],
@@ -99,10 +100,11 @@ class User {
 			$values['city'],
 			$values['zip'],
 			$values['country'],
-			$values['isadmin']
+			$isAdmin
 		);
 		if (!$success) return false;
-		return $stmt->execute();
+		$stmt->execute();
+		return $stmt->insert_id;
 	}
 
 	public function set($values){

@@ -4,7 +4,8 @@ require_once("autoloader.php");
 
 if(isset($_SESSION['user'])){
 	$user = User::getUserByEmail($_SESSION['user']);
-	$name = $user->getPrename()." ".$user->getSurname();
+	$prename = $user->getPrename();
+	$surname = $user->getSurname();
 	$email = $user->getEmail();
 	$address = $user->getAddress();
 	$zip = $user->getZip();
@@ -12,7 +13,8 @@ if(isset($_SESSION['user'])){
 	$country = $user->getCountry();
 
 } else {
-	$name = $_COOKIE['name'] ?? "";
+	$prename = $_COOKIE['prename'] ?? "";
+	$surname = $_COOKIE['surname'] ?? "";
 	$email = $_COOKIE['email'] ?? "";
 	$address = $_COOKIE['address'] ?? "";
 	$zip = $_COOKIE['zip'] ?? "";
@@ -25,8 +27,12 @@ if(isset($_SESSION['user'])){
 <form  method="post" id="payment_form" onsubmit="return confirm('<?php echo t("BINDINGCONTRACT")?>');" action="index.php?id=5">
 	<h3><?php echo t("ENTER_DATA")?></h3>
 	<p>
-		<label><?php echo t("NAME")?>:</label>
-		<input name="name" required pattern="^[A-Za-zäöü ,.'-]{3,}$" value="<?php echo $name ?>"/>
+		<label><?php echo t("PRENAME")?>:</label>
+		<input name="prename" required pattern="^[A-Za-zäöü ,.'-]{3,}$" value="<?php echo $prename ?>"/>
+	</p>
+	<p>
+		<label><?php echo t("SURNAME")?>:</label>
+		<input name="surname" required pattern="^[A-Za-zäöü ,.'-]{3,}$" value="<?php echo $surname ?>"/>
 	</p>
 	<p>
 		<label><?php echo t("EMAIL")?>:</label>
@@ -47,9 +53,9 @@ if(isset($_SESSION['user'])){
 	<p>
 		<label><?php echo t("COUNTRY")?>:</label>
 		<select name="country">
-			<option value="ch" selected><?php echo t("CH")?></option>
-			<option value="de"><?php echo t("DE")?></option>
-			<option value="at"><?php echo t("AT")?></option>
+			<option value="CH" <?php if ($country=="CH"){echo "selected";}?>><?php echo t("CH")?></option>
+			<option value="DE" <?php if ($country=="DE"){echo "selected";}?>><?php echo t("DE")?></option>
+			<option value="AT" <?php if ($country=="AT"){echo "selected";}?>><?php echo t("AT")?></option>
 		</select>
 	</p>
 	<p>
@@ -67,13 +73,7 @@ if(isset($_SESSION['user'])){
 		<textarea name="comment" form="payment_form" placeholder="<?php echo t("ENTER_COMMENT")?>"></textarea>
 	</p>
 	<p>
-		<?php
-			if (!isset($_SESSION['user'])){
-				echo "<a href='index.php?id=100'>".t("PLEASE_LOG_IN")."</a>";
-			}
-			else {
-				echo "<button value='Submit' type='submit'>Submit</button>";
-			}?>
+		<button value='Submit' type='submit'>Submit</button>
 	</p>
 </form>
 </article>

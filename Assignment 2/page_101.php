@@ -33,7 +33,12 @@ $rows[] = array(t("EMAIL"),'<input name="email">');
 $rows[] = array(t("ADDRESS"),'<input name="address">');
 $rows[] = array(t("CITY"),'<input name="city">');
 $rows[] = array(t("ZIP"),'<input name="zip">');
-$rows[] = array(t("COUNTRY"),'<input name="country">');
+$rows[] = array(t("COUNTRY"),'
+		<select name="country">
+			<option value="CH" selected>'.t("CH").'</option>
+			<option value="DE">'.t("DE").'</option>
+			<option value="AT">'.t("AT").'</option>
+		</select>');
 $rows[] = array("",'<input type="submit" value="'.t("REGISTER").'">');
 
 $table = new Table($rows,$columns);

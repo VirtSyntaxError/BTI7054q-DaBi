@@ -1,20 +1,33 @@
 <?php
 require_once("autoloader.php");
 	$t = time()+60*60*24*30;
-	setcookie("name", $_POST["name"], $t);
+	setcookie("prename", $_POST["prename"], $t);
+	setcookie("surname", $_POST["surname"], $t);
 	setcookie("email", $_POST["email"], $t);
 	setcookie("address", $_POST["address"], $t);
 	setcookie("zip", $_POST["zip"], $t);
 	setcookie("city", $_POST["city"], $t);
-	if (!isset($_SESSION['user'])){
-		echo t("PLEASE_LOG_IN");
-		exit;
-	};
+	setcookie("country", $_POST["country"], $t);
+	$userID = 0;
+	if (isset($_SESSION["userID"])){
+		$userID = $_SESSION["userID"];
+	} else {
+		$userID = User::insert(array(
+						"prename" => $_POST["prename"],
+						"surname" => $_POST["surname"],
+						"pw" => password_hash("^XvuJJrd=rOd*4", PASSWORD_BCRYPT),
+						"email" => $_POST["email"],
+						"address" => $_POST["address"],
+						"city" => $_POST["city"],
+						"zip" => $_POST["zip"],
+						"country" => $_POST["country"]
+						));
+	}
 	$purch = Purchase::insert(array(
 							"PurchaseTimestamp" => time(),
 							"Description" => $_POST["comment"],
 							"PurchaseStatus" => 'open',
-							"UserID" => $_SESSION["userID"]));
+							"UserID" => $userID));
 	if (!$purch){
 		echo "ERROR inserting purchase to DB<br>";
 		exit;
@@ -38,7 +51,8 @@ require_once("autoloader.php");
 	$_SESSION['cart']->deleteAll();
 ?></p>
 <p><?php echo t("ADDRESS")?>:</p>
-<p><?php echo $_POST["name"]?></p>
+<p><?php echo $_POST["prename"]?></p>
+<p><?php echo $_POST["surname"]?></p>
 <p><?php echo $_POST["address"] ?></p>
 <p><?php echo $_POST["zip"]." ".$_POST["city"]?></p>
 </article>
