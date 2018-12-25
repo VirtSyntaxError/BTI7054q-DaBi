@@ -24,10 +24,25 @@ footer {
 
 article {
 	padding: 9px 30px;
+	text-align: center;
 }
 
 table {
-	text-align: left;
+	margin: auto;
+}
+
+.button {
+  	background-color: transparent;
+	color: black;
+	text-decoration: none;
+	border: none;
+  	-webkit-transition-duration: 0.4s;
+  	transition-duration: 0.4s;
+}
+
+.button:hover {
+	background-color: rgba(0,0,0,0.7);
+  	color: white;
 }
 
 .header-row {
@@ -51,6 +66,56 @@ table {
 
 .header-cell-nojs {
 	display: table-cell;
+}
+
+.thumb img {
+	height: 100px;
+}
+
+.thumb span { 
+	position:absolute;
+	visibility:hidden;
+}
+
+.thumb span img {
+	height: 250px;
+}
+
+.thumb:hover, .thumb:hover span { 
+	visibility:visible;
+}
+
+.card {
+  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  	width: 250px;
+  	text-align: center;
+	background-color: white;
+	margin: auto;
+}
+
+.card img {
+	max-height: 200px;
+}
+
+.price {
+  	color: grey;
+  	font-size: 22px;
+}
+
+.card input {
+  	border: none;
+  	outline: 0;
+  	padding: 12px;
+  	color: white;
+  	background-color: black;
+  	text-align: center;
+  	cursor: pointer;
+  	width: 100%;
+  	font-size: 18px;
+}
+
+.card input:hover {
+  	opacity: 0.7;
 }
 
 .link {
@@ -199,4 +264,36 @@ table {
 
 #nav.stick span {
 	margin-top: 0.3em;
+}
+
+#filter {
+	border-radius: 0.5em;
+	border-color: black;
+	font-size: 18px;
+}
+
+#productoutput table {
+	width: 100%;
+}
+
+
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1200px)  {
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		border: none;
+		position: relative;
+	}
+	
+	article {
+		padding-left: 0;
+	}
 }

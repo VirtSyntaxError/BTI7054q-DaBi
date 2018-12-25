@@ -1,27 +1,37 @@
 <?php
 require_once("autoloader.php");
 
+if(!isset($_SESSION)){ 
+	session_start(); 
+}
+$lang = $_SESSION["lang"];
 $articlenumber = $_POST["articlenumber"];
 $_SESSION["articlenumber"] = $articlenumber;
 $colorproducts = ColorProduct::getColorByProductId($articlenumber);
 $strapproducts = StrapProduct::getStrapByProductId($articlenumber);
 $prod = Product::getProductById($articlenumber, $lang);
 $categories = array();
-	$brand = Brand::getBrandById($prod->getBrand());
-	$categoryproducts = CategoryProduct::getCategoryByProductId($prod->getID());
-	foreach ($categoryproducts as $categoryproduct){
-		$category = Category::getCategoryById($categoryproduct->getCategoryId(),$lang);
-		$categories[] = $category->getName();
-	}
+$brand = Brand::getBrandById($prod->getBrand());
+$categoryproducts = CategoryProduct::getCategoryByProductId($prod->getID());
+foreach ($categoryproducts as $categoryproduct){
+	$category = Category::getCategoryById($categoryproduct->getCategoryId(),$lang);
+	$categories[] = $category->getName();
+}
 
 echo "<article><h1>".t("CUSTOMIZEPROD")."</h1>";
 	echo "<article>".$prod->getName()."</article>";
 	echo "<ul>";
+	echo "<p class='thumb'><img src='img/".$prod->getImage()."'><span><img src='img/".$prod->getImage()."'></span></p>";
 	echo "<li> ".t("ARTICLENUMBER").": ".$prod->getID()."</li>";
 	echo "<li> ".t("BRAND").": ".$brand->getName()."</li>";
 	echo "<li> ".t("CATEGORY").": ".join(",",$categories)."</li>";
 	echo "<li> ".t("PRICE").": ".$prod->getPrice()."</li>";
 	echo "</ul>";
+
+//$toprows = array("<p class='thumb'><img src='img/".$prod->getImage()."'><span><img src='img/".$prod->getImage()."'></span></p>");
+//$topcolumns = array($prod->getName());
+//$toptable = new Table($toprows,$topcolumns);
+//$toptable->render();
 
 echo '<form method="post" action="index.php?id=6">';
 echo '<article><h2>'.t("STRAPCOLOR").'</h2>';

@@ -55,11 +55,14 @@ if (isset($_GET["filter"])) {
 		$products = $newproducts;
 	}
 } else {
-	echo '<article><article><input id="filter" onkeyup="applyFilter()" name="filter" placeholder="Filter.."></article><br>';	
-	echo '<ul><article id="productoutput">';
+	echo '<article><input id="filter" onkeyup="applyFilter()" name="filter" placeholder="Filter.."><br>';	
+	echo '<article id="productoutput">';
 }
 
 
+	echo '<table>';
+	echo '<tr>';
+	$count = 0;
 foreach ($products as $prod){
 	$categories = array();
 	$brand = Brand::getBrandById($prod->getBrand());
@@ -68,22 +71,28 @@ foreach ($products as $prod){
 		$category = Category::getCategoryById($categoryproduct->getCategoryId(),$lang);
 		$categories[] = $category->getName();
 	}
-
+	echo '<td>';
 	echo '<form method="post" action="index.php?id=3">';
-	echo '<li>'.$prod->getName();
-	echo "<ul>";
-	echo "<li> ".t("ARTICLENUMBER").": ".$prod->getID()."</li>";
-	echo "<li> ".t("BRAND").": ".$brand->getName()."</li>";
-	echo "<li> ".t("CATEGORY").": ".join(",",$categories)."</li>";
-	echo "<li> ".t("PRICE").": ".$prod->getPrice()."</li>";
-	echo "<li><img src='img/".$prod->getImage()."' height='100'></li>";
-	echo "</ul>";
-	echo "</li>";
+	echo '<div class="card">';
+  	echo '<img src="img/'.$prod->getImage().'" alt="'.$prod->getName().'">';
+  	echo '<h1>'.$prod->getName().'</h1>';
+  	echo '<p class="price">'.$prod->getPrice().'.-</p>';
+  	echo '<p>'.join(", ",$categories).'</p>';
 	echo '<input type="hidden" name="articlenumber" value="'.$prod->getID().'">';
-	echo '<input type="submit" value="'.t("DETAILS").'">';
+  	echo '<p><input type="submit" value="'.t("DETAILS").'"></p>';
+	echo '</div>';
 	echo '</form>';
+	echo '<td>';
+	$count++;
+
+	if ($count >= 4) {
+		echo '</tr><tr>';
+		$count = 0;
+	}
 }
 
+	echo '</tr></table>';
+
 if (!isset($_GET["filter"])) {
-	echo '</ul></article></article>';
+	echo '</article></article>';
 }
