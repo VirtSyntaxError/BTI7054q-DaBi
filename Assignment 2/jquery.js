@@ -1,9 +1,9 @@
 function sticky_relocate() {
       var window_top = $(window).scrollTop();
-      var div_top = $('#beforenav').offset().top;
+      var div_top = $('#beforenav').offset().top + 40;
       if (window_top > div_top) {
         $('#nav').addClass('stick');
-      } else {
+      } else if (window_top < div_top - 40) {
         $('#nav').removeClass('stick');
       }
 }

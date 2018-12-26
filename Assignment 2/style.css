@@ -88,6 +88,7 @@ table {
 .card {
   	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   	width: 250px;
+  	max-height: 500px;
   	text-align: center;
 	background-color: white;
 	margin: auto;
@@ -95,11 +96,26 @@ table {
 
 .card img {
 	max-height: 200px;
+	max-width: 100%;
 }
 
-.price {
+.card h1 {
+	padding: 3px;
+}
+
+.card p {
+	padding: 3px;
+}
+
+.card p.desc {
+	overflow: hidden;
+	max-height: 30px;
+  	font-size: 0.8em;
+}
+
+.card p.price {
   	color: grey;
-  	font-size: 22px;
+  	font-size: 1.3em;
 }
 
 .card input {
@@ -111,7 +127,7 @@ table {
   	text-align: center;
   	cursor: pointer;
   	width: 100%;
-  	font-size: 18px;
+  	font-size: 1.1em;
 }
 
 .card input:hover {
@@ -253,6 +269,8 @@ table {
 	width: 100%;
 	position: fixed;
 	top: 0;
+	left: 0;
+	right: 0;
 	background-color: rgba(0,0,0,0.7);
 	display: table;
 }
@@ -267,19 +285,29 @@ table {
 }
 
 #filter {
-	border-radius: 0.5em;
-	border-color: black;
-	font-size: 18px;
+	border-radius: 0.2em;
+	border: 0.1em solid white;
+	font-size: 1.1em;
+	background-image: url('img/search.png');
+    	background-repeat: no-repeat;
+    	background-position: right;
+	background-size: 1em;
+	min-width: 20em;
+}
+
+#filter:hover {
+	border: 0.1em solid black;
 }
 
 #productoutput table {
-	width: 100%;
+	width: 80%;
+	border-collapse: separate; 
+	border-spacing: 1em;
 }
 
 
 @media 
-only screen and (max-width: 760px),
-(min-device-width: 768px) and (max-device-width: 1200px)  {
+max-width: 760px {
 
 	/* Force table to not be like tables anymore */
 	table, thead, tbody, th, td, tr { 
@@ -289,6 +317,26 @@ only screen and (max-width: 760px),
 	tr { border: 1px solid #ccc; }
 	
 	td { 
+		border: none;
+		position: relative;
+	}
+	
+	article {
+		padding-left: 0;
+	}
+}
+
+@media 
+(min-device-width: 768px) and (max-device-width: 1200px)  {
+
+	/* Force table to not be like tables anymore */
+	td.even { 
+		display: block; 
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td.even { 
 		border: none;
 		position: relative;
 	}

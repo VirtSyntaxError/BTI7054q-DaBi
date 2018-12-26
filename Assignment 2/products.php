@@ -55,7 +55,7 @@ if (isset($_GET["filter"])) {
 		$products = $newproducts;
 	}
 } else {
-	echo '<article><input id="filter" onkeyup="applyFilter()" name="filter" placeholder="Filter.."><br>';	
+	echo '<article><input id="filter" onkeyup="applyFilter()" name="filter" placeholder=""><br>';	
 	echo '<article id="productoutput">';
 }
 
@@ -72,17 +72,19 @@ foreach ($products as $prod){
 		$categories[] = $category->getName();
 	}
 	echo '<td>';
+	echo '<p>';
 	echo '<form method="post" action="index.php?id=3">';
 	echo '<div class="card">';
   	echo '<img src="img/'.$prod->getImage().'" alt="'.$prod->getName().'">';
   	echo '<h1>'.$prod->getName().'</h1>';
   	echo '<p class="price">'.$prod->getPrice().'.-</p>';
   	echo '<p>'.join(", ",$categories).'</p>';
+  	echo '<p class="desc">'.$prod->getDescription().'</p>';
 	echo '<input type="hidden" name="articlenumber" value="'.$prod->getID().'">';
-  	echo '<p><input type="submit" value="'.t("DETAILS").'"></p>';
+  	echo '<input type="submit" value="'.t("DETAILS").'">';
 	echo '</div>';
 	echo '</form>';
-	echo '<td>';
+	echo '</p>';
 	$count++;
 
 	if ($count >= 4) {
