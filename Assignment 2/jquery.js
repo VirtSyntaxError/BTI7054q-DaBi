@@ -101,3 +101,28 @@ function changeStatus(state, id) {
 	});
 }
 
+function changeOffer(offer, id) {
+	$( function() {
+		$.post("ajax/changeoffer.php", {id: id, offer: offer}, function(data) {
+			$("#offer-"+id).val(data);
+		});
+		if ( offer == 1 ) {
+			$("#slctdisc-"+id).removeClass("notvisible");
+			$("#disc-"+id).addClass("notvisible");
+		} else {
+			$("#slctdisc-"+id).addClass("notvisible");
+			$("#disc-"+id).removeClass("notvisible");
+		}
+	});
+}
+
+function changeDiscount(discount, id) {
+	$( function() {
+		$.post("ajax/changediscount.php", {id: id, discount: discount}, function(data) {
+			$("#discount-"+id).val(data);
+			$("#disc-"+id).html(data+"%");
+		});
+
+	});
+}
+

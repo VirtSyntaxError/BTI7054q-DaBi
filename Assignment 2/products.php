@@ -77,7 +77,11 @@ foreach ($products as $prod){
 	echo '<div class="card">';
   	echo '<img src="img/'.$prod->getImage().'" alt="'.$prod->getName().'">';
   	echo '<h1>'.$prod->getName().'</h1>';
-  	echo '<p class="price">'.$prod->getPrice().'.-</p>';
+	if($prod->getOffer()) {
+  		echo '<p class="priceoffer">'.round($prod->getPrice()*0.01*(100-$prod->getDiscount())).'.- <s>'.$prod->getPrice().'.-</s></p>';
+	} else {
+  		echo '<p class="price">'.$prod->getPrice().'.-</p>';
+	}
   	echo '<p>'.join(", ",$categories).'</p>';
   	echo '<p class="desc">'.$prod->getDescription().'</p>';
 	echo '<input type="hidden" name="articlenumber" value="'.$prod->getID().'">';

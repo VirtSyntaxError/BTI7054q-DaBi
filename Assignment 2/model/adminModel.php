@@ -25,6 +25,10 @@ class adminModel {
 		return Color::getColors($lang);
 	}
 
+	public function getProducts($lang) {
+		return Product::getProducts($lang);
+	}
+
 	public function insertProduct($parts) { 
 		$id = Product::insert($parts);
 		return $id;

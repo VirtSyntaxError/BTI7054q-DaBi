@@ -17,6 +17,12 @@ class adminController {
 		$this->adminView->renderFooter();
 	}
 
+	public function showProducts() {
+		$this->adminView->renderHeader();
+		$this->adminView->renderProducts();
+		$this->adminView->renderFooter();
+	}
+
 	public function newProduct() {
 		$this->adminView->renderHeader();
 		$this->adminView->renderNewProduct();
@@ -44,7 +50,7 @@ class adminController {
 				}
 			}
 		}
-
+		header('Location: ../showProducts/');
 	}
 
 }

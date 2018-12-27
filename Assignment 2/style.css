@@ -31,6 +31,10 @@ table {
 	margin: auto;
 }
 
+span.notvisible {
+	display: none;
+}
+
 .button {
   	background-color: transparent;
 	color: black;
@@ -115,6 +119,11 @@ table {
 
 .card p.price {
   	color: grey;
+  	font-size: 1.3em;
+}
+
+.card p.priceoffer {
+  	color: red;
   	font-size: 1.3em;
 }
 

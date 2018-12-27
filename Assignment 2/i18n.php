@@ -168,6 +168,10 @@ $texts = array(
 		'de' => 'Falscher Username und/oder Passwort',
 		'en' => 'Wrong Username and/or Password'
 	),
+	'BACK' => array(
+		'de' => 'Zur&uuml;ck',
+		'en' => 'Back'
+	),
 	'PLEASE_LOG_IN' => array(
 		'de' => 'Bitte loggen Sie sich ein',
 		'en' => 'Please log in'
@@ -280,6 +284,10 @@ $texts = array(
 		'de' => 'Bestellungen',
 		'en' => 'Orders'
 	),
+	'10ORDERS' => array(
+		'de' => 'Bestellungen',
+		'en' => 'Orders'
+	),
 	'NEWPROD' => array(
 		'de' => 'Neues Produkt',
 		'en' => 'New Product'
@@ -291,6 +299,30 @@ $texts = array(
 	'ADMIN' => array(
 		'de' => 'Administrator',
 		'en' => 'Administrator'
+	),
+	'PRODUCTS' => array(
+		'de' => 'Produkte',
+		'en' => 'Products'
+	),
+	'OFFER' => array(
+		'de' => 'Aktion',
+		'en' => 'Offer'
+	),
+	'YES' => array(
+		'de' => 'Ja',
+		'en' => 'Yes'
+	),
+	'NO' => array(
+		'de' => 'Nein',
+		'en' => 'No'
+	),
+	'TODAYSOFFER' => array(
+		'de' => 'Heutige Aktionen',
+		'en' => 'Todays Offers'
+	),
+	'DISCOUNT' => array(
+		'de' => 'Rabatt',
+		'en' => 'Discount'
 	),
 	'ERROR_REGISTRATION' => array(
 		'de' => 'Registrierung schlug fehl',
