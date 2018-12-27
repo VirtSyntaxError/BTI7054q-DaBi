@@ -8,6 +8,7 @@ echo '<article id="productoutput"><h1>'.t("TODAYSOFFER").'</h1>';
 echo '<table>';
 echo '<tr>';
 
+$lang = $_SESSION["lang"];
 $products = Product::getProductsOnOffer($lang);
 
 $count = 0;
