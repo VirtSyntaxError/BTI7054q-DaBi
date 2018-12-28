@@ -13,6 +13,20 @@ $(document).ready(function() {
       	sticky_relocate();
 });
 
+function showMenu(open) {
+	if (open) {
+		$('.dropdown-content-mobile').addClass('overlay');
+		$('.dropdown-content').addClass('overlay');
+		$('#closemenu').css("display","block");
+		$('#openmenu').css("display","none");
+	} else {
+		$('.dropdown-content-mobile').removeClass('overlay');
+		$('.dropdown-content').removeClass('overlay');
+		$('#openmenu').css("display","block");
+		$('#closemenu').css("display","none");
+	}
+}
+
 function showAGB() {
 $( function() {
     $( "#dialog-confirm" ).dialog({
@@ -126,3 +140,10 @@ function changeDiscount(discount, id) {
 	});
 }
 
+function showOverlay() {
+	$("#overlay").css("display","block");	
+}
+
+function noOverlay() {
+	$("#overlay").css("display","none");	
+}

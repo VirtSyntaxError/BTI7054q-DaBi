@@ -23,7 +23,7 @@ footer {
 }
 
 article {
-	padding: 9px 30px;
+	padding: 30px;
 	text-align: center;
 }
 
@@ -72,8 +72,13 @@ span.notvisible {
 	display: table-cell;
 }
 
-.thumb img {
-	height: 100px;
+.flex-container {
+	display: flex;
+	justify-content: center;
+  	align-items: flex-start;
+	flex-wrap: wrap;
+	align-content: space-evenly;
+	margin: 20px;
 }
 
 .thumb span { 
@@ -82,7 +87,7 @@ span.notvisible {
 }
 
 .thumb span img {
-	height: 250px;
+	height: 450px;
 }
 
 .thumb:hover, .thumb:hover span { 
@@ -92,10 +97,9 @@ span.notvisible {
 .card {
   	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   	width: 250px;
-  	max-height: 500px;
-  	text-align: center;
+	max-height: 500px;
 	background-color: white;
-	margin: auto;
+	margin: 20px;
 }
 
 .card img {
@@ -103,11 +107,11 @@ span.notvisible {
 	max-width: 100%;
 }
 
-.card h1 {
+.card h1, .cardfull h1 {
 	padding: 3px;
 }
 
-.card p {
+.card p, .cardfull p {
 	padding: 3px;
 }
 
@@ -117,17 +121,17 @@ span.notvisible {
   	font-size: 0.8em;
 }
 
-.card p.price {
+.card p.price, .cardfull p.price  {
   	color: grey;
   	font-size: 1.3em;
 }
 
-.card p.priceoffer {
+.card p.priceoffer, .cardfull p.priceoffer {
   	color: red;
   	font-size: 1.3em;
 }
 
-.card input {
+.card input, .cardfull input {
   	border: none;
   	outline: 0;
   	padding: 12px;
@@ -139,8 +143,24 @@ span.notvisible {
   	font-size: 1.1em;
 }
 
-.card input:hover {
+.card input:hover, .cardfull input:hover {
   	opacity: 0.7;
+}
+
+.cardfull {
+  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  	width: 450px;
+	background-color: white;
+	margin: 20px;
+}
+
+.cardfull img {
+	max-height: 400px;
+	max-width: 100%;
+}
+
+.cardfull p.desc {
+  	font-size: 0.8em;
 }
 
 .link {
@@ -206,43 +226,64 @@ span.notvisible {
 	background-color: black;
 }
 
-.dropdown-button {
+.dropdown-button, .dropdown-button-mobile {
   	border: none;
 	color: white;
   	outline: none;
   	background-color: inherit;
-  	font-family: inherit; /* Important for vertical align on mobile phones */
-  	font-size: inherit; /* Important for vertical align on mobile phones */
-  	margin: 0; /* Important for vertical align on mobile phones */
+  	font-family: inherit; 
+  	font-size: inherit;
+  	margin: 0;
 }
 
-.dropdown-content {
+.dropdown-content, .dropdown-content-mobile {
   	display: none;
   	position: absolute;
 	text-align: left;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content, .dropdown-mobile:hover .dropdown-content-mobile {
   	display: inherit;
 }
 
-.dropdown:hover .dropdown-button {
+.dropdown:hover .dropdown-button, .dropdown-mobile:hover .dropdown-button-mobile {
 	color: gold;
 }
 
-.dropdown-content a {
+.dropdown-content a, .dropdown-content-mobile a {
   	color: white;
   	text-decoration: none;
   	display: block;
 	background-color: rgba(0,0,0,0.7);
 }
 
-.dropdown-content a:hover {
+.dropdown-content a:hover, .dropdown-content-mobile a:hover {
 	color: gold;
 }
 
-.dropdown {
+.dropdown, .dropdown-mobile {
   	overflow: hidden;
+}
+
+.dropdown-mobile {
+	display: none;
+}
+
+#overlay {
+	position: fixed;
+	display: none;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.6);
+}
+
+#overlay img {
+	max-height: 100%;	
+	max-width: 100%;	
 }
 
 #headercart {
@@ -308,49 +349,61 @@ span.notvisible {
 	border: 0.1em solid black;
 }
 
-#productoutput table {
-	width: 80%;
-	border-collapse: separate; 
-	border-spacing: 1em;
-}
+@media only screen and (max-device-width: 1079px)  {
 
-
-@media 
-max-width: 760px {
-
-	/* Force table to not be like tables anymore */
-	table, thead, tbody, th, td, tr { 
-		display: block; 
+	header, footer {
+		background-color: black;
+		display: block;
 	}
-	
-	tr { border: 1px solid #ccc; }
-	
-	td { 
-		border: none;
-		position: relative;
-	}
-	
+
 	article {
-		padding-left: 0;
+		padding: 3px;
 	}
+	
+	.dropdown-content-mobile.overlay {
+		display: flex;
+		position: fixed;
+		flex-direction: column;
+		width: 100%;
+		height: 100%;
+		background-color: black;
+	}
+
+	.dropdown-content.overlay {
+		display: block;
+		position: inherit;
+	}
+
+	.dropdown-mobile {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	.dropdown-mobile img {
+		height: 30px;
+		padding-left: 10px;
+	}
+
+	.header-row {
+		display: inherit;	
+	}
+
+	#closemenu {
+		display: none;
+	}	
+
+	#headerimage, #nav, #headertext, #beforenav, .header-cell, .menuform {
+		display: none;
+	}
+
+	#nav.stick {
+		display: none;
+	}
+
+	#filter {
+		min-width: 12em;
+	}
+
 }
 
-@media 
-(min-device-width: 768px) and (max-device-width: 1200px)  {
-
-	/* Force table to not be like tables anymore */
-	td.even { 
-		display: block; 
-	}
-	
-	tr { border: 1px solid #ccc; }
-	
-	td.even { 
-		border: none;
-		position: relative;
-	}
-	
-	article {
-		padding-left: 0;
-	}
-}

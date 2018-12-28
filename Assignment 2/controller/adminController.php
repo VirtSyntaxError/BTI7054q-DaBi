@@ -37,6 +37,12 @@ class adminController {
 
 	public function insertProduct() {
 		if (isset($_POST['Productname'])){
+
+			$_POST['Productdescription_de'] = htmlspecialchars($_POST['Productdescription_de']);
+			$_POST['Productdescription_en'] = htmlspecialchars($_POST['Productdescription_en']);
+			$_POST['Productname'] = htmlspecialchars($_POST['Productname']);
+
+
 			$id = $this->adminModel->insertProduct($_POST);
 
 			if (isset($_POST['colors'])){

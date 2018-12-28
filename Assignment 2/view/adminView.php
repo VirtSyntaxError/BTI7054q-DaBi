@@ -27,11 +27,11 @@ class adminView {
 		
 		foreach ($this->adminModel->getOrders() as $purch) {
 			$changestatus = '<select id="status-'.$purch['PurchaseID'].'" onChange="changeStatus(document.getElementById(\'status-'.$purch['PurchaseID'].'\').value,'.$purch['PurchaseID'].')">
-						<option value="" selected disabled hidden>Choose here</option>
+						<option value="" selected disabled hidden>...</option>
             					<option value="open">open</option>
             					<option value="sent">sent</option>
         				</select>';	
-			$rows[] = array(date("H:i d.m.Y", $purch['PurchaseTimestamp']),$purch['Description'],'<span id="state-'.$purch['PurchaseID'].'">'.$purch['PurchaseStatus'].'</span>',$purch['Prename'],$purch['Surname'],$purch['Email'],$changestatus);
+			$rows[] = array(date("d.m.Y H:i", $purch['PurchaseTimestamp']),$purch['Description'],'<span id="state-'.$purch['PurchaseID'].'">'.$purch['PurchaseStatus'].'</span>',$purch['Prename'],$purch['Surname'],$purch['Email'],$changestatus);
 		}
 	
 		$table = new Table($rows,$columns);
@@ -106,30 +106,30 @@ class adminView {
 		$lang = $_SESSION["lang"];
 
 		echo '<form action="../insertProduct/" method="post">
-		<p>ProductName: <input required name="Productname"/></p>
-		<p>Productdesc EN: <input required name="Productdescription_en"/></p>
-		<p>Productdesc DE: <input required name="Productdescription_de"/></p>
-		<p>BrandID: <select name="BrandID" required>';
+		<p>'.t("PRODUCTNAME").': <input required name="Productname"/></p>
+		<p>'.t("DESCRIPTION").' '.t("ENGLISH").': <input required name="Productdescription_en"/></p>
+		<p>'.t("DESCRIPTION").' '.t("GERMAN").': <input required name="Productdescription_de"/></p>
+		<p>'.t("BRAND").': <select name="BrandID" required>';
 		foreach ($this->adminModel->getBrands() as $brand) {
 			echo '<option value="'.$brand->getId().'">'.$brand->getName().'</option>';	
 		}
 		echo '</select></p>
-		<h3>Colors</h3>';
+		<h3>'.t("WATCHCOLOR").'</h3>';
 		foreach ($this->adminModel->getColors($lang) as $color){
 			$colorname = $color->getName();
 			$colorID = $color->getId();
 			echo '<input type="checkbox" name="colors[]" value='.$colorID.'>'.$colorname.'<br>';
 		}
-		echo '<h3>Straps</h3>';
+		echo '<h3>'.t("STRAPCOLOR").'</h3>';
 		foreach ($this->adminModel->getStraps($lang) as $strap){
 			$strapname = $strap->getName();
 			$strapID = $strap->getId();
 			echo '<input type="checkbox" name="straps[]" value='.$strapID.'>'.$strapname.'<br>';
 		}
-		echo '<p>Price: <input type="text" pattern="^[0-9]{1,9}$" required name="Price"/></p>';
-		echo 'Offer: <select name="Offer"><option value="1">'.t("YES").'</option><option value="0" selected>'.t("NO").'</option></select>';
-		echo '<p>Discount: <input type="text" pattern="^[0-9]{1,2}$" name="Discount"/></p>
-		<input type="submit"/>
+		echo '<p>'.t("PRICE").': <input type="text" pattern="^[0-9]{1,9}$" required name="Price"/></p>';
+		echo '<p>'.t("OFFER").': <select name="Offer"><option value="1">'.t("YES").'</option><option value="0" selected>'.t("NO").'</option></select></p>';
+		echo '<p>'.t("DISCOUNT").': <input type="text" pattern="^[0-9]{1,2}$" name="Discount"/></p>
+		<input type="submit" value="'.t("SUBMIT").'"/>
 		</form>';
 
 

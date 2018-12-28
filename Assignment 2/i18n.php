@@ -304,6 +304,18 @@ $texts = array(
 		'de' => 'Produkte',
 		'en' => 'Products'
 	),
+	'PRODUCTNAME' => array(
+		'de' => 'Produktname',
+		'en' => 'Productname'
+	),
+	'ENGLISH' => array(
+		'de' => 'Englisch',
+		'en' => 'English'
+	),
+	'GERMAN' => array(
+		'de' => 'Deutsch',
+		'en' => 'German'
+	),
 	'OFFER' => array(
 		'de' => 'Aktion',
 		'en' => 'Offer'

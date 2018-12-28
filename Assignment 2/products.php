@@ -12,11 +12,15 @@ $products = array();
 if (isset($_GET["brand"])) {
 	$brandid = $_GET["brand"];
 	if ($brandid != "all") {
-		$brandname = Brand::getBrandById($brandid)->getName();	
+		$brand = Brand::getBrandById($brandid);
 
-		$products = Product::getProductsByBrandId($brandid,$lang);
-		if (!isset($_GET["filter"])) {
-			echo '<article><h1>'.t("PRODUCTOFBRAND").' '.$brandname.'</h1>';
+		if($brand) {
+			$brandname = $brand->getName();	
+
+			$products = Product::getProductsByBrandId($brandid,$lang);
+			if (!isset($_GET["filter"])) {
+				echo '<article><h1>'.t("PRODUCTOFBRAND").' '.$brandname.'</h1>';
+			}
 		}
 	} elseif (!isset($_GET["filter"])) {
 		echo '<article><h1>'.t("ALLBRANDS").'</h1>';
@@ -25,13 +29,17 @@ if (isset($_GET["brand"])) {
 elseif (isset($_GET["cat"])) {
 	$catid = $_GET["cat"];
 	if ($catid != "all") {
-		$catname = Category::getCategoryById($catid,$lang)->getName();	
-		$productids = CategoryProduct::getProductByCategoryId($catid);
-		foreach ($productids as $productid) {
-			$products[] = Product::getProductById($productid->getProductId(),$lang);
-		}
-		if (!isset($_GET["filter"])) {
-			echo '<article><h1>'.t("PRODUCTOFCAT").' '.$catname.'</h1>';
+		$cat = Category::getCategoryById($catid,$lang);
+
+		if($cat) {
+			$catname = $cat->getName();	
+			$productids = CategoryProduct::getProductByCategoryId($catid);
+			foreach ($productids as $productid) {
+				$products[] = Product::getProductById($productid->getProductId(),$lang);
+			}
+			if (!isset($_GET["filter"])) {
+				echo '<article><h1>'.t("PRODUCTOFCAT").' '.$catname.'</h1>';
+			}
 		}
 	} elseif (!isset($_GET["filter"])) {
 		echo '<article><h1>'.t("ALLCATS").'</h1>';
@@ -59,45 +67,8 @@ if (isset($_GET["filter"])) {
 	echo '<article id="productoutput">';
 }
 
-
-	echo '<table>';
-	echo '<tr>';
-	$count = 0;
-foreach ($products as $prod){
-	$categories = array();
-	$brand = Brand::getBrandById($prod->getBrand());
-	$categoryproducts = CategoryProduct::getCategoryByProductId($prod->getID());
-	foreach ($categoryproducts as $categoryproduct){
-		$category = Category::getCategoryById($categoryproduct->getCategoryId(),$lang);
-		$categories[] = $category->getName();
-	}
-	echo '<td>';
-	echo '<p>';
-	echo '<form method="post" action="index.php?id=3">';
-	echo '<div class="card">';
-  	echo '<img src="img/'.$prod->getImage().'" alt="'.$prod->getName().'">';
-  	echo '<h1>'.$prod->getName().'</h1>';
-	if($prod->getOffer()) {
-  		echo '<p class="priceoffer">'.round($prod->getPrice()*0.01*(100-$prod->getDiscount())).'.- <s>'.$prod->getPrice().'.-</s></p>';
-	} else {
-  		echo '<p class="price">'.$prod->getPrice().'.-</p>';
-	}
-  	echo '<p>'.join(", ",$categories).'</p>';
-  	echo '<p class="desc">'.$prod->getDescription().'</p>';
-	echo '<input type="hidden" name="articlenumber" value="'.$prod->getID().'">';
-  	echo '<input type="submit" value="'.t("DETAILS").'">';
-	echo '</div>';
-	echo '</form>';
-	echo '</p>';
-	$count++;
-
-	if ($count >= 4) {
-		echo '</tr><tr>';
-		$count = 0;
-	}
-}
-
-	echo '</tr></table>';
+$pgrid = new ProductGrid($lang, ...$products);
+$pgrid->render();	
 
 if (!isset($_GET["filter"])) {
 	echo '</article></article>';

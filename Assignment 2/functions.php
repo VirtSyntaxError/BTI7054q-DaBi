@@ -14,7 +14,7 @@ function writeMenuentry($menuname,$menuid){
 		session_start(); 
 	}
 	
-	$id = isset($_GET['id']) ? $_GET['id'] : 0;
+	$id = isset($_GET['id']) ? $_GET['id'] : -1;
 	$url = ROOT."index.php";
 	$url = addParam($url, "id", $menuid);
 	echo "<a href='".$url."' class='menuentry' ";
