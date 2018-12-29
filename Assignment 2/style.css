@@ -131,7 +131,7 @@ span.notvisible {
   	font-size: 1.3em;
 }
 
-.card input, .cardfull input {
+.card input[type="submit"], .cardfull input[type="submit"] {
   	border: none;
   	outline: 0;
   	padding: 12px;
@@ -157,6 +157,10 @@ span.notvisible {
 .cardfull img {
 	max-height: 400px;
 	max-width: 100%;
+}
+
+.cardfull img:hover {
+	cursor: pointer;
 }
 
 .cardfull p.desc {
@@ -206,7 +210,7 @@ span.notvisible {
 	font-size: 1em;
 }
 
-.nav select {
+.menuform select {
 	background-color: transparent;
 	border: none;
 	outline: none;
@@ -218,11 +222,11 @@ span.notvisible {
 	-moz-appearance: none;
 }
 
-.nav select option {
+.menuform select option {
 	background-color: rgba(0,0,0,0.7);
 }
 
-.nav select option:selected {
+.menuform select option:selected {
 	background-color: black;
 }
 
@@ -265,7 +269,7 @@ span.notvisible {
   	overflow: hidden;
 }
 
-.dropdown-mobile {
+.dropdown-mobile, #mobilenav {
 	display: none;
 }
 
@@ -364,9 +368,10 @@ span.notvisible {
 		display: flex;
 		position: fixed;
 		flex-direction: column;
-		width: 100%;
 		height: 100%;
 		background-color: black;
+		right: 8px;
+		left: 8px;
 	}
 
 	.dropdown-content.overlay {
@@ -385,24 +390,52 @@ span.notvisible {
 		padding-left: 10px;
 	}
 
-	.header-row {
+	.header-row, #mobilenav {
 		display: inherit;	
+	}
+
+	.menuform {
+		padding-left: 10px;
+	}
+
+	.menuform select option {
+		background-color: black;
 	}
 
 	#closemenu {
 		display: none;
 	}	
 
-	#headerimage, #nav, #headertext, #beforenav, .header-cell, .menuform {
-		display: none;
-	}
-
-	#nav.stick {
+	#headerimage, #beforenav, #nav.stick,  .header-cell {
 		display: none;
 	}
 
 	#filter {
 		min-width: 12em;
+	}
+	
+	#nav {
+		display: inherit;
+	}
+
+	#nav img {
+		width: 25px;
+	}
+
+	#headercart {
+		margin-right: 1.5em;
+	}
+
+	#headertext {
+		display: inherit;
+		font-size: 2em;
+		margin-top: 0.3em;
+	}
+
+	#cartcount {
+		font-size: 0.6em;
+		padding-left: 3px;
+		padding-right: 3px;
 	}
 
 }

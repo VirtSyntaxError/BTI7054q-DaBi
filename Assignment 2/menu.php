@@ -49,9 +49,9 @@ foreach ($langs as $lang){
 	}
 }
 echo "</select>";
-foreach($_GET as $key => $val){
- if($key != 'lang'){
-    echo '<input type="hidden" name="'.htmlspecialchars($key).'" value="'.htmlspecialchars($val).'" />';
- }
-}
+//foreach($_GET as $key => $val){
+ //if($key != 'lang'){
+    //echo '<input type="hidden" name="'.htmlspecialchars($key).'" value="'.htmlspecialchars($val).'" />';
+ //}
+//}
 echo "</form>";

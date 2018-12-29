@@ -31,12 +31,6 @@ if(!isset($_SESSION["lang"])){
 	<header>
 		<noscript><div id="nojs"><b><?php echo t("ACTIVATEJS") ?></b></div></noscript>
 		<div class="header-row">
-			<div class="dropdown-mobile"><div><img src="<?php echo ROOT ?>img/mobile_menu.png" onClick="showMenu(true)" id="openmenu"><img src="<?php echo ROOT ?>img/mobile_menu_close.png" onClick="showMenu(false)" id="closemenu"></div><div><button class="dropdown-button-mobile">Menu</button></div></div>
-			<span class="dropdown-content-mobile">
-			<?php
-				include("menu.php");
-			?>
-			</span>
 			<div id="headerimage"><img src="<?php echo ROOT ?>img/logo.png" alt="Logo"></img></div>
 			<div id="headertext">Goldene Ziffer</div>
 			<div class="header-cell"></div>
@@ -57,6 +51,21 @@ if(!isset($_SESSION["lang"])){
 					<span class="cart-badge" id="cartcount"><?php echo $cart->getQuantity() ?></span>
 				</a>
 			</div>
+		</div>
+		<div class="header-row" id="mobilenav">
+			<div class="dropdown-mobile">
+				<div>
+					<img src="<?php echo ROOT ?>img/mobile_menu.png" onClick="showMenu(true)" id="openmenu">
+					<img src="<?php echo ROOT ?>img/mobile_menu_close.png" onClick="showMenu(false)" id="closemenu">
+				</div>
+				<div><button class="dropdown-button-mobile">Menu</button></div>
+			</div>
+			<span class="dropdown-content-mobile">
+			<?php
+				include("menu.php");
+			?>
+			</span>
+
 		</div>
     	</header>
 	<section>

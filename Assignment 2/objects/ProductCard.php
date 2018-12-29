@@ -54,21 +54,21 @@ class ProductCard {
 		echo '<div class="cardfull">';
 		echo '<form method="post" action="index.php?id=6">';
 		echo '<h1>'.t("STRAPCOLOR").'</h1>';
-		echo '<p>';
 		foreach ($strapproducts as $strapproduct){
+			echo '<p>';
 			$strapid = $strapproduct->getStrapId();
 			$strap = Strap::getStrapById($strapid, $this->lang);
 			echo '<input type="radio" name="strapcolor" value="'.$strap->getId().'" required>'.$strap->getName();
+			echo '</p>';
 		}
-		echo '</p>';
 		echo '<h1>'.t("WATCHCOLOR").'</h1>';
-		echo '<p>';
 		foreach ($colorproducts as $colorproduct){
+			echo '<p>';
 			$colorid = $colorproduct->getColorId();
 			$color = Color::getColorById($colorid, $this->lang);
 			echo '<input type="radio" name="watchcolor" value="'.$color->getId().'" required>'.$color->getName();
+			echo '</p>';
 		}
-		echo '</p>';
 		echo '<input type="submit" value="'.t("TOCART").'">';
 		echo '</form>';
 		echo '</div>';
