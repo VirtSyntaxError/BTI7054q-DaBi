@@ -353,6 +353,10 @@ span.notvisible {
 	border: 0.1em solid black;
 }
 
+#emailexists {
+	color: red;
+}
+
 @media only screen and (max-device-width: 1079px)  {
 
 	header, footer {

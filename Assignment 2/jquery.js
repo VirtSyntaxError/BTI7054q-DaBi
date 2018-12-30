@@ -147,3 +147,30 @@ function showOverlay() {
 function noOverlay() {
 	$("#overlay").css("display","none");	
 }
+
+function confirmPurchase(email, message) {
+	var bool = false;
+	$.ajax({
+        	type: "POST",
+        	url: "ajax/checkemail.php",
+        	async: false,
+		data: { email: email },
+        	success : function(data) {
+			if(data) {
+				$("#emailexists").html(data);
+			} else {
+				$("#emailexists").html("");
+				bool = true;
+			}
+        	}
+	});
+	if(bool) {
+		if(message) {
+			return confirm(message);
+		} else {
+			return true;
+		}
+	} else {
+		return false;
+	}
+}

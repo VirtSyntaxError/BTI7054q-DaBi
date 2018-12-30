@@ -24,7 +24,7 @@ if(isset($_SESSION['user'])){
 
 ?>
 <article>
-<form  method="post" id="payment_form" onsubmit="return confirm('<?php echo t("BINDINGCONTRACT")?>');" action="index.php?id=5">
+<form  method="post" id="payment_form" onsubmit="return confirmPurchase(document.getElementById('email').value,'<?php echo t("BINDINGCONTRACT")?>');" action="index.php?id=5">
 	<h3><?php echo t("ENTER_DATA")?></h3>
 	<p>
 		<label><?php echo t("PRENAME")?>:</label>
@@ -36,7 +36,10 @@ if(isset($_SESSION['user'])){
 	</p>
 	<p>
 		<label><?php echo t("EMAIL")?>:</label>
-		<input name="email" type="email" required value="<?php echo $email ?>"/>
+		<input id="email" name="email" type="email" required value="<?php echo $email ?>"/>
+	</p>
+	<p>
+		<label id="emailexists"></label>
 	</p>
 	<p>
 		<label><?php echo t("ADDRESS")?>:</label>

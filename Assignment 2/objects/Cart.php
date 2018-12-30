@@ -80,9 +80,10 @@ class Cart {
 				$product = Product::getProductById($item->getProductId(),$lang);
 				$color = Color::getColorById($item->getColorId(),$lang);
 				$strap = Strap::getStrapById($item->getStrapId(),$lang);
-				$price = $item->getCount()*$product->getPrice();
+				$singleprice = round($product->getPrice()*0.01*(100-$product->getDiscount()));
+				$price = $item->getCount()*$singleprice;
 				$productdesc = $product->getName()." (".$strap->getName().", ".$color->getName().")";
-				$rows[] = array($productdesc,$product->getPrice(),$item->getCount(),$price);
+				$rows[] = array($productdesc,$singleprice,$item->getCount(),$price);
 				$total += $price;
 				$ids[] = $item->getId();
 			}	
