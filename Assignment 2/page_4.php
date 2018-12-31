@@ -22,10 +22,14 @@ if(isset($_SESSION['user'])){
 	$country = $_COOKIE['country'] ?? "";
 }
 
+echo '<article>';
+if(isset($_SESSION['user'])) {
+	echo '<form  method="post" id="payment_form" onsubmit="return confirm(\''.t("BINDINGCONTRACT").'\');" action="index.php?id=5">';
+} else {
+	echo '<form  method="post" id="payment_form" onsubmit="return confirmPurchase(document.getElementById(\'email\').value,\''.t("BINDINGCONTRACT").'\');" action="index.php?id=5">';
+}
+echo '<h3>'.t("ENTER_DATA").'</h3>';
 ?>
-<article>
-<form  method="post" id="payment_form" onsubmit="return confirmPurchase(document.getElementById('email').value,'<?php echo t("BINDINGCONTRACT")?>');" action="index.php?id=5">
-	<h3><?php echo t("ENTER_DATA")?></h3>
 	<p>
 		<label><?php echo t("PRENAME")?>:</label>
 		<input name="prename" required pattern="^[A-Za-zäöü ,.'-]{3,}$" value="<?php echo $prename ?>"/>
@@ -36,7 +40,7 @@ if(isset($_SESSION['user'])){
 	</p>
 	<p>
 		<label><?php echo t("EMAIL")?>:</label>
-		<input id="email" name="email" type="email" required value="<?php echo $email ?>"/>
+		<input id="email" name="email" type="email" required value="<?php echo $email;?>" <?php if(isset($_SESSION['user'])) { echo 'disabled'; } ?>/>
 	</p>
 	<p>
 		<label id="emailexists"></label>

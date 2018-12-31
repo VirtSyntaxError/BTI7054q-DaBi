@@ -15,13 +15,13 @@ $(document).ready(function() {
 
 function showMenu(open) {
 	if (open) {
-		$('.dropdown-content-mobile').addClass('overlay');
-		$('.dropdown-content').addClass('overlay');
+		$('.dropdown-content-mobile').addClass('overlaymenu');
+		$('.dropdown-content').addClass('overlaymenu');
 		$('#closemenu').css("display","block");
 		$('#openmenu').css("display","none");
 	} else {
-		$('.dropdown-content-mobile').removeClass('overlay');
-		$('.dropdown-content').removeClass('overlay');
+		$('.dropdown-content-mobile').removeClass('overlaymenu');
+		$('.dropdown-content').removeClass('overlaymenu');
 		$('#openmenu').css("display","block");
 		$('#closemenu').css("display","none");
 	}
@@ -140,12 +140,12 @@ function changeDiscount(discount, id) {
 	});
 }
 
-function showOverlay() {
-	$("#overlay").css("display","block");	
+function showOverlay(id) {
+	$("#overlay"+id).css("display","block");	
 }
 
-function noOverlay() {
-	$("#overlay").css("display","none");	
+function noOverlay(id) {
+	$("#overlay"+id).css("display","none");	
 }
 
 function confirmPurchase(email, message) {

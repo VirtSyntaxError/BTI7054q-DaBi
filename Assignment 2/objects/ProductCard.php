@@ -39,12 +39,12 @@ class ProductCard {
 
 	public function renderDetails() {
 		echo '<div class="cardfull">';
-		echo '<img onClick="showOverlay()" src="img/'.$this->prod->getImage().'">';
+		echo '<img onClick="showOverlay(\'prod\')" src="img/'.$this->prod->getImage().'">';
 		$this->renderRaw("descfull");
 		echo '<p>'.t("ARTICLENUMBER").': '.$this->prod->getID().'</p>';
 		echo '<p>'.t("BRAND").': '.Brand::getBrandById($this->prod->getBrand(),$this->lang)->getName().'</p>';
 		echo '</div>';
-		echo '<div id="overlay" onClick="noOverlay()"><img src="img/'.$this->prod->getImage().'"></div>';
+		echo '<div class="overlay" id="overlayprod" onClick="noOverlay(\'prod\')"><img src="img/'.$this->prod->getImage().'"></div>';
 	}
 
 	public function renderOptions() {
