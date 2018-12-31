@@ -48,5 +48,5 @@ class Item {
 	public function equals(Item $otheritem) {
 		return ($this->getId() == $otheritem->getId()) ? true : false;	
 	}
-
+	
 }

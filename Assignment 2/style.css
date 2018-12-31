@@ -35,19 +35,6 @@ span.notvisible {
 	display: none;
 }
 
-.button {
-  	background-color: transparent;
-	color: black;
-	text-decoration: none;
-	border: none;
-  	-webkit-transition-duration: 0.4s;
-  	transition-duration: 0.4s;
-}
-
-.button:hover {
-	background-color: rgba(0,0,0,0.7);
-  	color: white;
-}
 
 .header-row {
 	display: table-row;
@@ -86,6 +73,7 @@ span.notvisible {
 	flex-wrap: wrap;
 	margin: 20px;
 	text-align: left;
+	align-items: center;
 }
 
 .order-detail-child {
@@ -112,6 +100,7 @@ span.notvisible {
 	max-height: 500px;
 	background-color: white;
 	margin: 20px;
+	word-wrap: break-word;
 }
 
 .card img {
@@ -143,7 +132,7 @@ span.notvisible {
   	font-size: 1.3em;
 }
 
-.card input[type="submit"], .cardfull input[type="submit"] {
+.card input[type="submit"], .cardfull input[type="submit"], #cart input[type="submit"] {
   	border: none;
   	outline: 0;
   	padding: 12px;
@@ -155,8 +144,29 @@ span.notvisible {
   	font-size: 1.1em;
 }
 
-.card input:hover, .cardfull input:hover {
+.card input:hover, .cardfull input:hover,#cart input:hover {
   	opacity: 0.7;
+}
+
+.cardfull .order-detail-child #button {
+  	background-color: transparent;
+	color: black;
+	text-decoration: none;
+	border: none;
+  	-webkit-transition-duration: 0.4s;
+  	transition-duration: 0.4s;
+	padding: 5px;
+}
+
+.cardfull .order-detail-child #button:hover {
+	background-color: rgba(0,0,0,0.7);
+  	color: white;
+}
+
+.cardfull .order-detail-child .flex-container {
+	align-items: center;
+	margin: 0px;
+	justify-content: left;
 }
 
 .cardfull {
@@ -164,6 +174,7 @@ span.notvisible {
   	width: 450px;
 	background-color: white;
 	margin: 20px;
+	word-wrap: break-word;
 }
 
 .cardfull img {
@@ -179,11 +190,7 @@ span.notvisible {
   	font-size: 0.8em;
 }
 
-.orderarticle {
-	vertical-align: middle;
-}
-
-.orderarticle img {
+.order-detail-container img {
 	height: 50px;
 }
 
@@ -305,6 +312,12 @@ span.notvisible {
 	background-color: rgba(0,0,0,0.6);
 	overflow-y: scroll;
 	overflow-x: hidden;
+}
+
+.outercart {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
 }
 
 #overlayprod {

@@ -17,8 +17,8 @@ class OrderCard {
 			$product = Product::getProductById($detail->getProductId(),$this->lang);
 			$singleprice = round($product->getPrice()*0.01*(100-$product->getDiscount()));
 
-			echo '<p class="orderarticle"><img src="img/'.$product->getImage().'">'.$product->getName().'</p>';
 			echo '<div class="order-detail-container">';
+			echo '<div class="order-detail-child"><img src="img/'.$product->getImage().'"></div><div class="order-detail-child">'.$product->getName().'</div>';
 			echo '<div class="order-detail-child">'.t("ARTICLENUMBER").':</div><div class="order-detail-child">'.$detail->getProductId().'</div>';
 			echo '<div class="order-detail-child">'.t("STRAPCOLOR").':</div><div class="order-detail-child">'.Strap::getStrapById($detail->getStrapId(),$this->lang)->getName().'</div>';
 			echo '<div class="order-detail-child">'.t("WATCHCOLOR").':</div><div class="order-detail-child">'.Color::getColorById($detail->getColorId(),$this->lang)->getName().'</div>';

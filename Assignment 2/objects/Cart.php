@@ -71,11 +71,10 @@ class Cart {
 		if ($this->isEmpty()) {
 			echo t("NOTHINGINCART");
 		} else {
-			$columns = array("product","singleprice","count","price");
-			$rows = array();
 			$total = 0;
 			$ids = array();
 
+			
 			foreach ($this->items as $item) {
 				$product = Product::getProductById($item->getProductId(),$lang);
 				$color = Color::getColorById($item->getColorId(),$lang);
@@ -83,18 +82,32 @@ class Cart {
 				$singleprice = round($product->getPrice()*0.01*(100-$product->getDiscount()));
 				$price = $item->getCount()*$singleprice;
 				$productdesc = $product->getName()." (".$strap->getName().", ".$color->getName().")";
-				$rows[] = array($productdesc,$singleprice,$item->getCount(),$price);
 				$total += $price;
 				$ids[] = $item->getId();
+				echo "<form name='addorremove' action='ajax/addorremove.php' method='post'>";
+				echo "<input type='hidden' name='prev' value=".$_SERVER['REQUEST_URI'].">";
+				echo '<div class="order-detail-container">';
+				echo '<div class="order-detail-child"><img src="img/'.$product->getImage().'"></div><div class="order-detail-child">'.$product->getName().'</div>';
+				echo '<div class="order-detail-child">'.t("STRAPCOLOR").':</div><div class="order-detail-child">'.$strap->getName().'</div>';
+				echo '<div class="order-detail-child">'.t("WATCHCOLOR").':</div><div class="order-detail-child">'.$color->getName().'</div>';
+				echo '<div class="order-detail-child">'.t("COUNT").':</div>';
+				echo '<div class="order-detail-child">';
+				echo '<div class="flex-container">';
+				if(!$readonly) {
+					echo '<div><input type="hidden" name="id" value="'.$item->getId().'"><input id="button" type="Submit" name="add" value="+" onclick="addItem(\''.$item->getId().'\');return false;"></div>';
+				}
+				echo $item->getCount();
+				if(!$readonly) {
+					echo '<div><input type="hidden" name="id" value="'.$item->getId().'"><input id="button" type="Submit" name="rem" value="-" onclick="subItem(\''.$item->getId().'\');return false;"></div>';
+				}
+				echo '</div>';
+				echo '</div>';
+				echo '<div class="order-detail-child">'.t("SINGLEPRICE").':</div><div class="order-detail-child">'.$singleprice.'.-</div>';
+				echo '<div class="order-detail-child">'.t("PRICE").':</div><div class="order-detail-child">'.$price.'.-</div>';
+				echo '</div>';	
+				echo '</form>';
 			}	
-			$rows[] = array(t("TOTAL"),"","",$total);
-
-			$table = new Table($rows,$columns);
-			if($readonly) {
-				$table->render($ids);
-			} else {
-				$table->renderCart($ids);
-			}
+  			echo '<p class="price">'.t("TOTAL").': '.$total.'.-</p>';
 		}
 	}
 }
