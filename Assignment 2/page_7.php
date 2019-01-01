@@ -1,10 +1,11 @@
 <?php
-echo "<article><h1>".t("CART")."</h1>";
+echo "<article>";
 
 echo '<span class="outercart">';
 
 $cart = $_SESSION['cart'];
 echo '<div class="cardfull" id="cart">';
+echo '<h1>'.t("CART").'</h1>';
 $cart->render(false);
 if (!$cart->isEmpty()) {
 	echo '<form method="post" action="ajax/emptycart.php?red=7">';

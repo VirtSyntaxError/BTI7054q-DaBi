@@ -3,6 +3,7 @@ require_once("autoloader.php");
 require_once("../functions.php");
 session_start();
 
+echo '<h1>'.t("CART").'</h1>';
 if (isset($_SESSION['cart'])){
 		$cart = $_SESSION['cart'];
 		$cart->render(false);
