@@ -36,8 +36,22 @@ class adminController {
 	}
 
 	public function insertProduct() {
-		if (isset($_POST['Productname'])){
 
+		$t = time()+60*60*24*30;
+		setcookie("Productname", $_POST["Productname"], $t, "/");
+		setcookie("Productdescription_de", $_POST["Productdescription_de"], $t, "/");
+		setcookie("Productdescription_en", $_POST["Productdescription_en"], $t, "/");
+		setcookie("Price", $_POST["Price"], $t, "/");
+		setcookie("BrandID", $_POST["BrandID"], $t, "/");
+		setcookie("Discount", $_POST["Discount"], $t, "/");
+		
+		if (isset($_POST['Productname']) && $_POST['colors'] && $_POST['straps'] && !$_FILES["Image"]["error"]){
+
+			if(!$this->uploadImage($_FILES['Image'])){
+				header('Location: ../newProduct/?error=IMAGEERROR');
+			}	
+
+			$_POST['Image'] = $_FILES['Image']['name'];
 			$_POST['Productdescription_de'] = htmlspecialchars($_POST['Productdescription_de']);
 			$_POST['Productdescription_en'] = htmlspecialchars($_POST['Productdescription_en']);
 			$_POST['Productname'] = htmlspecialchars($_POST['Productname']);
@@ -55,8 +69,46 @@ class adminController {
 					$this->adminModel->insertProductStrap($id,$strap);
 				}
 			}
-		}
-		header('Location: ../showProducts/');
-	}
 
+			unset($_COOKIE['Productdescription_en']);
+			unset($_COOKIE['Productdescription_de']);
+			unset($_COOKIE['Productname']);
+			unset($_COOKIE['Price']);
+			unset($_COOKIE['BrandID']);
+			unset($_COOKIE['Discount']);
+			setcookie("Productname", "", time()-3600, "/");
+			setcookie("Productdescription_de", "", time()-3600, "/");
+			setcookie("Productdescription_en", "", time()-3600, "/");
+			setcookie("Price", "", time()-3600, "/");
+			setcookie("BrandID", "", time()-3600, "/");
+			setcookie("Discount", "", time()-3600, "/");
+
+			
+			header('Location: ../showProducts/');
+		} else {
+			header('Location: ../newProduct/?error=NOTALLERROR');
+		}
+	}
+	
+	private function uploadImage($image = []) {
+		$fileDest = "../img/".basename($image['name']);
+		
+    		if(!getimagesize($image['tmp_name'])) {
+        		return false;
+		}
+
+		if (file_exists($fileDest)) {
+			return false;
+		}
+
+		if ($image['size'] > 300000) {
+			return false;
+		}
+
+    		if (move_uploaded_file($image['tmp_name'], $fileDest)) {
+			return true;
+    		} else {
+        		return false;
+		}
+	}
 }

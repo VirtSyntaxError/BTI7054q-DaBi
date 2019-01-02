@@ -110,6 +110,8 @@ span.notvisible {
 
 .card h1, .cardfull h1 {
 	padding: 3px;
+	/* Internet explorer - too big h1 */	
+	font-size: 1.17em;
 }
 
 .card p, .cardfull p {
@@ -244,7 +246,6 @@ span.notvisible {
 	color: white;
 	font-size: 1em;
 	text-transform: lowercase;
-	appearance: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 }
@@ -257,11 +258,18 @@ span.notvisible {
 	background-color: black;
 }
 
+/* Hack for IE */
+.menuform select::-ms-expand {
+	background-color: transparent;
+	color: white;
+	border: none;
+}
+
 .dropdown-button, .dropdown-button-mobile {
   	border: none;
 	color: white;
   	outline: none;
-  	background-color: inherit;
+  	background-color: transparent;
   	font-family: inherit; 
   	font-size: inherit;
   	margin: 0;
@@ -396,6 +404,18 @@ span.notvisible {
 	color: red;
 }
 
+/* Cart count does not align on chrome */
+@supports (-webkit-appearance:none) {
+	.cart-badge {
+		top: 160px;
+		right: 21px;
+	}
+	#nav.stick .cart-badge {
+		top: 0px;
+		right: 13px;
+	}	
+}
+
 @media only screen and (max-device-width: 1079px)  {
 
 	header, footer {
@@ -479,6 +499,14 @@ span.notvisible {
 		font-size: 0.6em;
 		padding-left: 3px;
 		padding-right: 3px;
+	}
+
+	/* Cart count does not align on chrome */
+	@supports (-webkit-appearance:none) {
+		.cart-badge {
+			top: 48px;
+			right: 20px;
+		}
 	}
 
 }

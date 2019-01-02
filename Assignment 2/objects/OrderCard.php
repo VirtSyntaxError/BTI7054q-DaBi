@@ -33,14 +33,17 @@ class OrderCard {
 
 	private function renderRaw($descclass, PurchaseDetail ...$details) {
 		$sum = 0;
+		$count = 0;
 
 		foreach($details as $detail) {
 			$product = Product::getProductById($detail->getProductId(),$this->lang);
 			$singleprice = round($product->getPrice()*0.01*(100-$product->getDiscount()));
 			$sum += $detail->getCount()*$singleprice;
+			$count++;
 		}
 
 		echo '<p><b>'.t("ORDERNR").': '.$this->order->getID().'</b></p>';
+		echo '<p>'.t("PRODUCTS").': '.$count.'</p>';
 		echo '<p>'.t("DATE").': '.date("H:i d.m.Y",$this->order->getTimestamp()).'</p>';
 		echo '<p class="'.$descclass.'">'.$this->order->getDescription().'</p>';
 		echo '<p>'.t("STATUS").': '.$this->order->getStatus().'</p>';

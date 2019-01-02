@@ -105,13 +105,30 @@ class adminView {
 
 		$lang = $_SESSION["lang"];
 
-		echo '<form action="../insertProduct/" method="post">
-		<p>'.t("PRODUCTNAME").': <input required name="Productname"/></p>
-		<p>'.t("DESCRIPTION").' '.t("ENGLISH").': <input required name="Productdescription_en"/></p>
-		<p>'.t("DESCRIPTION").' '.t("GERMAN").': <input required name="Productdescription_de"/></p>
+		$descen = $_COOKIE['Productdescription_en'] ?? "";
+		$descde = $_COOKIE['Productdescription_de'] ?? "";
+		$name = $_COOKIE['Productname'] ?? "";
+		$price = $_COOKIE['Price'] ?? "";
+		$discount = $_COOKIE['Discount'] ?? "";
+		$brandid = $_COOKIE['BrandID'] ?? "";
+
+		if(isset($_GET["error"])) {
+			$error = $_GET["error"];
+			echo '<p id="emailexists">'.t("$error").'</p>';
+		}
+
+		echo '<form action="../insertProduct/" method="post" enctype="multipart/form-data">
+		<p>'.t("PRODUCTNAME").': <input required name="Productname" value="'.$name.'"/></p>
+		<p>'.t("IMAGE").': <input type="file" name="Image" id="image" required></p>
+		<p>'.t("DESCRIPTION").' '.t("ENGLISH").': <input required name="Productdescription_en" value="'.$descen.'"/></p>
+		<p>'.t("DESCRIPTION").' '.t("GERMAN").': <input required name="Productdescription_de" value="'.$descde.'"/></p>
 		<p>'.t("BRAND").': <select name="BrandID" required>';
 		foreach ($this->adminModel->getBrands() as $brand) {
-			echo '<option value="'.$brand->getId().'">'.$brand->getName().'</option>';	
+			if($brandid == $brand->getId()) {
+				echo '<option value="'.$brand->getId().'" selected>'.$brand->getName().'</option>';	
+			} else {
+				echo '<option value="'.$brand->getId().'">'.$brand->getName().'</option>';	
+			}
 		}
 		echo '</select></p>
 		<h3>'.t("WATCHCOLOR").'</h3>';
@@ -126,9 +143,9 @@ class adminView {
 			$strapID = $strap->getId();
 			echo '<input type="checkbox" name="straps[]" value='.$strapID.'>'.$strapname.'<br>';
 		}
-		echo '<p>'.t("PRICE").': <input type="text" pattern="^[0-9]{1,9}$" required name="Price"/></p>';
+		echo '<p>'.t("PRICE").': <input type="text" pattern="^[0-9]{1,9}$" required name="Price" value="'.$price.'"/></p>';
 		echo '<p>'.t("OFFER").': <select name="Offer"><option value="1">'.t("YES").'</option><option value="0" selected>'.t("NO").'</option></select></p>';
-		echo '<p>'.t("DISCOUNT").': <input type="text" pattern="^[0-9]{1,2}$" name="Discount"/></p>
+		echo '<p>'.t("DISCOUNT").': <input type="text" pattern="^[0-9]{1,2}$" name="Discount" value="'.$discount.'"/></p>
 		<input type="submit" value="'.t("SUBMIT").'"/>
 		</form>';
 

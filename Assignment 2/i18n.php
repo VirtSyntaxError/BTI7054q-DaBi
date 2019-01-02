@@ -340,6 +340,18 @@ $texts = array(
 		'de' => 'Email existiert bereits, bitte einloggen.',
 		'en' => 'Email already exists, please login.'
 	),
+	'IMAGE' => array(
+		'de' => 'Bild',
+		'en' => 'Image'
+	),
+	'NOTALLERROR' => array(
+		'de' => 'Nicht alle Details spezifiziert!',
+		'en' => 'Not all details are set!'
+	),
+	'IMAGEERROR' => array(
+		'de' => 'Es ist ein Fehler mit dem Bild aufgetaucht!',
+		'en' => 'There is an error with the given image!'
+	),
 	'ERROR_REGISTRATION' => array(
 		'de' => 'Registrierung schlug fehl',
 		'en' => 'There was an error with the registration'
