@@ -214,6 +214,8 @@ span.notvisible {
 	text-decoration: none;
 	padding: 9px 30px;
 	font-size: 1em;
+	/*Chrome Bug*/
+	text-transform: uppercase;
 }
 
 .menuentry:hover {
@@ -273,6 +275,8 @@ span.notvisible {
   	font-family: inherit; 
   	font-size: inherit;
   	margin: 0;
+	/*Chrome Bug*/
+	text-transform: uppercase;
 }
 
 .dropdown-content, .dropdown-content-mobile {
