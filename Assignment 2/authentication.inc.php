@@ -4,6 +4,7 @@ require_once("autoloader.php");
 require_once("functions.php");
 function checklogin($login, $password){
 	$db = DB::getInstance();
+	$login = $db->escape_string($login);
 	$stmt = $db->prepare(
 		"SELECT * FROM Users WHERE Email=?"
 	);

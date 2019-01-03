@@ -51,7 +51,7 @@ if (count($products) <= 0) {
 }
 
 if (isset($_GET["filter"])) {
-	$filter = $_GET["filter"];
+	$filter = strip_tags($_GET["filter"]);
 	if ($filter) {
 		$newproducts = array();
 
