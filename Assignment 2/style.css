@@ -416,7 +416,7 @@ span.notvisible {
 	}	
 }
 
-@media only screen and (max-device-width: 1079px)  {
+@media (max-device-width: 1079px)  {
 
 	header, footer {
 		background-color: black;
