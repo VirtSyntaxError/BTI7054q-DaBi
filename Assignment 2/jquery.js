@@ -56,16 +56,18 @@ function applyFilter() {
 
 function addItem(id){
 	$( function() {
-		$.post("ajax/additemtocart.php", {id: id });
+		$.post("ajax/additemtocart.php", {id: id }, function(data) {
+			refreshCart();
+		});
 	});
-	refreshCart();
 }
 
 function subItem(id){
 	$( function() {
-		$.post("ajax/removeitemfromcart.php", {id: id });
+		$.post("ajax/removeitemfromcart.php", {id: id }, function(data) {
+			refreshCart();
+		});
 	});
-	refreshCart();
 }
 
 function refreshCart(){
