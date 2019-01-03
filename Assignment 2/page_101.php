@@ -4,8 +4,9 @@ require_once("autoloader.php");
 
 $logged_in = $_SESSION["user"] ?? false;
 if ($logged_in){
+	echo '<article>';
 	echo "<p>".t("ALREADY_LOGGED_IN")."</p>";
-	exit;
+	echo '</article>';
 } else {
 	echo "<article><h1>".t("REGISTER")."</h1>";
 

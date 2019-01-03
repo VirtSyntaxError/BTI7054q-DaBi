@@ -4,7 +4,9 @@ if(!isset($_SESSION)){
 }
 $logged_in = $_SESSION["user"] ?? false;
 if ($logged_in){
+	echo '<article>';
 	echo "<p>".t("ALREADY_LOGGED_IN")."</p>";
+	echo '</article>';
 } else {
 	echo '<article>';
 	echo "<h1>".t("LOGIN")."</h1>";
