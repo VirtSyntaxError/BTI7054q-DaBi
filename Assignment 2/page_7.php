@@ -1,7 +1,7 @@
 <?php
 echo "<article>";
 
-echo '<span class="outercart">';
+echo '<div class="outercart">';
 
 $cart = $_SESSION['cart'];
 echo '<div class="cardfull" id="cart">';
@@ -17,5 +17,5 @@ if (!$cart->isEmpty()) {
 }
 
 echo '</div>';
-echo '</span>';
+echo '</div>';
 echo '</article>';

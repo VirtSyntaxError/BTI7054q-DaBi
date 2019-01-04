@@ -45,7 +45,7 @@ require_once("autoloader.php");
 <article>
 <h1><?php echo t("CONFIRMATION")?></h1>
 <p><?php echo t("PRODUCTINFORMATION")?>:</p>
-<span class="outercart">
+<div class="outercart">
 <div class="cardfull" id="cart">
 <?php 
 	$cart->render(true);
@@ -59,5 +59,5 @@ require_once("autoloader.php");
 <p><?php echo $_POST["address"] ?></p>
 <p><?php echo $_POST["zip"]." ".$_POST["city"]?></p>
 </div>
-</span>
+</div>
 </article>
