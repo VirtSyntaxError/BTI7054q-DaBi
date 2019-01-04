@@ -61,11 +61,11 @@ if(!isset($_SESSION["lang"])){
 				</div>
 				<div><button class="dropdown-button-mobile">Menu</button></div>
 			</div>
-			<span class="dropdown-content-mobile">
+			<div class="dropdown-content-mobile">
 			<?php
 				include("menu.php");
 			?>
-			</span>
+			</div>
 
 		</div>
     	</header>
