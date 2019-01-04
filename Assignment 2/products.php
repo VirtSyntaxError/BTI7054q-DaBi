@@ -10,7 +10,7 @@ $lang = $_SESSION["lang"];
 
 $products = array();
 if (isset($_GET["brand"])) {
-	$brandid = $_GET["brand"];
+	$brandid = strip_tags($_GET["brand"]);
 	if ($brandid != "all") {
 		$brand = Brand::getBrandById($brandid);
 
@@ -27,7 +27,7 @@ if (isset($_GET["brand"])) {
 	}
 }
 elseif (isset($_GET["cat"])) {
-	$catid = $_GET["cat"];
+	$catid = strip_tags($_GET["cat"]);
 	if ($catid != "all") {
 		$cat = Category::getCategoryById($catid,$lang);
 
