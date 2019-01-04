@@ -94,11 +94,11 @@ class Cart {
 				echo '<div class="order-detail-child">';
 				echo '<div class="flex-container">';
 				if(!$readonly) {
-					echo '<div><input type="hidden" name="id" value="'.$item->getId().'"><input id="button" type="Submit" name="rem" value="-" onclick="subItem(\''.$item->getId().'\');return false;"></div>';
+					echo '<div><input type="hidden" name="id" value="'.$item->getId().'"><input class="button" type="Submit" name="rem" value="-" onclick="subItem(\''.$item->getId().'\');return false;"></div>';
 				}
 				echo $item->getCount();
 				if(!$readonly) {
-					echo '<div><input type="hidden" name="id" value="'.$item->getId().'"><input id="button" type="Submit" name="add" value="+" onclick="addItem(\''.$item->getId().'\');return false;"></div>';
+					echo '<div><input type="hidden" name="id" value="'.$item->getId().'"><input class="button" type="Submit" name="add" value="+" onclick="addItem(\''.$item->getId().'\');return false;"></div>';
 				}
 				echo '</div>';
 				echo '</div>';
