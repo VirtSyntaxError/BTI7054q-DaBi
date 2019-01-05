@@ -63,7 +63,7 @@ if (isset($_GET["filter"])) {
 		$products = $newproducts;
 	}
 } else {
-	echo '<article><input id="filter" onkeyup="applyFilter()" name="filter" placeholder=""><br>';	
+	echo '<article><input id="filter" onkeyup="applyFilter()" name="filter" placeholder="" autofocus><br>';	
 	echo '<article id="productoutput">';
 }
 

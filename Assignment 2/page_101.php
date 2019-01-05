@@ -27,12 +27,11 @@ if ($logged_in){
 		$columns = array("","");	
 		$rows = array();
 
-		$rows[] = array(t("PRENAME"),'<input name="prename" required pattern="^[A-Za-zäöü ,.\'-]{3,}$">');
+		$rows[] = array(t("PRENAME"),'<input name="prename" required pattern="^[A-Za-zäöü ,.\'-]{3,}$" autofocus>');
 		$rows[] = array(t("SURNAME"),'<input name="surname" required pattern="^[A-Za-zäöü ,.\'-]{3,}$">');
 		$rows[] = array(t("PASSWORD"),'<input type="password" name="pw">');
 		$rows[] = array(t("EMAIL"),'<input id="email" type="email" name="email">');
-		$rows[] = array('','<label id="emailexists"></label>');
-		$rows[] = array(t("ADDRESS"),'<input name="address" required pattern="^[A-Za-zäöü ,.\'-]{3,}$">');
+		$rows[] = array(t("ADDRESS"),'<input name="address" required  pattern="^[A-Za-zäöü ,.\'-]{3,} [0-9a-z]+$">');
 		$rows[] = array(t("CITY"),'<input name="city" required pattern="^[A-Za-zäöü ,.\'-]{3,}$">');
 		$rows[] = array(t("ZIP"),'<input name="zip" required pattern="^[0-9]{1,5}$">');
 		$rows[] = array(t("COUNTRY"),'
@@ -41,6 +40,7 @@ if ($logged_in){
 			<option value="DE">'.t("DE").'</option>
 			<option value="AT">'.t("AT").'</option>
 		</select>');
+		$rows[] = array('','<label id="emailexists"></label>');
 		$rows[] = array("",'<input type="submit" value="'.t("REGISTER").'">');
 
 		$table = new Table($rows,$columns);

@@ -32,7 +32,7 @@ echo '<h3>'.t("ENTER_DATA").'</h3>';
 ?>
 	<p>
 		<label><?php echo t("PRENAME")?>:</label>
-		<input name="prename" required pattern="^[A-Za-zäöü ,.'-]{3,}$" value="<?php echo $prename ?>"/>
+		<input name="prename" required pattern="^[A-Za-zäöü ,.'-]{3,}$" value="<?php echo $prename ?>" autofocus/>
 	</p>
 	<p>
 		<label><?php echo t("SURNAME")?>:</label>
@@ -41,9 +41,6 @@ echo '<h3>'.t("ENTER_DATA").'</h3>';
 	<p>
 		<label><?php echo t("EMAIL")?>:</label>
 		<input id="email" name="email" type="email" required value="<?php echo $email;?>" <?php if(isset($_SESSION['user'])) { echo 'disabled'; } ?>/>
-	</p>
-	<p>
-		<label id="emailexists"></label>
 	</p>
 	<p>
 		<label><?php echo t("ADDRESS")?>:</label>
@@ -78,6 +75,9 @@ echo '<h3>'.t("ENTER_DATA").'</h3>';
 	</p>
 	<p>
 		<textarea name="comment" form="payment_form" placeholder="<?php echo t("ENTER_COMMENT")?>"></textarea>
+	</p>
+	<p>
+		<label id="emailexists"></label>
 	</p>
 	<p>
 		<button value='Submit' type='submit'>Submit</button>
