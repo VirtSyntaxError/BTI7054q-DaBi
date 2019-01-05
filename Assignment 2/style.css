@@ -222,6 +222,11 @@ span.notvisible {
 	color: gold;
 }
 
+.menuentry.menuselected {
+	background-color: gold;
+	color: black;
+}
+
 .cart-badge {
   	background-color: #F0AB13;
 	color: black;
@@ -345,11 +350,6 @@ span.notvisible {
 	float: right;
 	margin-right: 2em;
 	display: table-cell;
-}
-
-#menuselected {
-	background-color: gold;
-	color: black;
 }
 
 #headertext {

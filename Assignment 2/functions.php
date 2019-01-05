@@ -17,11 +17,11 @@ function writeMenuentry($menuname,$menuid){
 	$id = isset($_GET['id']) ? $_GET['id'] : -1;
 	$url = ROOT."index.php";
 	$url = addParam($url, "id", $menuid);
-	echo "<a href='".$url."' class='menuentry' ";
+	echo "<a href='".$url."' class='menuentry";
 	if ($menuid == $id){
-		echo "id='menuselected'";
+		echo " menuselected";
 	}
-	echo ">$menuname</a>";
+	echo "'>$menuname</a>";
 }
 
 function writeAdminMenuentry($menuname,$url){
@@ -70,21 +70,21 @@ function writeMenu($mobile) {
 	}
 
 	if (isset($_SESSION["user"])) {
-		echo '<div class="dropdown"><button class="dropdown-button">'.$_SESSION['user'].'</button>';
-    		echo '<div class="dropdown-content">';
+		echo '<span class="dropdown"><button class="dropdown-button">'.$_SESSION['user'].'</button>';
+    		echo '<span class="dropdown-content">';
       		writeMenuentry(t("MYORDERS"),104);
 		writeMenuentry(t("LOGOUT"),102);
-    		echo '</div></div>';
+    		echo '</span></span>';
 	}
 	
 	if (isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == true) {
-		echo '<div class="dropdown"><button class="dropdown-button">Admin</button>';
-    		echo '<div class="dropdown-content">';
+		echo '<span class="dropdown"><button class="dropdown-button">Admin</button>';
+    		echo '<span class="dropdown-content">';
 		writeAdminMenuentry(t("ORDERS"),"admin/showOrders/");
 		writeAdminMenuentry(t("PRODUCTS"),"admin/showProducts/");
 		writeAdminMenuentry(t("NEWPROD"),"admin/newProduct/");
 		writeAdminMenuentry(t("USERS"),"admin/showUsers/");
-    		echo '</div></div>';
+    		echo '</span></span>';
 	}
 
 	echo '<form method="post" class="menuform">';
