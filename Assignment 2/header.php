@@ -63,7 +63,7 @@ if(!isset($_SESSION["lang"])){
 			</div>
 			<div class="dropdown-content-mobile">
 			<?php
-				writeMenu(false);
+				writeMenu(true);
 			?>
 			</div>
 
