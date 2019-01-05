@@ -30,7 +30,7 @@ if(!isset($_SESSION["lang"])){
 
 <body>
 	<header>
-		<noscript><div id="nojs"><b><?php echo t("ACTIVATEJS") ?></b></div></noscript>
+		<noscript><div id="nojs"><strong><?php echo t("ACTIVATEJS") ?></strong></div></noscript>
 		<div class="header-row">
 			<div id="headerimage"><img src="<?php echo ROOT ?>img/logo.png" alt="Logo"></img></div>
 			<div id="headertext">Goldene Ziffer</div>

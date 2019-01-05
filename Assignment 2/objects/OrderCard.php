@@ -12,7 +12,7 @@ class OrderCard {
 		echo '<div class="flex-container">';
 		echo '<div class="cardfull">';
 		$this->renderRaw("descfull", ...$details);
-		echo '<p><b>'.t("PRODUCTS").'</b></p>';
+		echo '<p><strong>'.t("PRODUCTS").'</strong></p>';
 		foreach ($details as $detail) {
 			$product = Product::getProductById($detail->getProductId(),$this->lang);
 			$singleprice = round($product->getPrice()*0.01*(100-$product->getDiscount()));
@@ -42,9 +42,9 @@ class OrderCard {
 			$count++;
 		}
 
-		echo '<p><b>'.t("ORDERNR").': '.$this->order->getID().'</b></p>';
+		echo '<p><strong>'.t("ORDERNR").': '.$this->order->getID().'</strong></p>';
 		echo '<p>'.t("PRODUCTS").': '.$count.'</p>';
-		echo '<p>'.t("DATE").': '.date("H:i d.m.Y",$this->order->getTimestamp()).'</p>';
+		echo '<p>'.t("DATE").': '.date("d.m.Y H:i",$this->order->getTimestamp()).'</p>';
 		echo '<p class="'.$descclass.'">'.$this->order->getDescription().'</p>';
 		echo '<p>'.t("STATUS").': '.$this->order->getStatus().'</p>';
   		echo '<p class="price">'.$sum.'.-</p>';
