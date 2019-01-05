@@ -21,8 +21,9 @@ CREATE TABLE Users
   UserID INT NOT NULL AUTO_INCREMENT,
   Prename VARCHAR(50) NOT NULL,
   Surname VARCHAR(50) NOT NULL,
+  Login VARCHAR(50) NULL UNIQUE,
   Password CHAR(64) NOT NULL,
-  Email VARCHAR(50) NOT NULL UNIQUE,
+  Email VARCHAR(50) NOT NULL,
   Address VARCHAR(50) NOT NULL,
   City VARCHAR(50) NOT NULL,
   ZIP INT NOT NULL,
@@ -148,6 +149,7 @@ CREATE TABLE StrapProduct
 INSERT INTO Users(Prename,Surname,Password,Email,Address,City,ZIP,Country,isAdmin) VALUES (
 	'Dario',
 	'Furigo',
+	'dario.furigo',
 	'$2y$10$Lkx4m3PAGxs5uUi1qEMA0.cRl7PHatrzaKM6YkauEv3qLvynM5A4G',
 	'dario.furigo@shemale.ch',
 	'Wiehnachtstrasse 99',
@@ -160,6 +162,7 @@ INSERT INTO Users(Prename,Surname,Password,Email,Address,City,ZIP,Country,isAdmi
 INSERT INTO Users(Prename,Surname,Password,Email,Address,City,ZIP,Country,isAdmin) VALUES (
 	'Beat',
 	'Schaerz',
+	'beat.schaerz',
 	'$2y$10$Lkx4m3PAGxs5uUi1qEMA0.cRl7PHatrzaKM6YkauEv3qLvynM5A4G',
 	'beat.schaerz@hemale.ch',
 	'Musterstrasse 99',
