@@ -42,7 +42,7 @@ if(!isset($_SESSION["lang"])){
 			<div class="header-cell">
 				<div class="nav">
 				<?php 
-					include("menu.php"); 
+					writeMenu(false);
 				?>	
 				</div>
 			</div>
@@ -63,7 +63,7 @@ if(!isset($_SESSION["lang"])){
 			</div>
 			<div class="dropdown-content-mobile">
 			<?php
-				include("menu.php");
+				writeMenu(false);
 			?>
 			</div>
 
