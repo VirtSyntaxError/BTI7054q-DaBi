@@ -311,6 +311,7 @@ span.notvisible {
 
 .dropdown, .dropdown-mobile {
   	overflow: hidden;
+	display: initial;
 }
 
 .dropdown-mobile, #mobilenav {

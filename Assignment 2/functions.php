@@ -70,21 +70,21 @@ function writeMenu($mobile) {
 	}
 
 	if (isset($_SESSION["user"])) {
-		echo '<span class="dropdown"><button class="dropdown-button">'.$_SESSION['user'].'</button>';
+		echo '<div class="dropdown"><button class="dropdown-button">'.$_SESSION['user'].'</button>';
     		echo '<div class="dropdown-content">';
       		writeMenuentry(t("MYORDERS"),104);
 		writeMenuentry(t("LOGOUT"),102);
-    		echo '</div></span>';
+    		echo '</div></div>';
 	}
 	
 	if (isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == true) {
-		echo '<span class="dropdown"><button class="dropdown-button">Admin</button>';
+		echo '<div class="dropdown"><button class="dropdown-button">Admin</button>';
     		echo '<div class="dropdown-content">';
 		writeAdminMenuentry(t("ORDERS"),"admin/showOrders/");
 		writeAdminMenuentry(t("PRODUCTS"),"admin/showProducts/");
 		writeAdminMenuentry(t("NEWPROD"),"admin/newProduct/");
 		writeAdminMenuentry(t("USERS"),"admin/showUsers/");
-    		echo '</div></span>';
+    		echo '</div></div>';
 	}
 
 	echo '<form method="post" class="menuform">';
