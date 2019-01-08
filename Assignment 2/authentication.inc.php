@@ -5,7 +5,7 @@ require_once("functions.php");
 function checklogin($login, $password){
 	$db = DB::getInstance();
 	$stmt = $db->prepare(
-		"SELECT * FROM Users WHERE Username=?"
+		"SELECT * FROM User WHERE Username=?"
 	);
 	$stmt->bind_param('s', $login);
 	$stmt->execute();
