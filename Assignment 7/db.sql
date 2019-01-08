@@ -1,10 +1,12 @@
+USE webshop;
+
 DROP TABLE IF EXISTS PurchaseDetail;
 DROP TABLE IF EXISTS Purchase;
 DROP TABLE IF EXISTS Setting;
 DROP TABLE IF EXISTS CategoryProduct;
 DROP TABLE IF EXISTS ColorProduct;
 DROP TABLE IF EXISTS StrapProduct;
-DROP TABLE IF EXISTS Users;
+DROP TABLE IF EXISTS User;
 DROP TABLE IF EXISTS Product;
 DROP TABLE IF EXISTS Category;
 DROP TABLE IF EXISTS Brand;
@@ -16,7 +18,7 @@ CREATE USER 'webshop'@'127.0.0.1' IDENTIFIED BY '1234';GRANT USAGE ON *.* TO 'we
 GRANT ALL PRIVILEGES ON `webshop`.* TO 'webshop'@'127.0.0.1';
 
 
-CREATE TABLE Users
+CREATE TABLE User
 (
   UserID INT NOT NULL AUTO_INCREMENT,
   Prename VARCHAR(50) NOT NULL,
@@ -53,7 +55,9 @@ CREATE TABLE Purchase
   PurchaseID INT NOT NULL AUTO_INCREMENT,
   PurchaseTimestamp INT NOT NULL,
   Description TEXT NOT NULL,
-  PurchaseStatus ENUM('open','sent') NOT NULL,
+  Shipment ENUM('standard', 'express', 'pickup') NOT NULL,
+  Gift INT NOT NULL,
+  PurchaseStatus ENUM('new', 'open','sent') NOT NULL,
   UserID INT NOT NULL,
   PRIMARY KEY (PurchaseID),
   CONSTRAINT `FK_PurchaseUser` FOREIGN KEY (UserID) REFERENCES Users(UserID)
@@ -146,12 +150,12 @@ CREATE TABLE StrapProduct
   CONSTRAINT `FK_StrapProductStrap` FOREIGN KEY (StrapID) REFERENCES Strap(StrapID)
 );
 
-INSERT INTO Users(Prename,Surname,Username,Password,Email,Address,City,ZIP,Country,isAdmin) VALUES (
+INSERT INTO User(Prename,Surname,Username,Password,Email,Address,City,ZIP,Country,isAdmin) VALUES (
 	'Dario',
 	'Furigo',
 	'dario.furigo',
 	'$2y$10$Lkx4m3PAGxs5uUi1qEMA0.cRl7PHatrzaKM6YkauEv3qLvynM5A4G',
-	'dario.furigo@shemale.ch',
+	'dario.furigo@gz.ch',
 	'Wiehnachtstrasse 99',
 	'Murg',
 	'79730',
@@ -159,16 +163,29 @@ INSERT INTO Users(Prename,Surname,Username,Password,Email,Address,City,ZIP,Count
 	0
 );
 
-INSERT INTO Users(Prename,Surname,Username,Password,Email,Address,City,ZIP,Country,isAdmin) VALUES (
+INSERT INTO User(Prename,Surname,Username,Password,Email,Address,City,ZIP,Country,isAdmin) VALUES (
 	'Beat',
 	'Schaerz',
 	'beat.schaerz',
 	'$2y$10$Lkx4m3PAGxs5uUi1qEMA0.cRl7PHatrzaKM6YkauEv3qLvynM5A4G',
-	'beat.schaerz@hemale.ch',
+	'beat.schaerz@gz.ch',
 	'Musterstrasse 99',
 	'Wien',
 	'1010',
 	'AT',
+	1
+);
+
+INSERT INTO User(Prename,Surname,Username,Password,Email,Address,City,ZIP,Country,isAdmin) VALUES (
+	'Admin',
+	'User',
+	'admin',
+	'$2y$10$OuknDmsRT3hpoUPkhN.bFe5/fQJY5PbGOpG97XiV50NQtEaCVkKqS',
+	'admin@gz.ch',
+	'Adminstrasse 1',
+	'Bern',
+	'3000',
+	'CH',
 	1
 );
 

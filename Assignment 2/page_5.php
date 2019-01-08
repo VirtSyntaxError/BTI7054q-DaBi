@@ -27,7 +27,9 @@ require_once("autoloader.php");
 	$purch = Purchase::insert(array(
 							"PurchaseTimestamp" => time(),
 							"Description" => $_POST["comment"],
-							"PurchaseStatus" => 'open',
+							"Shipment" => $_POST["shipment"],
+							"Gift" => $_POST["gift"],
+							"PurchaseStatus" => 'new',
 							"UserID" => $userID));
 	if (!$purch){
 		echo "ERROR inserting purchase to DB<br>";

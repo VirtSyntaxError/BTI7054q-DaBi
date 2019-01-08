@@ -49,7 +49,7 @@ class User {
 	static public function getUsers() {
 		$users = array();
 		$res = DB::doQuery(
-			"SELECT * FROM Users;"
+			"SELECT * FROM User;"
 		);
 		if (!$res) return null;
 		while ($user = $res->fetch_object(get_class())){
@@ -61,7 +61,7 @@ class User {
 	static public function getUserById($id) {
 		$id = (int) $id;
 		$res = DB::doQuery(
-			"SELECT * FROM Users WHERE UserID = $id"
+			"SELECT * FROM User WHERE UserID = $id"
 		);
 		if (!$res) return null;
 		return $res->fetch_object(get_class());
@@ -69,7 +69,7 @@ class User {
 
 	static public function getUserByEmail($email) {
 		$res = DB::doQuery(
-			'SELECT * FROM Users WHERE Email = "'.$email.'"'
+			'SELECT * FROM User WHERE Email = "'.$email.'"'
 		);
 		if (!$res) return null;
 		return $res->fetch_object(get_class());
@@ -77,7 +77,7 @@ class User {
 
 	static public function getUserByUsername($username) {
 		$res = DB::doQuery(
-			'SELECT * FROM Users WHERE Username = "'.$username.'"'
+			'SELECT * FROM User WHERE Username = "'.$username.'"'
 		);
 		if (!$res) return null;
 		return $res->fetch_object(get_class());
@@ -86,14 +86,14 @@ class User {
 	static public function delete($id) {
 		$id = (int) $id;
 		$res = DB::doQuery(
-			"DELETE FROM Users WHERE UserID = $id"
+			"DELETE FROM User WHERE UserID = $id"
 		);
 		return $res != null;
 	}
 
 	static public function insert($values) {
 		$stmt = DB::getInstance()->prepare(
-			"INSERT INTO Users ".
+			"INSERT INTO User ".
 			"(Prename, Surname, Username, Password, Email, Address, City, ZIP, Country, isAdmin) ".
 			"VALUES (?,?,?,?,?,?,?,?,?,?)"
 		);
@@ -118,7 +118,7 @@ class User {
 
 	static public function insertGuest($values) {
 		$stmt = DB::getInstance()->prepare(
-			"INSERT INTO Users ".
+			"INSERT INTO User ".
 			"(Prename, Surname, Username, Password, Email, Address, City, ZIP, Country, isAdmin) ".
 			"VALUES (?,?,NULL,?,?,?,?,?,?,?)"
 		);

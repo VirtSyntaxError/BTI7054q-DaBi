@@ -1,6 +1,6 @@
 <?php
 class Purchase {
-	private $PurchaseID, $PurchaseTimestamp, $Description, $PurchaseStatus, $UserID;
+	private $PurchaseID, $PurchaseTimestamp, $Description, $Shipment, $Gift, $PurchaseStatus, $UserID;
 
 	public function __toString(){
 		return sprintf("%d) %d - %s - %s - %d", $this->PurchaseID, $this->PurchaseTimestamp, $this->Description, $this->PurchaseStatus, $this->UserID);
@@ -24,6 +24,14 @@ class Purchase {
 
 	public function setStatus($status) {
 		$this->PurchaseStatus = $status;
+	}
+
+	public function getShipment() {
+		return $this->Shipment;
+	}
+	
+	public function getGift() {
+		return $this->Gift;
 	}
 
 	static public function getPurchases() {
@@ -71,13 +79,15 @@ class Purchase {
 	static public function insert($values) {
 		$stmt = DB::getInstance()->prepare(
 			"INSERT INTO Purchase ".
-			"(PurchaseTimestamp, Description, PurchaseStatus, UserID) ".
-			"VALUES (?, ?, ?, ?)"
+			"(PurchaseTimestamp, Description, Shipment, Gift, PurchaseStatus, UserID) ".
+			"VALUES (?, ?, ?, ?, ?, ?)"
 		);
 		if (!$stmt) return false;
-		$success = $stmt->bind_param('issi',
+		$success = $stmt->bind_param('issisi',
 			$values['PurchaseTimestamp'],
 			$values['Description'],
+			$values['Shipment'],
+			$values['Gift'],
 			$values['PurchaseStatus'],
 			$values['UserID']
 		);
@@ -89,6 +99,8 @@ class Purchase {
 		$db = DB::getInstance();
 		$this->PurchaseTimestamp = $db->escape_string($values['PurchaseTimestamp']);
 		$this->Description = $db->escape_string($values['Description']);
+		$this->Shipment = $db->escape_string($values['Shipment']);
+		$this->Gift = $db->escape_string($values['Gift']);
 		$this->PurchaseStatus = $db->escape_string($values['PurchaseStatus']);
 		$this->UserID = $db->escape_string($values['UserID']);
 	}
@@ -96,10 +108,12 @@ class Purchase {
 	public function save() {
 		$sql = sprintf(
 			"UPDATE Purchase
-			 SET PurchaseTimestamp='%d', Description='%s', PurchaseStatus='%s', UserID='%d'
+			 SET PurchaseTimestamp='%d', Description='%s', Shipment='%s', Gift='%d', PurchaseStatus='%s', UserID='%d'
 			 WHERE PurchaseID = %d;",
 			 $this->PurchaseTimestamp,
 			 $this->Description,
+			 $this->Shipment,
+			 $this->Gift,
 			 $this->PurchaseStatus,
 			 $this->UserID,
 			 $this->PurchaseID
