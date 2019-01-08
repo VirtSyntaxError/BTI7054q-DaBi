@@ -28,6 +28,7 @@ class adminView {
 		foreach ($this->adminModel->getOrders() as $purch) {
 			$changestatus = '<select id="status-'.$purch['PurchaseID'].'" onChange="changeStatus(document.getElementById(\'status-'.$purch['PurchaseID'].'\').value,'.$purch['PurchaseID'].')">
 						<option value="" selected disabled hidden>...</option>
+            					<option value="new">new</option>
             					<option value="open">open</option>
             					<option value="sent">sent</option>
         				</select>';	
