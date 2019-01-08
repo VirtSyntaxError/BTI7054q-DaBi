@@ -2,31 +2,11 @@
 
 require_once("autoloader.php");
 
-if(isset($_SESSION['user'])){
-	$user = User::getUserByUsername($_SESSION['user']);
-	$prename = $user->getPrename();
-	$surname = $user->getSurname();
-	$email = $user->getEmail();
-	$address = $user->getAddress();
-	$zip = $user->getZip();
-	$city = $user->getCity();
-	$country = $user->getCountry();
-
-} else {
-	$prename = $_COOKIE['prename'] ?? "";
-	$surname = $_COOKIE['surname'] ?? "";
-	$email = $_COOKIE['email'] ?? "";
-	$address = $_COOKIE['address'] ?? "";
-	$zip = $_COOKIE['zip'] ?? "";
-	$city = $_COOKIE['city'] ?? "";
-	$country = $_COOKIE['country'] ?? "";
-}
-
 echo '<article>';
 echo '<h3>'.t("ENTER_DATA").'</h3>';
 
 $form = new RegistrationForm((bool) false, "index.php?id=5", "SUBMIT");
-if(isset($user)) {
+if(isset($SESSION['user'])) {
 	$form->setReadonly((bool) true);
 }
 $form->setShowUser((bool) false);

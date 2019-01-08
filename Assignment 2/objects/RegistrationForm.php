@@ -35,16 +35,26 @@ class RegistrationForm {
 	}
 
 	public function render(){
-	
 		$columns = array("","");	
 		$rows = array();
-		$prename = $_COOKIE['prename'] ?? "";
-		$surname = $_COOKIE['surname'] ?? "";
-		$email = $_COOKIE['email'] ?? "";
-		$address = $_COOKIE['address'] ?? "";
-		$zip = $_COOKIE['zip'] ?? "";
-		$city = $_COOKIE['city'] ?? "";
-		$country = $_COOKIE['country'] ?? "";
+		if($this->readonly) {
+			$user = User::getUserByUsername($_SESSION['user']);
+			$prename = $user->getPrename();
+			$surname = $user->getSurname();
+			$email = $user->getEmail();
+			$address = $user->getAddress();
+			$zip = $user->getZip();
+			$city = $user->getCity();
+			$country = $user->getCountry();
+		} else {	
+			$prename = $_COOKIE['prename'] ?? "";
+			$surname = $_COOKIE['surname'] ?? "";
+			$email = $_COOKIE['email'] ?? "";
+			$address = $_COOKIE['address'] ?? "";
+			$zip = $_COOKIE['zip'] ?? "";
+			$city = $_COOKIE['city'] ?? "";
+			$country = $_COOKIE['country'] ?? "";
+		}
 		$error = "";
 
 		$rows[] = array(t("PRENAME"),'<input name="prename" required pattern="^[A-Za-zäöü ,.\'-]{3,}$" value="'.$prename.'" '.(($this->readonly) ? "readonly" : "autofocus").'>');
