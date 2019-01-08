@@ -35,6 +35,7 @@ class RegistrationForm {
 	}
 
 	public function render(){
+		session_start();
 		$columns = array("","");	
 		$rows = array();
 		if($this->readonly) {

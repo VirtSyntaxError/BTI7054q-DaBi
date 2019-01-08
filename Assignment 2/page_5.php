@@ -27,23 +27,22 @@ require_once("autoloader.php");
 	$purch = Purchase::insert(array(
 							"PurchaseTimestamp" => time(),
 							"Description" => $_POST["comment"],
-							"Shipment" => $_POST["shipment"],
-							"Gift" => $_POST["gift"],
+							"Shipment" => $_POST["shipping_method"],
+							"Gift" => $_POST["giftbox"],
 							"PurchaseStatus" => 'new',
 							"UserID" => $userID));
-	if (!$purch){
-		echo "ERROR inserting purchase to DB<br>";
-		exit;
-	}
-	$items = $_SESSION['cart']->getItems();
-	foreach ($items as $it){
-		PurchaseDetail::insert(array(
+	if (!$purch[0]){
+		echo "<article>ERROR inserting purchase to DB<br></article>";
+	} else {
+		$items = $_SESSION['cart']->getItems();
+		foreach ($items as $it){
+			PurchaseDetail::insert(array(
 							"Count" => $it->getCount(),
 							"ProductID" => $it->getProductId(),
 							"ColorID" => $it->getColorId(),
 							"StrapID" => $it->getStrapId(),
 							"PurchaseID" => $purch[1]));
-	}
+		}
 ?>
 <article>
 <h1><?php echo t("CONFIRMATION")?></h1>
@@ -65,3 +64,4 @@ require_once("autoloader.php");
 </div>
 </div>
 </article>
+<?php }
