@@ -60,7 +60,7 @@ CREATE TABLE Purchase
   PurchaseStatus ENUM('new', 'open','sent') NOT NULL,
   UserID INT NOT NULL,
   PRIMARY KEY (PurchaseID),
-  CONSTRAINT `FK_PurchaseUser` FOREIGN KEY (UserID) REFERENCES Users(UserID)
+  CONSTRAINT `FK_PurchaseUser` FOREIGN KEY (UserID) REFERENCES User(UserID)
 );
 
 CREATE TABLE Brand
