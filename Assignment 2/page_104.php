@@ -15,7 +15,7 @@ if (!$logged_in){
 } else {
 	echo '<article><h1>'.t("MYORDERS").'</h1>';
 
-	$orders = Purchase::getPurchaseByUserId(User::getUserByEmail($_SESSION['user'])->getUserId());
+	$orders = Purchase::getPurchaseByUserId(User::getUserByUsername($_SESSION['user'])->getUserId());
 
 	$ogrid = new OrderGrid($lang,...$orders);
 	$ogrid->render();

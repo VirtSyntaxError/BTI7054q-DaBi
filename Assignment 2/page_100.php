@@ -16,7 +16,7 @@ if ($logged_in){
 	$columns = array("","");
 	$rows = array();
 
-	$rows[] = array(t("LOGIN"),'<input name="login" autofocus required>');
+	$rows[] = array(t("USERNAME"),'<input name="login" autofocus required>');
 	$rows[] = array(t("PASSWORD"),'<input type="password" name="pw" required>');
 	$rows[] = array("",'<input type="submit" value="'.t("LOGIN").'">');
 

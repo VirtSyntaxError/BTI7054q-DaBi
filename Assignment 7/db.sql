@@ -21,7 +21,7 @@ CREATE TABLE Users
   UserID INT NOT NULL AUTO_INCREMENT,
   Prename VARCHAR(50) NOT NULL,
   Surname VARCHAR(50) NOT NULL,
-  Login VARCHAR(50) NULL UNIQUE,
+  Username VARCHAR(50) NULL UNIQUE,
   Password CHAR(64) NOT NULL,
   Email VARCHAR(50) NOT NULL,
   Address VARCHAR(50) NOT NULL,
@@ -146,7 +146,7 @@ CREATE TABLE StrapProduct
   CONSTRAINT `FK_StrapProductStrap` FOREIGN KEY (StrapID) REFERENCES Strap(StrapID)
 );
 
-INSERT INTO Users(Prename,Surname,Password,Email,Address,City,ZIP,Country,isAdmin) VALUES (
+INSERT INTO Users(Prename,Surname,Username,Password,Email,Address,City,ZIP,Country,isAdmin) VALUES (
 	'Dario',
 	'Furigo',
 	'dario.furigo',
@@ -159,7 +159,7 @@ INSERT INTO Users(Prename,Surname,Password,Email,Address,City,ZIP,Country,isAdmi
 	0
 );
 
-INSERT INTO Users(Prename,Surname,Password,Email,Address,City,ZIP,Country,isAdmin) VALUES (
+INSERT INTO Users(Prename,Surname,Username,Password,Email,Address,City,ZIP,Country,isAdmin) VALUES (
 	'Beat',
 	'Schaerz',
 	'beat.schaerz',

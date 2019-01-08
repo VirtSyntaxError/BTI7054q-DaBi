@@ -3,6 +3,7 @@ require_once("autoloader.php");
 	$t = time()+60*60*24*30;
 	setcookie("prename", $_POST["prename"], $t);
 	setcookie("surname", $_POST["surname"], $t);
+	setcookie("username", $_POST["username"], $t);
 	setcookie("email", $_POST["email"], $t);
 	setcookie("address", $_POST["address"], $t);
 	setcookie("zip", $_POST["zip"], $t);
@@ -12,7 +13,7 @@ require_once("autoloader.php");
 	if (isset($_SESSION["userID"])){
 		$userID = $_SESSION["userID"];
 	} else {
-		$userID = User::insert(array(
+		$userID = User::insertGuest(array(
 						"prename" => $_POST["prename"],
 						"surname" => $_POST["surname"],
 						"pw" => password_hash("^XvuJJrd=rOd*4", PASSWORD_BCRYPT),
@@ -56,6 +57,7 @@ require_once("autoloader.php");
 <p><?php echo t("ADDRESS")?>:</p>
 <p><?php echo $_POST["prename"]?></p>
 <p><?php echo $_POST["surname"]?></p>
+<p><?php echo $_POST["email"]?></p>
 <p><?php echo $_POST["address"] ?></p>
 <p><?php echo $_POST["zip"]." ".$_POST["city"]?></p>
 </div>

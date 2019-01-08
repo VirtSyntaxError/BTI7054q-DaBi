@@ -5,7 +5,7 @@ require_once("autoloader.php");
 class adminModel {
 
 	public function getOrders() {
-		return DB::doQuery("SELECT p.PurchaseID, p.PurchaseTimestamp, p.Description, p.PurchaseStatus, u.Prename, u.Surname, u.Email FROM Purchase AS p
+		return DB::doQuery("SELECT p.PurchaseID, p.PurchaseTimestamp, p.Description, p.PurchaseStatus, u.Prename, u.Surname, u.Username FROM Purchase AS p
 				JOIN Users as u ON u.UserID = p.UserID ORDER BY p.PurchaseTimestamp DESC;");
 	}
 

@@ -1,9 +1,9 @@
 <?php
 class User {
-	private $UserID, $Prename, $Surname, $Password, $Email, $Address, $City, $ZIP, $Country, $isAdmin;
+	private $UserID, $Prename, $Surname, $Password, $Email, $Address, $City, $ZIP, $Country, $isAdmin, $Username;
 
-	public function getLogin(){
-		return $this->Email;
+	public function getUsername(){
+		return $this->Username;
 	}
 
 	public function getIsAdmin(){
@@ -75,6 +75,14 @@ class User {
 		return $res->fetch_object(get_class());
 	}
 
+	static public function getUserByUsername($username) {
+		$res = DB::doQuery(
+			'SELECT * FROM Users WHERE Username = "'.$username.'"'
+		);
+		if (!$res) return null;
+		return $res->fetch_object(get_class());
+	}
+
 	static public function delete($id) {
 		$id = (int) $id;
 		$res = DB::doQuery(
@@ -86,8 +94,33 @@ class User {
 	static public function insert($values) {
 		$stmt = DB::getInstance()->prepare(
 			"INSERT INTO Users ".
-			"(Prename, Surname, Password, Email, Address, City, ZIP, Country, isAdmin) ".
-			"VALUES (?,?,?,?,?,?,?,?,?)"
+			"(Prename, Surname, Username, Password, Email, Address, City, ZIP, Country, isAdmin) ".
+			"VALUES (?,?,?,?,?,?,?,?,?,?)"
+		);
+		if (!$stmt) return false;
+		$isAdmin = 0;
+		$success = $stmt->bind_param('sssssssisi',
+			$values['prename'],
+			$values['surname'],
+			$values['username'],
+			$values['pw'],
+			$values['email'],
+			$values['address'],
+			$values['city'],
+			$values['zip'],
+			$values['country'],
+			$isAdmin
+		);
+		if (!$success) return false;
+		$stmt->execute();
+		return $stmt->insert_id;
+	}
+
+	static public function insertGuest($values) {
+		$stmt = DB::getInstance()->prepare(
+			"INSERT INTO Users ".
+			"(Prename, Surname, Username, Password, Email, Address, City, ZIP, Country, isAdmin) ".
+			"VALUES (?,?,NULL,?,?,?,?,?,?,?)"
 		);
 		if (!$stmt) return false;
 		$isAdmin = 0;
@@ -111,6 +144,7 @@ class User {
 		$db = DB::getInstance();
 		$this->Prename = $db->escape_string($values['Prename']);
 		$this->Surname = $db->escape_string($values['Surname']);
+		$this->Username = $db->escape_string($values['Username']);
 		$this->Password = $db->escape_string($values['Password']);
 		$this->Email = $db->escape_string($values['Email']);
 		$this->Address = $db->escape_string($values['Address']);
@@ -123,10 +157,11 @@ class User {
 	public function save() {
 		$sql = sprintf(
 			"UPDATE User
-			 SET Prename='%s', Surname='%s', Password='%s', Email='%s', Address='%s', City='%s', ZIP='%d', Country='%s', isAdmin='%d'
+			 SET Prename='%s', Surname='%s', Username='%s', Password='%s', Email='%s', Address='%s', City='%s', ZIP='%d', Country='%s', isAdmin='%d'
 			 WHERE UserID = %d;",
 			 $this->Prename,
 			 $this->Surname,
+			 $this->Username,
 			 $this->Password,
 			 $this->Email,
 			 $this->Address,

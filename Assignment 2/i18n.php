@@ -296,6 +296,10 @@ $texts = array(
 		'de' => 'Benutzer',
 		'en' => 'Users'
 	),
+	'USERNAME' => array(
+		'de' => 'Benutzername',
+		'en' => 'Username'
+	),
 	'ADMIN' => array(
 		'de' => 'Administrator',
 		'en' => 'Administrator'
@@ -339,6 +343,10 @@ $texts = array(
 	'EMAILEXISTS' => array(
 		'de' => 'Email existiert bereits, bitte einloggen.',
 		'en' => 'Email already exists, please login.'
+	),
+	'USEREXISTS' => array(
+		'de' => 'Benutzername existiert bereits, bitte einloggen.',
+		'en' => 'Username already exists, please login.'
 	),
 	'IMAGE' => array(
 		'de' => 'Bild',

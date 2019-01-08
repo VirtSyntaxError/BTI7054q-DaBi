@@ -22,7 +22,7 @@ class adminView {
 	public function renderOrders() {
 		echo '<article><h1>Admin</h1>';
 		echo '<h2>'.t("10ORDERS").'</h2>';
-		$columns = array("date","description","status","prename","surname","email","changestatus");
+		$columns = array("date","description","status","prename","surname","username","changestatus");
 		$rows = array();
 		
 		foreach ($this->adminModel->getOrders() as $purch) {
@@ -31,7 +31,7 @@ class adminView {
             					<option value="open">open</option>
             					<option value="sent">sent</option>
         				</select>';	
-			$rows[] = array(date("d.m.Y H:i", $purch['PurchaseTimestamp']),$purch['Description'],'<span id="state-'.$purch['PurchaseID'].'">'.$purch['PurchaseStatus'].'</span>',$purch['Prename'],$purch['Surname'],$purch['Email'],$changestatus);
+			$rows[] = array(date("d.m.Y H:i", $purch['PurchaseTimestamp']),$purch['Description'],'<span id="state-'.$purch['PurchaseID'].'">'.$purch['PurchaseStatus'].'</span>',$purch['Prename'],$purch['Surname'],$purch['Username'],$changestatus);
 		}
 	
 		$table = new Table($rows,$columns);
@@ -85,11 +85,11 @@ class adminView {
 	public function renderUsers() {
 		echo '<article><h1>Admin</h1>';
 		echo '<h2>'.t("USERS").'</h2>';
-		$columns = array("prename","surname","email","admin");
+		$columns = array("prename","surname","username","admin");
 		$rows = array();
 		
 		foreach ($this->adminModel->getUsers() as $user) {
-			$rows[] = array($user->getPrename(),$user->getSurname(),$user->getEmail(),$user->getIsAdmin());
+			$rows[] = array($user->getPrename(),$user->getSurname(),$user->getUsername(),$user->getIsAdmin());
 		}
 	
 		$table = new Table($rows,$columns);
@@ -113,8 +113,8 @@ class adminView {
 		$brandid = $_COOKIE['BrandID'] ?? "";
 
 		if(isset($_GET["error"])) {
-			$error = $_GET["error"];
-			echo '<p id="emailexists">'.t("$error").'</p>';
+			$error = strip_tags($_GET["error"]);
+			echo '<p id="userexists">'.t("$error").'</p>';
 		}
 
 		echo '<form action="../insertProduct/" method="post" enctype="multipart/form-data">

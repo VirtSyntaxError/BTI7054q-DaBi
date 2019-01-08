@@ -150,18 +150,18 @@ function noOverlay(id) {
 	$("#overlay"+id).css("display","none");	
 }
 
-function confirmPurchase(email, message) {
+function confirmPurchase(username, message) {
 	var bool = false;
 	$.ajax({
         	type: "POST",
-        	url: "ajax/checkemail.php",
+        	url: "ajax/checkuser.php",
         	async: false,
-		data: { email: email },
+		data: { username: username },
         	success : function(data) {
 			if(data) {
-				$("#emailexists").html(data);
+				$("#userexists").html(data);
 			} else {
-				$("#emailexists").html("");
+				$("#userexists").html("");
 				bool = true;
 			}
         	}

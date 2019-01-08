@@ -3,7 +3,7 @@
 require_once("autoloader.php");
 
 if(isset($_SESSION['user'])){
-	$user = User::getUserByEmail($_SESSION['user']);
+	$user = User::getUserByUsername($_SESSION['user']);
 	$prename = $user->getPrename();
 	$surname = $user->getSurname();
 	$email = $user->getEmail();
@@ -23,64 +23,23 @@ if(isset($_SESSION['user'])){
 }
 
 echo '<article>';
-if(isset($_SESSION['user'])) {
-	echo '<form  method="post" id="payment_form" onsubmit="return confirm(\''.t("BINDINGCONTRACT").'\');" action="index.php?id=5">';
-} else {
-	echo '<form  method="post" id="payment_form" onsubmit="return confirmPurchase(document.getElementById(\'email\').value,\''.t("BINDINGCONTRACT").'\');" action="index.php?id=5">';
-}
 echo '<h3>'.t("ENTER_DATA").'</h3>';
-?>
-	<p>
-		<label><?php echo t("PRENAME")?>:</label>
-		<input name="prename" required pattern="^[A-Za-zäöü ,.'-]{3,}$" value="<?php echo $prename ?>" autofocus/>
-	</p>
-	<p>
-		<label><?php echo t("SURNAME")?>:</label>
-		<input name="surname" required pattern="^[A-Za-zäöü ,.'-]{3,}$" value="<?php echo $surname ?>"/>
-	</p>
-	<p>
-		<label><?php echo t("EMAIL")?>:</label>
-		<input id="email" name="email" type="email" required value="<?php echo $email;?>" <?php if(isset($_SESSION['user'])) { echo 'disabled'; } ?>/>
-	</p>
-	<p>
-		<label><?php echo t("ADDRESS")?>:</label>
-		<input name="address" type="text" required pattern="^[A-Za-zäöü ,.'-]{3,} [0-9a-z]+$" value="<?php echo $address ?>"/>
-	</p>
-	<p>
-		<label><?php echo t("ZIP")?>:</label>
-		<input name="zip" type="text" required pattern="^[0-9]{1,5}$" value="<?php echo $zip ?>"/>
-	</p>
-	<p>
-		<label><?php echo t("CITY")?>:</label>
-		<input name="city" type="text" required pattern="^[A-Za-zäöü ,.'-]{3,}$" value="<?php echo $city ?>"/>
-	</p>
-	<p>
-		<label><?php echo t("COUNTRY")?>:</label>
-		<select name="country">
-			<option value="CH" <?php if ($country=="CH"){echo "selected";}?>><?php echo t("CH")?></option>
-			<option value="DE" <?php if ($country=="DE"){echo "selected";}?>><?php echo t("DE")?></option>
-			<option value="AT" <?php if ($country=="AT"){echo "selected";}?>><?php echo t("AT")?></option>
-		</select>
-	</p>
-	<p>
-		<label><?php echo t("SHIPPING_METHOD")?>:</label>
-		<select name="shipping_method">
-			<option value="standard" selected><?php echo t("STANDARD")?></option>
-			<option value="express"><?php echo t("EXPRESS")?></option>
-			<option value="pickup"><?php echo t("PICKUP")?></option>
-		</select>
-	</p>
-	<p>
-		<input name="giftbox" type="checkbox" value="giftbox"/><?php echo t("GIFT")?>
-	</p>
-	<p>
-		<textarea name="comment" form="payment_form" placeholder="<?php echo t("ENTER_COMMENT")?>"></textarea>
-	</p>
-	<p>
-		<label id="emailexists"></label>
-	</p>
-	<p>
-		<button value='Submit' type='submit'>Submit</button>
-	</p>
-</form>
-</article>
+
+$form = new RegistrationForm((bool) false, "index.php?id=5", "SUBMIT");
+if(isset($user)) {
+	$form->setReadonly((bool) true);
+}
+$form->setShowUser((bool) false);
+$form->setOnSubmit("return confirm('".t("BINDINGCONTRACT")."');");
+
+$form->addAdditionalRow(array(t("SHIPPING_METHOD"),'<select name="shipping_method">
+			<option value="standard" selected>'.t("STANDARD").'</option>
+			<option value="express">'.t("EXPRESS").'</option>
+			<option value="pickup">'.t("PICKUP").'</option>
+		</select>'));
+$form->addAdditionalRow(array(t("GIFT"),'<input name="giftbox" type="checkbox" value="giftbox"/>'));
+$form->addAdditionalRow(array('','<textarea name="comment" placeholder="'.t("ENTER_COMMENT").'"></textarea>'));
+
+$form->render();
+
+echo '</article>';

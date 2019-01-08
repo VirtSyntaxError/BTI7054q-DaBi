@@ -4,8 +4,8 @@ require_once("../functions.php");
 if(!isset($_SESSION)){ 
 	session_start(); 
 }
-$user = User::getUserByEmail($_POST['email']);
+$user = User::getUserByUsername($_POST['username']);
 
 if($user){
-	echo t("EMAILEXISTS");
+	echo t("USEREXISTS");
 }

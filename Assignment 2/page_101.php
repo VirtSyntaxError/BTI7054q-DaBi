@@ -11,44 +11,37 @@ if ($logged_in){
 	echo "<article><h1>".t("REGISTER")."</h1>";
 
 
-	if (isset($_POST["email"])){
-		$_POST["pw"] = password_hash($_POST["pw"], PASSWORD_BCRYPT);
-		$_POST["prename"] = htmlspecialchars($_POST["prename"]);
-		$_POST["surname"] = htmlspecialchars($_POST["surname"]);
-		$_POST["address"] = htmlspecialchars($_POST["address"]);
-		$_POST["city"] = htmlspecialchars($_POST["city"]);
-		$res = User::insert($_POST);
-		if ($res){
-			echo t("SUCCESSFUL_REGISTRATION");
+	if (isset($_POST["username"])){
+
+		if(User::getUserByUsername($_POST["username"])) {
+			$t = time()+60*60*24*30;
+			setcookie("prename", $_POST["prename"], $t, "/");
+			setcookie("surname", $_POST["surname"], $t, "/");
+			setcookie("email", $_POST["email"], $t, "/");
+			setcookie("address", $_POST["address"], $t, "/");
+			setcookie("zip", $_POST["zip"], $t, "/");
+			setcookie("city", $_POST["city"], $t, "/");
+			setcookie("country", $_POST["country"], $t, "/");
+			header('Location: index.php?id=101&error=USEREXISTS');	
 		} else {
-			echo t("ERROR_REGISTRATION");
+			$_POST["pw"] = password_hash($_POST["pw"], PASSWORD_BCRYPT);
+			$_POST["prename"] = htmlspecialchars($_POST["prename"]);
+			$_POST["surname"] = htmlspecialchars($_POST["surname"]);
+			$_POST["username"] = htmlspecialchars($_POST["username"]);
+			$_POST["address"] = htmlspecialchars($_POST["address"]);
+			$_POST["city"] = htmlspecialchars($_POST["city"]);
+			$res = User::insert($_POST);
+			if ($res){
+				echo t("SUCCESSFUL_REGISTRATION");
+			} else {
+				echo t("ERROR_REGISTRATION");
+			}
 		}
 	} else {
-		$columns = array("","");	
-		$rows = array();
 
-		$rows[] = array(t("PRENAME"),'<input name="prename" required pattern="^[A-Za-zäöü ,.\'-]{3,}$" autofocus>');
-		$rows[] = array(t("SURNAME"),'<input name="surname" required pattern="^[A-Za-zäöü ,.\'-]{3,}$">');
-		$rows[] = array(t("PASSWORD"),'<input type="password" name="pw">');
-		$rows[] = array(t("EMAIL"),'<input id="email" type="email" name="email">');
-		$rows[] = array(t("ADDRESS"),'<input name="address" required  pattern="^[A-Za-zäöü ,.\'-]{3,} [0-9a-z]+$">');
-		$rows[] = array(t("CITY"),'<input name="city" required pattern="^[A-Za-zäöü ,.\'-]{3,}$">');
-		$rows[] = array(t("ZIP"),'<input name="zip" required pattern="^[0-9]{1,5}$">');
-		$rows[] = array(t("COUNTRY"),'
-		<select name="country">
-			<option value="CH" selected>'.t("CH").'</option>
-			<option value="DE">'.t("DE").'</option>
-			<option value="AT">'.t("AT").'</option>
-		</select>');
-		$rows[] = array('','<label id="emailexists"></label>');
-		$rows[] = array("",'<input type="submit" value="'.t("REGISTER").'">');
-
-		$table = new Table($rows,$columns);
-
-		echo '<form method="post" onsubmit="return confirmPurchase(document.getElementById(\'email\').value,\'\')" action="index.php?id=101">';
-
-		$table->render();
-	
-		echo '</form></article>';
+		$form = new RegistrationForm((bool) false,"index.php?id=101","REGISTER"); 
+		$form->setOnSubmit("return confirmPurchase(document.getElementsByName('username')[0].value,''");
+		$form->render();
 	}
+	echo '</article>';
 }
