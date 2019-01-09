@@ -43,6 +43,15 @@ require_once("autoloader.php");
 							"StrapID" => $it->getStrapId(),
 							"PurchaseID" => $purch[1]));
 		}
+		
+		//Send mail does not work without authentication
+		//$mail = new Mail((bool) true);
+		//$mail->addRecipient($_POST['email']);
+		//$mail->addRecipient("admin@goldene-ziffer.ch");
+		//$mail->setSubject("Your order");
+		//$mail->setBody("test");
+		//$mail->send();
+
 ?>
 <article>
 <h1><?php echo t("CONFIRMATION")?></h1>
