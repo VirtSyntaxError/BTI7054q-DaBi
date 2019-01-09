@@ -8,6 +8,7 @@ echo '<h3>'.t("ENTER_DATA").'</h3>';
 $form = new RegistrationForm((bool) false, "index.php?id=5", "SUBMIT");
 if(isset($_SESSION['user'])) {
 	$form->setReadonly((bool) true);
+	$form->setLoggedIn((bool) true);
 }
 $form->setShowUser((bool) false);
 $form->setOnSubmit("return confirm('".t("BINDINGCONTRACT")."');");

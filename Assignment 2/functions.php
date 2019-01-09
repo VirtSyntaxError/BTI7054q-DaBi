@@ -72,6 +72,7 @@ function writeMenu($mobile) {
 	if (isset($_SESSION["user"])) {
 		echo '<div class="dropdown"><button class="dropdown-button">'.$_SESSION['user'].'</button>';
     		echo '<div class="dropdown-content">';
+      		writeMenuentry(t("PROFILE"),105);
       		writeMenuentry(t("MYORDERS"),104);
 		writeMenuentry(t("LOGOUT"),102);
     		echo '</div></div>';

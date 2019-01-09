@@ -1,6 +1,7 @@
 <?php
 class RegistrationForm {
 	private $readonly = false;
+	private $loggedin = false;
 	private $showuser = true;
 	private $action = "";
 	private $onsubmit = "";
@@ -34,11 +35,15 @@ class RegistrationForm {
 		$this->readonly = $readonly;
 	}
 
+	public function setLoggedIn(bool $loggedin){
+		$this->loggedin = $loggedin;
+	}
+
 	public function render(){
 		session_start();
 		$columns = array("","");	
 		$rows = array();
-		if($this->readonly) {
+		if($this->loggedin) {
 			$user = User::getUserByUsername($_SESSION['user']);
 			$prename = $user->getPrename();
 			$surname = $user->getSurname();

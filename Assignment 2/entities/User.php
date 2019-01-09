@@ -42,6 +42,34 @@ class User {
 		return $this->Country;
 	}
 
+	public function setPrename($prename){
+		$this->Prename = $prename;
+	}
+
+	public function setSurname($surname){
+		$this->Surname = $surname;
+	}
+
+	public function setEmail($email){
+		$this->Email = $email;
+	}
+
+	public function setAddress($address){
+		$this->Address = $address;
+	}
+
+	public function setCity($city){
+		$this->City = $city;
+	}
+
+	public function setZip($zip){
+		$this->ZIP = $zip;
+	}
+
+	public function setCountry($country){
+		$this->Country = $country;
+	}
+
 	public function __toString(){
 		return sprintf("%d) %s", $this->UserID, $this->getName());
 	}

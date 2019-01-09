@@ -252,6 +252,14 @@ $texts = array(
 		'de' => 'JavaScript aktivieren, damit die Webseite voll funktionsf&auml;hig ist.',
 		'en' => 'You need JavaScript to properly use this site.'
 	),
+	'PROFILE' => array(
+		'de' => 'Profil',
+		'en' => 'Profile'
+	),
+	'SAVE' => array(
+		'de' => 'Speichern',
+		'en' => 'Save'
+	),
 	'MYORDERS' => array(
 		'de' => 'Meine Bestellungen',
 		'en' => 'My orders'
@@ -347,6 +355,14 @@ $texts = array(
 	'USEREXISTS' => array(
 		'de' => 'Benutzername existiert bereits, bitte einloggen.',
 		'en' => 'Username already exists, please login.'
+	),
+	'USERSAVED' => array(
+		'de' => 'User wurde erfolgreich gespeichert.',
+		'en' => 'User has successfully been saved.'
+	),
+	'USERSAVEDERROR' => array(
+		'de' => 'User wurde NICHT gespeichert.',
+		'en' => 'User has NOT been saved.'
 	),
 	'IMAGE' => array(
 		'de' => 'Bild',
