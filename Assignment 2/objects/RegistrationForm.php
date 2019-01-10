@@ -107,10 +107,10 @@ class RegistrationForm {
 		if(isset($_GET["error"])) {
 			$error = t(strip_tags($_GET["error"]));
 		}	
+		echo '<label id="userexists">'.$error.'</label>';
 		if($this->subnottable) {	
 			echo '<br /><input type="submit" value="'.t($this->submit).'">';
 		}
 		echo '</form>';
-		echo '<label id="userexists">'.$error.'</label>';
 	}
 }
