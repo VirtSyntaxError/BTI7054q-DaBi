@@ -9,6 +9,8 @@ if ($logged_in){
 	echo '</article>';
 } else {
 	echo '<article>';
+	echo '<div class="outercart">';
+	echo '<div class="cardfull">';
 	echo "<h1>".t("LOGIN")."</h1>";
 
 	echo t("PLEASE_LOG_IN");
@@ -18,7 +20,6 @@ if ($logged_in){
 
 	$rows[] = array(t("USERNAME"),'<input name="login" autofocus required>');
 	$rows[] = array(t("PASSWORD"),'<input type="password" name="pw" required>');
-	$rows[] = array("",'<input type="submit" value="'.t("LOGIN").'">');
 
 	$table = new Table($rows,$columns);
 	
@@ -26,6 +27,11 @@ if ($logged_in){
 
 	$table->render();
 
-	echo '</form></article>';
+	echo '<br />';
+	echo '<input type="submit" value="'.t("LOGIN").'">';
+	echo '</form>';
+	echo '</div>';
+	echo '</div>';
+	echo '</article>';
 
 }

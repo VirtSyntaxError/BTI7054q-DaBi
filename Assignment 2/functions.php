@@ -88,12 +88,12 @@ function writeMenu($mobile) {
     		echo '</div></div>';
 	}
 
-	echo '<form method="post" class="menuform">';
+	echo '<form method="post" class="menuform" action="index.php?id=9">';
 	$langs = getAvailableLanguages();
 	if($mobile) {
-		echo '<select class="menuentry" id="langmobile" onchange="changeLang(document.getElementById(\'langmobile\').value)">';
+		echo '<select class="menuentry" id="langmobile" name="lang" onchange="changeLang(document.getElementById(\'langmobile\').value)">';
 	} else {
-		echo '<select class="menuentry" id="lang" onchange="changeLang(document.getElementById(\'lang\').value)">';
+		echo '<select class="menuentry" id="lang" name="lang" onchange="changeLang(document.getElementById(\'lang\').value)">';
 	}
 	foreach ($langs as $lang){
 		if ($lang === $_SESSION['lang']){
@@ -102,11 +102,9 @@ function writeMenu($mobile) {
 			echo "<option value=".$lang.">".$lang."</option>";
 		}
 	}
-	echo "</select>";
-//foreach($_GET as $key => $val){
- //if($key != 'lang'){
-    //echo '<input type="hidden" name="'.htmlspecialchars($key).'" value="'.htmlspecialchars($val).'" />';
- //}
-//}
-	echo "</form>";
+	echo '</select>';
+	echo '<noscript>
+		<input type="hidden" name="prev" value="'.$_SERVER['REQUEST_URI'].'">
+		<input type="submit" value="'.t("CHANGE").'"></noscript>';
+	echo '</form>';
 }

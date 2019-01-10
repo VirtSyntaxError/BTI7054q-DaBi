@@ -35,6 +35,18 @@ span.notvisible {
 	display: none;
 }
 
+input[type="submit"] {
+	color: white;
+	background-color: black;
+	border: none;
+	outline: 0;
+	cursor: pointer;
+	padding: 10px;
+}
+
+input[type="submit"]:hover {
+	opacity: 0.7;
+}
 
 .header-row {
 	display: table-row;

@@ -288,6 +288,10 @@ $texts = array(
 		'de' => 'Status &auml;ndern',
 		'en' => 'Change status'
 	),
+	'CHANGE' => array(
+		'de' => '&Auml;ndern',
+		'en' => 'Change'
+	),
 	'ORDERS' => array(
 		'de' => 'Bestellungen',
 		'en' => 'Orders'

@@ -3,6 +3,7 @@ class RegistrationForm {
 	private $readonly = false;
 	private $loggedin = false;
 	private $showuser = true;
+	private $subnottable = false;
 	private $action = "";
 	private $onsubmit = "";
 	private $submit = "";
@@ -37,6 +38,10 @@ class RegistrationForm {
 
 	public function setLoggedIn(bool $loggedin){
 		$this->loggedin = $loggedin;
+	}
+
+	public function setSubmitNotInTable(bool $subnottable){
+		$this->subnottable = $subnottable;
 	}
 
 	public function render(){
@@ -81,8 +86,10 @@ class RegistrationForm {
 		</select>');
 		
 		$rows = array_merge($rows, $this->additionalrows);	
-	
-		$rows[] = array("",'<input type="submit" value="'.t($this->submit).'">');
+		
+		if(!$this->subnottable) {	
+			$rows[] = array("",'<input type="submit" value="'.t($this->submit).'">');
+		}
 
 		$table = new Table($rows,$columns);
 
@@ -100,6 +107,9 @@ class RegistrationForm {
 		if(isset($_GET["error"])) {
 			$error = t(strip_tags($_GET["error"]));
 		}	
+		if($this->subnottable) {	
+			echo '<br /><input type="submit" value="'.t($this->submit).'">';
+		}
 		echo '</form>';
 		echo '<label id="userexists">'.$error.'</label>';
 	}

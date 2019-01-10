@@ -8,8 +8,10 @@ if ($logged_in){
 	echo "<p>".t("ALREADY_LOGGED_IN")."</p>";
 	echo '</article>';
 } else {
-	echo "<article><h1>".t("REGISTER")."</h1>";
-
+	echo "<article>";
+	echo '<div class="outercart">';
+	echo '<div class="cardfull">';
+	echo "<h1>".t("REGISTER")."</h1>";
 
 	if (isset($_POST["username"])){
 
@@ -41,7 +43,10 @@ if ($logged_in){
 
 		$form = new RegistrationForm((bool) false,"index.php?id=101","REGISTER"); 
 		$form->setOnSubmit("return confirmPurchase(document.getElementsByName('username')[0].value,''");
+		$form->setSubmitNotInTable((bool) true);
 		$form->render();
 	}
+	echo '</div>';
+	echo '</div>';
 	echo '</article>';
 }

@@ -85,7 +85,7 @@ class Cart {
 				$total += $price;
 				$ids[] = $item->getId();
 				echo "<form name='addorremove-".$item->getId()."' action='ajax/addorremove.php' method='post'>";
-				echo "<input type='hidden' name='prev' value=".$_SERVER['REQUEST_URI'].">";
+				echo "<input type='hidden' name='prev' value='".$_SERVER['REQUEST_URI']."'>";
 				echo '<div class="order-detail-container">';
 				echo '<div class="order-detail-child"><img src="img/'.$product->getImage().'"></div><div class="order-detail-child">'.$product->getName().'</div>';
 				echo '<div class="order-detail-child">'.t("STRAPCOLOR").':</div><div class="order-detail-child">'.$strap->getName().'</div>';
