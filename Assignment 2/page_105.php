@@ -13,13 +13,19 @@ if (!$logged_in){
 	echo "<p>".t("PLEASE_LOG_IN")."</p>";
 	echo '</article>';
 } else {
-	echo '<article><h1>'.t("PROFILE").'</h1>';
+	echo '<article>';
+	echo '<div class="outercart">';
+	echo '<div class="cardfull">';
+	echo '<h1>'.t("PROFILE").'</h1>';
 
 	$form = new RegistrationForm((bool) false, "index.php?id=106", "SAVE");
 	$form->setLoggedIn((bool) true);
 	$form->setShowUser((bool) false);
+	$form->setSubmitNotInTable((bool) true);
 
 	$form->render();
-	
+
+	echo '</div>';	
+	echo '</div>';	
 	echo '</article>';
 }
