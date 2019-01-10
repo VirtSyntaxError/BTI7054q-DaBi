@@ -22,7 +22,7 @@ class adminView {
 	public function renderOrders() {
 		echo '<article><h1>Admin</h1>';
 		echo '<h2>'.t("10ORDERS").'</h2>';
-		$columns = array("date","description","status","prename","surname","username","changestatus");
+		$columns = array("ordernr", "date","status","prename","surname","username","changestatus");
 		$rows = array();
 		
 		foreach ($this->adminModel->getOrders() as $purch) {
@@ -32,7 +32,7 @@ class adminView {
             					<option value="open">open</option>
             					<option value="sent">sent</option>
         				</select>';	
-			$rows[] = array(date("d.m.Y H:i", $purch['PurchaseTimestamp']),$purch['Description'],'<span id="state-'.$purch['PurchaseID'].'">'.$purch['PurchaseStatus'].'</span>',$purch['Prename'],$purch['Surname'],$purch['Username'],$changestatus);
+			$rows[] = array($purch['PurchaseID'],date("d.m.Y H:i", $purch['PurchaseTimestamp']),'<span id="state-'.$purch['PurchaseID'].'">'.$purch['PurchaseStatus'].'</span>',$purch['Prename'],$purch['Surname'],$purch['Username'],$changestatus);
 		}
 	
 		$table = new Table($rows,$columns);

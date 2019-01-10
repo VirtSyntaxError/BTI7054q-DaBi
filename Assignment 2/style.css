@@ -323,7 +323,7 @@ input[type="submit"]:hover {
 
 .dropdown, .dropdown-mobile {
   	overflow: hidden;
-	display: initial;
+	display: inline;
 }
 
 .dropdown-mobile, #mobilenav {
