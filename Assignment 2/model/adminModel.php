@@ -10,7 +10,7 @@ class adminModel {
 	}
 
 	public function getUsers() {
-		return User::getUsersWithoutGuests();
+		return User::getUsers();
 	}
 
 	public function getBrands() {
