@@ -89,7 +89,7 @@ class adminView {
 		$columns = array("prename","surname","username","admin");
 		$rows = array();
 		
-		foreach ($this->adminModel->getUsers() as $user) {
+		foreach ($this->adminModel->getUsersWithoutGuests() as $user) {
 			$rows[] = array($user->getPrename(),$user->getSurname(),$user->getUsername(),$user->getIsAdmin());
 		}
 	
