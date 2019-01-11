@@ -89,7 +89,7 @@ class User {
 	static public function getUsersWithoutGuests() {
 		$users = array();
 		$res = DB::doQuery(
-			"SELECT * FROM User WHERE Username NOT NULL;"
+			"SELECT * FROM User WHERE Username IS NOT NULL;"
 		);
 		if (!$res) return null;
 		while ($user = $res->fetch_object(get_class())){
