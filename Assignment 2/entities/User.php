@@ -160,14 +160,13 @@ class User {
 		$stmt = DB::getInstance()->prepare(
 			"INSERT INTO User ".
 			"(Prename, Surname, Username, Password, Email, Address, City, ZIP, Country, isAdmin) ".
-			"VALUES (?,?,NULL,?,?,?,?,?,?,?)"
+			"VALUES (?,?,NULL,NULL,?,?,?,?,?,?)"
 		);
 		if (!$stmt) return false;
 		$isAdmin = 0;
-		$success = $stmt->bind_param('ssssssisi',
+		$success = $stmt->bind_param('sssssisi',
 			$values['prename'],
 			$values['surname'],
-			$values['pw'],
 			$values['email'],
 			$values['address'],
 			$values['city'],

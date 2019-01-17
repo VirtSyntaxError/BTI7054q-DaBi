@@ -16,7 +16,6 @@ require_once("autoloader.php");
 		$userID = User::insertGuest(array(
 						"prename" => $_POST["prename"],
 						"surname" => $_POST["surname"],
-						"pw" => password_hash("^XvuJJrd=rOd*4", PASSWORD_BCRYPT),
 						"email" => $_POST["email"],
 						"address" => $_POST["address"],
 						"city" => $_POST["city"],
