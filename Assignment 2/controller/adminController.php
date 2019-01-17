@@ -45,46 +45,52 @@ class adminController {
 		setcookie("BrandID", $_POST["BrandID"], $t, "/");
 		setcookie("Discount", $_POST["Discount"], $t, "/");
 		
-		if (isset($_POST['Productname']) && $_POST['colors'] && $_POST['straps'] && !$_FILES["Image"]["error"]){
+		if (isset($_POST['Productname']) && $_POST['colors'] && $_POST['cats'] && $_POST['straps'] && !$_FILES["Image"]["error"]){
 
 			if(!$this->uploadImage($_FILES['Image'])){
 				header('Location: ../newProduct/?error=IMAGEERROR');
-			}	
+			} else {	
 
-			$_POST['Image'] = $_FILES['Image']['name'];
-			$_POST['Productdescription_de'] = htmlspecialchars($_POST['Productdescription_de']);
-			$_POST['Productdescription_en'] = htmlspecialchars($_POST['Productdescription_en']);
-			$_POST['Productname'] = htmlspecialchars($_POST['Productname']);
+				$_POST['Image'] = $_FILES['Image']['name'];
+				$_POST['Productdescription_de'] = htmlspecialchars($_POST['Productdescription_de']);
+				$_POST['Productdescription_en'] = htmlspecialchars($_POST['Productdescription_en']);
+				$_POST['Productname'] = htmlspecialchars($_POST['Productname']);
 
 
-			$id = $this->adminModel->insertProduct($_POST);
+				$id = $this->adminModel->insertProduct($_POST);
 
-			if (isset($_POST['colors'])){
-				foreach ($_POST['colors'] as $color){
-					$this->adminModel->insertProductColor($id,$color);
+				if (isset($_POST['colors'])){
+					foreach ($_POST['colors'] as $color){
+						$this->adminModel->insertProductColor($id,$color);
+					}
 				}
-			}
-			if (isset($_POST['straps'])){
-				foreach ($_POST['straps'] as $strap){
-					$this->adminModel->insertProductStrap($id,$strap);
+				if (isset($_POST['straps'])){
+					foreach ($_POST['straps'] as $strap){
+						$this->adminModel->insertProductStrap($id,$strap);
+					}
 				}
-			}
+				if (isset($_POST['cats'])){
+					foreach ($_POST['cats'] as $cat){
+						$this->adminModel->insertProductCategory($id,$cat);
+					}
+				}
 
-			unset($_COOKIE['Productdescription_en']);
-			unset($_COOKIE['Productdescription_de']);
-			unset($_COOKIE['Productname']);
-			unset($_COOKIE['Price']);
-			unset($_COOKIE['BrandID']);
-			unset($_COOKIE['Discount']);
-			setcookie("Productname", "", time()-3600, "/");
-			setcookie("Productdescription_de", "", time()-3600, "/");
-			setcookie("Productdescription_en", "", time()-3600, "/");
-			setcookie("Price", "", time()-3600, "/");
-			setcookie("BrandID", "", time()-3600, "/");
-			setcookie("Discount", "", time()-3600, "/");
+				unset($_COOKIE['Productdescription_en']);
+				unset($_COOKIE['Productdescription_de']);
+				unset($_COOKIE['Productname']);
+				unset($_COOKIE['Price']);
+				unset($_COOKIE['BrandID']);
+				unset($_COOKIE['Discount']);
+				setcookie("Productname", "", time()-3600, "/");
+				setcookie("Productdescription_de", "", time()-3600, "/");
+				setcookie("Productdescription_en", "", time()-3600, "/");
+				setcookie("Price", "", time()-3600, "/");
+				setcookie("BrandID", "", time()-3600, "/");
+				setcookie("Discount", "", time()-3600, "/");
 
 			
-			header('Location: ../showProducts/');
+				header('Location: ../showProducts/');
+			}
 		} else {
 			header('Location: ../newProduct/?error=NOTALLERROR');
 		}
@@ -94,20 +100,28 @@ class adminController {
 		$fileDest = "../img/".basename($image['name']);
 		
     		if(!getimagesize($image['tmp_name'])) {
+			echo "not an image";
+			var_dump($image);
         		return false;
 		}
 
 		if (file_exists($fileDest)) {
+			var_dump($image);
+			die;
 			return false;
 		}
 
 		if ($image['size'] > 300000) {
+			var_dump($image);
+			die;
 			return false;
 		}
 
     		if (move_uploaded_file($image['tmp_name'], $fileDest)) {
 			return true;
     		} else {
+			var_dump($image);
+			die;
         		return false;
 		}
 	}

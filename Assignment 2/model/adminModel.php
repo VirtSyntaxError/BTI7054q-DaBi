@@ -33,6 +33,10 @@ class adminModel {
 		return Product::getProducts($lang);
 	}
 
+	public function getCategories($lang) {
+		return Category::getCategories($lang);
+	}
+
 	public function insertProduct($parts) { 
 		$id = Product::insert($parts);
 		return $id;
@@ -47,6 +51,12 @@ class adminModel {
 	public function insertProductStrap($pid, $sid) {
 		$insarray = array('StrapID'=>$sid, 'ProductID'=>$pid);
 		StrapProduct::insert($insarray);
+	}
+
+	public function insertProductCategory($pid, $cid) {
+		$insarray = array('CategoryID'=>$cid, 'ProductID'=>$pid);
+		CategoryProduct::insert($insarray);
+
 	}
 
 }

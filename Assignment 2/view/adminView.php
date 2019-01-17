@@ -132,7 +132,14 @@ class adminView {
 			}
 		}
 		echo '</select></p>
-		<h3>'.t("WATCHCOLOR").'</h3>';
+			<h3>'.t("CATEGORIES").'</h3>';
+		foreach ($this->adminModel->getCategories($lang) as $cat){
+			$catname = $cat->getName();
+			$catID = $cat->getId();
+			echo '<input type="checkbox" name="cats[]" value='.$catID.'>'.$catname.'<br>';
+		}
+
+		echo '<h3>'.t("WATCHCOLOR").'</h3>';
 		foreach ($this->adminModel->getColors($lang) as $color){
 			$colorname = $color->getName();
 			$colorID = $color->getId();
